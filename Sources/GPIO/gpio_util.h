@@ -27,7 +27,7 @@
 
 #define __GPIO_UNGATE_PORT(PORT_ID)\
 	/* un-gate port clock*/\
-    SIM_SCGC5 = SIM_SCGC5_PORT ## PORT_ID ##(CGC_CLOCK_ENABLED)
+    SIM_SCGC5 = SIM_SCGC5_PORT ## PORT_ID ## (CGC_CLOCK_ENABLED)
 
 /* ************************************************** */
 /* Macro name:        GPIO_INIT_PIN                   */

@@ -1,4 +1,6 @@
-/Debug/
+.metadata/
+
+*~
 
 # Object files
 *.o
@@ -32,3 +34,4 @@
 
 # Debug files
 *.dSYM/
+
