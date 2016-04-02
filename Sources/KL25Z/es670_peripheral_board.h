@@ -69,5 +69,61 @@
 
 /*                 END OF LED and SWITCH definitions             */
 
+/*                 SEVEN SEGMENT DISPLAY Definitions                    */
+#define SEV_SEG_PORT_BASE_PNT      PORTC                                   /* peripheral port base pointer */
+#define SEV_SEG_PORT_ID            C                                       /* peripheral port identifier*/
+#define SEV_SEG_GPIO_BASE_PNT      PTC                                     /* peripheral gpio base pointer */
+
+
+#define SEGA_PIN                     0U                                      /* Segment A*/
+#define SEGA_DIR_OUTPUT              (GPIO_OUTPUT << SEGA_PIN)
+#define SEGA_ALT                     0x01u                                   /* GPIO alternative */
+
+#define SEGB_PIN                     1U
+#define SEGB_DIR_OUTPUT              (GPIO_OUTPUT << SEGB_PIN)
+#define SEGB_ALT                     SEGA_ALT
+
+#define SEGC_PIN                     2U
+#define SEGC_DIR_OUTPUT              (GPIO_OUTPUT << SEGC_PIN)
+#define SEGC_ALT                     SEGA_ALT
+
+#define SEGD_PIN                     3U
+#define SEGD_DIR_OUTPUT              (GPIO_OUTPUT << SEGD_PIN)
+#define SEGD_ALT                     SEGA_ALT
+
+#define SEGE_PIN                     4U
+#define SEGE_DIR_OUTPUT              (GPIO_OUTPUT << SEGE_PIN)
+#define SEGE_ALT                     SEGA_ALT
+
+#define SEGF_PIN                     5U
+#define SEGF_DIR_OUTPUT              (GPIO_OUTPUT << SEGF_PIN)
+#define SEGF_ALT                     SEGA_ALT
+
+#define SEGG_PIN                     6U
+#define SEGG_DIR_OUTPUT              (GPIO_OUTPUT << SEGG_PIN)
+#define SEGG_ALT                     SEGA_ALT
+
+#define SEGDP_PIN                     7U
+#define SEGDP_DIR_OUTPUT              (GPIO_OUTPUT << SEGDP_PIN)
+#define SEGDP_ALT                     SEGA_ALT
+
+#define SEG_DISP1_PIN                 13U
+#define SEG_DISP1_DIR_OUTPUT          (GPIO_OUTPUT << SEG_DISP1_PIN)
+#define SEG_DISP1_ALT                 SEGA_ALT
+
+#define SEG_DISP2_PIN                 12U
+#define SEG_DISP2_DIR_OUTPUT          (GPIO_OUTPUT << SEG_DISP2_PIN)
+#define SEG_DISP2_ALT                 SEGA_ALT
+
+#define SEG_DISP3_PIN                 11U
+#define SEG_DISP3_DIR_OUTPUT          (GPIO_OUTPUT << SEG_DISP3_PIN)
+#define SEG_DISP3_ALT                 SEGA_ALT
+
+#define SEG_DISP4_PIN                 10U
+#define SEG_DISP4_DIR_OUTPUT          (GPIO_OUTPUT << SEG_DISP4_PIN)
+#define SEG_DISP4_ALT                 SEGA_ALT
+
+/*                 END of SEVEN SEGMENT DISPLAY Definitions                    */
+
 
 #endif /* SOURCES_ES670_PERIPHERAL_BOARD_H_ */

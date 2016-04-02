@@ -9,8 +9,10 @@ Sources/Main/es670.o: ../Sources/Main/es670.c \
  ../SDK/platform/devices/MKL25Z4/include/MKL25Z4.h \
  ../SDK/platform/devices/MKL25Z4/include/fsl_bitaccess.h \
  ../SDK/platform/devices/MKL25Z4/include/MKL25Z4_features.h \
- ../Sources/Mcg/mcg_hal.h ../Sources/Buzzer/buzzer_hal.h \
- ../Sources/Util/util.h
+ ../Sources/KL25Z/es670_peripheral_board.h \
+ ../SDK/platform/devices/MKL25Z4/include/MKL25Z4.h \
+ ../Sources/LedSwi/ledswi_hal.h ../Sources/Mcg/mcg_hal.h \
+ ../Sources/Buzzer/buzzer_hal.h ../Sources/Util/util.h
 
 ../SDK/platform/devices/fsl_device_registers.h:
 
@@ -31,6 +33,12 @@ Sources/Main/es670.o: ../Sources/Main/es670.c \
 ../SDK/platform/devices/MKL25Z4/include/fsl_bitaccess.h:
 
 ../SDK/platform/devices/MKL25Z4/include/MKL25Z4_features.h:
+
+../Sources/KL25Z/es670_peripheral_board.h:
+
+../SDK/platform/devices/MKL25Z4/include/MKL25Z4.h:
+
+../Sources/LedSwi/ledswi_hal.h:
 
 ../Sources/Mcg/mcg_hal.h:
 
