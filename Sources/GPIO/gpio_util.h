@@ -12,6 +12,12 @@
 
 #include "KL25Z/es670_peripheral_board.h"
 
+/* GPIO input / output */
+#define GPIO_INPUT                  0x00U
+#define GPIO_OUTPUT                 0x01U
+
+#define GPIO_MUX_ALT                0x01u
+
 #define GPIO_HIGH 1
 #define GPIO_LOW  0
 
@@ -27,7 +33,7 @@
 
 #define __GPIO_UNGATE_PORT(PORT_ID)\
 	/* un-gate port clock*/\
-    SIM_SCGC5 = SIM_SCGC5_PORT ## PORT_ID ## (CGC_CLOCK_ENABLED)
+    SIM_SCGC5 = SIM_SCGC5_PORT ## PORT_ID (CGC_CLOCK_ENABLED)
 
 /* ************************************************** */
 /* Macro name:        GPIO_INIT_PIN                   */
@@ -45,13 +51,14 @@
 
 #define __GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)\
     /* set pin as gpio */\
-    PORT ## PORT_ID ## _PCR ## PIN_NUM ## = PORT_PCR_MUX(GPIO_MUX_ALT);\
+    PORT ## PORT_ID ## _PCR ## PIN_NUM = PORT_PCR_MUX(GPIO_MUX_ALT);\
     /* Set pin direction */\
-    if(DIR){\
+    if(DIR == GPIO_OUTPUT){\
     	GPIOA_PDDR |= GPIO_PDDR_PDD(0x01 << PIN_NUM);\
     }else{\
     	GPIOA_PDDR &= ~GPIO_PDDR_PDD(0x01 << PIN_NUM);\
     }
+
 
 /* *************************************************** */
 /* Macro name:        GPIO_WRITE_PIN                   */
@@ -67,7 +74,7 @@
     __GPIO_SET_PIN(PORT_ID, PIN_NUM, DIR)
 
 #define __GPIO_SET_PIN(PORT_ID, PIN_NUM, VAL)\
-	if(VAL){\
+	if(VAL == GPIO_HIGH){\
 		GPIO ## PORT_ID ## _PSOR = GPIO_P ## VAL ## R_PTSO( (0x01U << PIN_NUM) )\
 	}\else{\
 		GPIO ## PORT_ID ## _PCOR = GPIO_P ## VAL ## R_PTCO( (0x01U << PIN_NUM) )\

@@ -25,6 +25,7 @@ S_UPPER_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Sources/Util \
+Sources/SevenSeg \
 Sources/Mcg \
 Sources/Main \
 Sources/LedSwi \

@@ -19,12 +19,6 @@
 #define  CGC_CLOCK_DISABLED         0x00U
 #define  CGC_CLOCK_ENABLED          0x01U
 
-/* GPIO input / output */
-#define GPIO_INPUT                  0x00U
-#define GPIO_OUTPUT                 0x01U
-
-#define GPIO_MUX_ALT                0x01u
-
 
 /*                 END OF General uC definitions         */
 
@@ -34,7 +28,7 @@
 #define BUZZER_GPIO_BASE_PNT        PTD                                     /* peripheral gpio base pointer */
 #define BUZZER_PORT_ID              D                                       /* peripheral port identifier*/
 
-#define BUZZER_PIN                  1U                                      /* buzzer pin */
+#define BUZZER_PIN                  1                                      /* buzzer pin */
 #define BUZZER_DIR                  kGpioDigitalOutput
 #define BUZZER_ALT                  0x01u
 /*                 END OF BUZZER definitions             */
@@ -75,51 +69,51 @@
 #define SEV_SEG_GPIO_BASE_PNT      PTC                                     /* peripheral gpio base pointer */
 
 
-#define SEGA_PIN                     0U                                      /* Segment A*/
+#define SEGA_PIN                     0                                      /* Segment A*/
 #define SEGA_DIR_OUTPUT              (GPIO_OUTPUT << SEGA_PIN)
 #define SEGA_ALT                     0x01u                                   /* GPIO alternative */
 
-#define SEGB_PIN                     1U
+#define SEGB_PIN                     1
 #define SEGB_DIR_OUTPUT              (GPIO_OUTPUT << SEGB_PIN)
 #define SEGB_ALT                     SEGA_ALT
 
-#define SEGC_PIN                     2U
+#define SEGC_PIN                     2
 #define SEGC_DIR_OUTPUT              (GPIO_OUTPUT << SEGC_PIN)
 #define SEGC_ALT                     SEGA_ALT
 
-#define SEGD_PIN                     3U
+#define SEGD_PIN                     3
 #define SEGD_DIR_OUTPUT              (GPIO_OUTPUT << SEGD_PIN)
 #define SEGD_ALT                     SEGA_ALT
 
-#define SEGE_PIN                     4U
+#define SEGE_PIN                     4
 #define SEGE_DIR_OUTPUT              (GPIO_OUTPUT << SEGE_PIN)
 #define SEGE_ALT                     SEGA_ALT
 
-#define SEGF_PIN                     5U
+#define SEGF_PIN                     5
 #define SEGF_DIR_OUTPUT              (GPIO_OUTPUT << SEGF_PIN)
 #define SEGF_ALT                     SEGA_ALT
 
-#define SEGG_PIN                     6U
+#define SEGG_PIN                     6
 #define SEGG_DIR_OUTPUT              (GPIO_OUTPUT << SEGG_PIN)
 #define SEGG_ALT                     SEGA_ALT
 
-#define SEGDP_PIN                     7U
+#define SEGDP_PIN                     7
 #define SEGDP_DIR_OUTPUT              (GPIO_OUTPUT << SEGDP_PIN)
 #define SEGDP_ALT                     SEGA_ALT
 
-#define SEG_DISP1_PIN                 13U
+#define SEG_DISP1_PIN                 13
 #define SEG_DISP1_DIR_OUTPUT          (GPIO_OUTPUT << SEG_DISP1_PIN)
 #define SEG_DISP1_ALT                 SEGA_ALT
 
-#define SEG_DISP2_PIN                 12U
+#define SEG_DISP2_PIN                 12
 #define SEG_DISP2_DIR_OUTPUT          (GPIO_OUTPUT << SEG_DISP2_PIN)
 #define SEG_DISP2_ALT                 SEGA_ALT
 
-#define SEG_DISP3_PIN                 11U
+#define SEG_DISP3_PIN                 11
 #define SEG_DISP3_DIR_OUTPUT          (GPIO_OUTPUT << SEG_DISP3_PIN)
 #define SEG_DISP3_ALT                 SEGA_ALT
 
-#define SEG_DISP4_PIN                 10U
+#define SEG_DISP4_PIN                 10
 #define SEG_DISP4_DIR_OUTPUT          (GPIO_OUTPUT << SEG_DISP4_PIN)
 #define SEG_DISP4_ALT                 SEGA_ALT
 
