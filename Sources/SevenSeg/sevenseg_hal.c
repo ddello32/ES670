@@ -21,15 +21,20 @@
 /* ************************************************ */
 void sevenseg_init(void){
 	GPIO_UNGATE_PORT(SEV_SEG_PORT_ID);
+	// Init the Seven Segment segment control pins as OUTPUT
 	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGA_PIN, GPIO_OUTPUT);
-	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGB_PIN, );
-	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGC_PIN);
-	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGD_PIN);
-	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGE_PIN);
-	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGF_PIN);
-	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGG_PIN);
-	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGGP_PIN);
-
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGB_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGC_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGD_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGE_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGF_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGG_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGDP_PIN, GPIO_OUTPUT);
+	// Init the Seven Segment segment display pins as OUTPUT
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEG_DISP1_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEG_DISP2_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEG_DISP3_PIN, GPIO_OUTPUT);
+	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEG_DISP4_PIN, GPIO_OUTPUT);
 }
 
 
@@ -39,7 +44,9 @@ void sevenseg_init(void){
 /* Input params:       n/a                          */
 /* Output params:      n/a                          */
 /* ************************************************ */
-void buzzer_clearBuzz(void);
+void sevenseg_setSegs(void){
+
+}
 
 
 /* ************************************************ */
@@ -49,7 +56,3 @@ void buzzer_clearBuzz(void);
 /* Output params:      n/a                          */
 /* ************************************************ */
 void buzzer_setBuzz(void);
-
-
-
-#endif /* SOURCES_SEVEN_SEGMENT_HAL_H_ */
