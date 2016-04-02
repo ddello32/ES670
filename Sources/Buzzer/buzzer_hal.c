@@ -18,15 +18,8 @@
 /* ************************************************ */
 void buzzer_init(void)
 {
-    /* un-gate port clock*/
-    SIM_SCGC5 = SIM_SCGC5_PORTD(CGC_CLOCK_ENABLED);
-
-    /* set pin as gpio */
-    PORTD_PCR0 = PORT_PCR_MUX(BUZZER_ALT);
-
-    /* set pin as digital output */
-    GPIOD_PDDR |= GPIO_PDDR_PDD(BUZZER_PIN);
-
+	GPIO_UNGATE_PORT(BUZZER_PORT_ID);
+	GPIO_INIT_PIN(BUZZER_PORT_ID, BUZZER_PIN, GPIO_OUTPUT);
 }
 
 
@@ -39,22 +32,18 @@ void buzzer_init(void)
 /* ************************************************ */
 void buzzer_clearBuzz(void)
 {
-    /* clear desired led */
-    GPIOD_PCOR = GPIO_PCOR_PTCO(0x01);
-
+    GPIO_SET_PIN(BUZZER_PORT_ID, BUZZER_PIN, GPIO_LOW);
 }
 
 
 
 /* ************************************************ */
 /* Method name:        buzzer_setBuz                */
-/* Method description: Set the buzze                */
+/* Method description: Set the buzzer               */
 /* Input params:       n/a                          */
 /* Output params:       n/a                         */
 /* ************************************************ */
 void buzzer_setBuzz(void)
 {
-    /* set desired led */
-    GPIOD_PSOR = GPIO_PSOR_PTSO(0x01);
-
+    GPIO_SET_PIN(BUZZER_PORT_ID, BUZZER_PIN, GPIO_HIGH);
 }
