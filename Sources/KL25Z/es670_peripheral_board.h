@@ -19,6 +19,15 @@
 #define  CGC_CLOCK_DISABLED         0x00U
 #define  CGC_CLOCK_ENABLED          0x01U
 
+/* GPIO DIRECTION    */
+#define GPIO_OUTPUT 				0x01U
+
+/*	Workaround for PORT_ID macro expansion to stop at port level*/
+typedef int A;
+typedef int B;
+typedef int C;
+typedef int D;
+typedef int E;
 
 /*                 END OF General uC definitions         */
 
@@ -26,7 +35,7 @@
 /*                 BUZZER Definitions                    */
 #define BUZZER_PORT_BASE_PNT        PORTD                                   /* peripheral port base pointer */
 #define BUZZER_GPIO_BASE_PNT        PTD                                     /* peripheral gpio base pointer */
-#define BUZZER_PORT_ID              D                                       /* peripheral port identifier*/
+#define BUZZER_PORT_ID				D                                       /* peripheral port identifier*/
 
 #define BUZZER_PIN                  1                                      /* buzzer pin */
 #define BUZZER_DIR                  kGpioDigitalOutput
@@ -36,7 +45,7 @@
 
 /*                 LED and SWITCH Definitions                    */
 #define LS_PORT_BASE_PNT            PORTA                                   /* peripheral port base pointer */
-#define LS_PORT_ID                  D                                       /* peripheral port identifier*/
+#define LS_PORT_ID                  A                                      /* peripheral port identifier*/
 #define LS_GPIO_BASE_PNT            PTA                                     /* peripheral gpio base pointer */
 
 /* THIS PIN CONFLICTS WITH PTA1 USED AS UART0_RX IN THE OPENSDA SERIAL DEBUG PORT */

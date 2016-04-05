@@ -8,6 +8,7 @@
 /* ***************************************************************** */
 
 #include "buzzer_hal.h"
+#include "GPIO/gpio_util.h"
 #include "KL25Z/es670_peripheral_board.h"
 
 /* ************************************************ */
@@ -32,7 +33,7 @@ void buzzer_init(void)
 /* ************************************************ */
 void buzzer_clearBuzz(void)
 {
-    GPIO_SET_PIN(BUZZER_PORT_ID, BUZZER_PIN, GPIO_LOW);
+    GPIO_WRITE_PIN(BUZZER_PORT_ID, BUZZER_PIN, GPIO_LOW);
 }
 
 
@@ -45,5 +46,5 @@ void buzzer_clearBuzz(void)
 /* ************************************************ */
 void buzzer_setBuzz(void)
 {
-    GPIO_SET_PIN(BUZZER_PORT_ID, BUZZER_PIN, GPIO_HIGH);
+	GPIO_WRITE_PIN(BUZZER_PORT_ID, BUZZER_PIN, GPIO_HIGH);
 }

@@ -18,8 +18,8 @@
 
 #define GPIO_MUX_ALT                0x01u
 
-#define GPIO_HIGH 1
-#define GPIO_LOW  0
+#define GPIO_HIGH    1
+#define GPIO_LOW     0
 
 /* **************************************************  */
 /* Macro name:        GPIO_UNGATE_PORT                 */
@@ -29,9 +29,9 @@
 /* Output params:       n/a                            */
 /* **************************************************  */
 #define GPIO_UNGATE_PORT(PORT_ID)\
-	__GPIO_UNGATE_PORT(PORT_ID)
+	_GPIO_UNGATE_PORT(PORT_ID)
 
-#define __GPIO_UNGATE_PORT(PORT_ID)\
+#define _GPIO_UNGATE_PORT(PORT_ID)\
 	/* un-gate port clock*/\
     SIM_SCGC5 = SIM_SCGC5_PORT ## PORT_ID (CGC_CLOCK_ENABLED)
 
@@ -43,13 +43,13 @@
 /*                                        id(A,B)     */
 /*                     PIN_NUM = pin number in port   */
 /*                     DIR = pin direction            */
-/*                           (GPIO_INPUT, GPIO_OUTPUT)*/
+/*                           (GPIO_HIGH, GPIO_LOW)    */
 /* Output params:       n/a                           */
 /* ************************************************** */
 #define GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)\
-    __GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)
+    _GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)
 
-#define __GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)\
+#define _GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)\
     /* set pin as gpio */\
     PORT ## PORT_ID ## _PCR ## PIN_NUM = PORT_PCR_MUX(GPIO_MUX_ALT);\
     /* Set pin direction */\
@@ -70,15 +70,39 @@
 /*                           (GPIO_HIGH, GPIO_LOW)     */
 /* Output params:       n/a                            */
 /* *************************************************** */
-#define GPIO_SET_PIN(PORT_ID, PIN_NUM, VAL)\
-    __GPIO_SET_PIN(PORT_ID, PIN_NUM, DIR)
+#define GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)\
+    _GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)
 
-#define __GPIO_SET_PIN(PORT_ID, PIN_NUM, VAL)\
+#define _GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)\
 	if(VAL == GPIO_HIGH){\
-		GPIO ## PORT_ID ## _PSOR = GPIO_P ## VAL ## R_PTSO( (0x01U << PIN_NUM) )\
-	}\else{\
-		GPIO ## PORT_ID ## _PCOR = GPIO_P ## VAL ## R_PTCO( (0x01U << PIN_NUM) )\
+		GPIO ## PORT_ID ## _PSOR = GPIO_P ## VAL ## R_PTSO( (0x01U << PIN_NUM) );\
+	}else{\
+		GPIO ## PORT_ID ## _PCOR = GPIO_P ## VAL ## R_PTCO( (0x01U << PIN_NUM) );\
 	}
+
+/* **************************************************** */
+/* Macro name:        GPIO_SET_MASK                     */
+/* Macro description: Writes the given value to the pins*/
+/*						given in the MASK			    */
+/* Input params:       PORT_ID = the GPIO port          */
+/*                                        id(A,B)       */
+/*                     MASK = 31 bit Mask with 1 in the */
+/*							   bits corresponding to the*/
+/*							   pins of interest.        */
+/*                     VAL = pins value                 */
+/*                           (GPIO_HIGH, GPIO_LOW)      */
+/* Output params:       n/a                             */
+/* **************************************************** */
+#define GPIO_WRITE_MASK(PORT_ID, MASK, VAL)\
+    _GPIO_WRITE_MASK(PORT_ID, MASK, VAL)
+
+#define _GPIO_WRITE_MASK(PORT_ID, MASK, VAL)\
+	if(VAL == GPIO_HIGH){\
+		GPIO ## PORT_ID ## _PSOR = GPIO_P ## VAL ## R_PTSO(MASK);\
+	}else{\
+		GPIO ## PORT_ID ## _PCOR = GPIO_P ## VAL ## R_PTCO(MASK);\
+	}
+
 
 /* *************************************************** */
 /* Macro name:        GPIO_READ_PIN                    */
@@ -91,9 +115,9 @@
 /* Output params:       n/a                            */
 /* *************************************************** */
 #define GPIO_READ_PIN(PORT_ID, PIN_NUM)\
-    __GPIO_READ_PIN(PORT_ID, PIN_NUM)
+    _GPIO_READ_PIN(PORT_ID, PIN_NUM)
 
-#define __GPIO_READ_PIN(PORT_ID, PIN_NUM)\
+#define _GPIO_READ_PIN(PORT_ID, PIN_NUM)\
 		((GPIO ## PORD_ID ## _PDIR & (0x01u << PIN_NUM)) >> PIN_NUM) )
 
 #endif /* SOURCES_LEDSWI_LEDSWI_HAL_H_ */
