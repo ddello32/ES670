@@ -54,9 +54,9 @@
     PORT ## PORT_ID ## _PCR ## PIN_NUM = PORT_PCR_MUX(GPIO_MUX_ALT);\
     /* Set pin direction */\
     if(DIR == GPIO_OUTPUT){\
-    	GPIOA_PDDR |= GPIO_PDDR_PDD(0x01 << PIN_NUM);\
+    	GPIO ## PORT_ID ## _PDDR |= GPIO_PDDR_PDD(0x01 << PIN_NUM);\
     }else{\
-    	GPIOA_PDDR &= ~GPIO_PDDR_PDD(0x01 << PIN_NUM);\
+    	GPIO ## PORT_ID ## _PDDR &= ~GPIO_PDDR_PDD(0x01 << PIN_NUM);\
     }
 
 
@@ -75,9 +75,9 @@
 
 #define _GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)\
 	if(VAL == GPIO_HIGH){\
-		GPIO ## PORT_ID ## _PSOR = GPIO_P ## VAL ## R_PTSO( (0x01U << PIN_NUM) );\
+		GPIO ## PORT_ID ## _PSOR = GPIO_PSOR_PTSO( (0x01U << PIN_NUM) );\
 	}else{\
-		GPIO ## PORT_ID ## _PCOR = GPIO_P ## VAL ## R_PTCO( (0x01U << PIN_NUM) );\
+		GPIO ## PORT_ID ## _PCOR = GPIO_PCOR_PTCO( (0x01U << PIN_NUM) );\
 	}
 
 /* **************************************************** */
@@ -98,9 +98,9 @@
 
 #define _GPIO_WRITE_MASK(PORT_ID, MASK, VAL)\
 	if(VAL == GPIO_HIGH){\
-		GPIO ## PORT_ID ## _PSOR = GPIO_P ## VAL ## R_PTSO(MASK);\
+		GPIO ## PORT_ID ## _PSOR = GPIO_PSOR_PTSO(MASK);\
 	}else{\
-		GPIO ## PORT_ID ## _PCOR = GPIO_P ## VAL ## R_PTCO(MASK);\
+		GPIO ## PORT_ID ## _PCOR = GPIO_PCOR_PTCO(MASK);\
 	}
 
 

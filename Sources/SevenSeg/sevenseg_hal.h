@@ -33,13 +33,12 @@ typedef enum
 	DISP_4 =	 SEG_DISP4_PIN,
 } seven_segment_disp_type_e;
 
-/* ************************************************ */
-/* Method name:        sevenseg_init                */
-/* Method description: Initialize the seven segment */
-/*                                          display */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/*!
+/* Method name:        sevenseg_init
+/* Method description: Initialize the seven segment display
+/* Input params:       n/a
+/* Output params:      n/a
+*/
 void sevenseg_init(void);
 
 /* ******************************************************** */

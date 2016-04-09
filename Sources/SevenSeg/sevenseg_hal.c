@@ -10,21 +10,20 @@
 
 #include "sevenseg_hal.h"
 #include "GPIO/gpio_util.h"
+#include "KL25Z/es670_peripheral_board.h"
 
 #define SEV_SEG_SEGMENT_MASK GPIO_HIGH << SEGA_PIN | GPIO_HIGH << SEGB_PIN | GPIO_HIGH << SEGC_PIN | GPIO_HIGH << SEGD_PIN | GPIO_HIGH << SEGE_PIN | GPIO_HIGH << SEGF_PIN | GPIO_HIGH << SEGG_PIN | GPIO_HIGH << SEGDP_PIN
 #define SEV_SEG_DISP_MASK GPIO_HIGH << SEG_DISP1_PIN | GPIO_HIGH << SEG_DISP2_PIN | GPIO_HIGH << SEG_DISP3_PIN | GPIO_HIGH << SEG_DISP4_PIN
 
 #define MAX_SEGMENT_NUMBER 8
 
-/* ************************************************ */
-/* Method name:        sevenseg_init                */
-/* Method description: Initialize the seven segment */
-/*                                          display */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/*!
+* Method name:        sevenseg_init
+* Method description: Initialize the seven segment display
+*/
 void sevenseg_init(void){
 	GPIO_UNGATE_PORT(SEV_SEG_PORT_ID);
+
 	// Init the Seven Segment segment control pins as OUTPUT
 	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGA_PIN, GPIO_OUTPUT);
 	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEGB_PIN, GPIO_OUTPUT);
