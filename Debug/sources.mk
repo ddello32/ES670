@@ -26,6 +26,7 @@ S_UPPER_DEPS :=
 SUBDIRS := \
 Sources/Util \
 Sources/SevenSeg \
+Sources/PIT \
 Sources/Mcg \
 Sources/Main \
 Sources/LedSwi \

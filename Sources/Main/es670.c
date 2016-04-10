@@ -6,24 +6,30 @@
 #include "SevenSeg/sevenseg_hal.h"
 #include "Util/util.h"
 
-static int i = 0;
 
 int main(void)
 {
 	mcg_clockInit();
 	buzzer_init();
-	ledswi_initLedSwitch(MAX_LED_SWI,0);
+	ledswi_initLedSwitch(3,1);
 	sevenseg_init();
-
-	seven_segment_seg_type_e on_segments[] = {SEG_A, SEG_B, SEG_C, SEG_D};
-	seven_segment_disp_type_e displays[] = {DISP_1, DISP_2, DISP_3, DISP_4};
+	sevenseg_printHex(0xABCDu);
+	unsigned short printHex = 1;
+	unsigned short ledOn = 1;
 	while(1){
-		for(i=0; i<4; i++) {
-			sevenseg_setSegs(4, on_segments);
-			sevenseg_setDisp(displays[i]);
-			util_genDelay1ms();
-			util_genDelay1ms();
-			util_genDelay1ms();
+		if(ledswi_getSwitchStatus(3) == SWITCH_ON){
+			printHex = !printHex;
+			ledOn = !ledOn;
+			if(printHex){
+				sevenseg_printHex(0xABCDu);
+			}else{
+				sevenseg_printDec(0xABCDu);
+			}
+			if(ledOn){
+				ledswi_setLed(4);
+			}else{
+				ledswi_clearLed(4);
+			}
 		}
 	}
     /* Never leave main */

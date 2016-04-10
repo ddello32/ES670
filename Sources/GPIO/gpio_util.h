@@ -4,7 +4,7 @@
 /*                   control and init the GPIO pins from the KLM25Z  */
 /* Author name:      ddello                                          */
 /* Creation date:    01abr2016                                       */
-/* Revision date:    01abr2016                                       */
+/* Revision date:    08abr2016                                       */
 /* ***************************************************************** */
 
 #ifndef SOURCES_GPIO_GPIO_UTIL_H_
@@ -31,6 +31,7 @@
 #define GPIO_UNGATE_PORT(PORT_ID)\
 	_GPIO_UNGATE_PORT(PORT_ID)
 
+//Wrapper macro above is needed for argument expansion when using concatenation
 #define _GPIO_UNGATE_PORT(PORT_ID)\
 	/* un-gate port clock*/\
     SIM_SCGC5 = SIM_SCGC5_PORT ## PORT_ID (CGC_CLOCK_ENABLED)
@@ -49,6 +50,7 @@
 #define GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)\
     _GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)
 
+//Wrapper macro above is needed for argument expansion when using concatenation
 #define _GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)\
     /* set pin as gpio */\
     PORT ## PORT_ID ## _PCR ## PIN_NUM = PORT_PCR_MUX(GPIO_MUX_ALT);\
@@ -73,6 +75,7 @@
 #define GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)\
     _GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)
 
+//Wrapper macro above is needed for argument expansion when using concatenation
 #define _GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)\
 	if(VAL == GPIO_HIGH){\
 		GPIO ## PORT_ID ## _PSOR = GPIO_PSOR_PTSO( (0x01U << PIN_NUM) );\
@@ -117,7 +120,8 @@
 #define GPIO_READ_PIN(PORT_ID, PIN_NUM)\
     _GPIO_READ_PIN(PORT_ID, PIN_NUM)
 
+//Wrapper macro above is needed for argument expansion when using concatenation
 #define _GPIO_READ_PIN(PORT_ID, PIN_NUM)\
 		((GPIO ## PORD_ID ## _PDIR & (0x01u << PIN_NUM)) >> PIN_NUM) )
 
-#endif /* SOURCES_LEDSWI_LEDSWI_HAL_H_ */
+#endif /* SOURCES_GPIO_GPIO_HAL_H_ */
