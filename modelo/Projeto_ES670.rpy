@@ -28,8 +28,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- _name = "Projeto_ES670";
-	- _objectCreation = "4523011102220162110872445";
-	- _umlDependencyID = "2762";
+	- _objectCreation = "293965105720162230101429";
+	- _umlDependencyID = "2730";
 	- _lastID = 18;
 	- _UserColors = { IRPYRawContainer 
 		- size = 16;
@@ -292,8 +292,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_requisitos";
-			- _objectCreation = "4523057102220162110826445";
-			- _umlDependencyID = "3240";
+			- _objectCreation = "294097105720162229969429";
+			- _umlDependencyID = "3226";
 			- _description = { IDescription 
 				- _textRTF = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1046{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
 \\viewkind4\\uc1\\pard\\fs20 Diagrama de requisitos de sistema do projeto pr\\'e1tico da ES670 \\par
@@ -1480,8 +1480,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_pacotes";
-			- _objectCreation = "4523059102220162110824445";
-			- _umlDependencyID = "2879";
+			- _objectCreation = "294099105720162229967429";
+			- _umlDependencyID = "2865";
 			- _lastModifiedTime = "4.11.2016::0:13:46";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 84c7ed09-6a53-4e4a-925b-6e70d2f9ea4a;
@@ -2256,9 +2256,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_definicao_semana_04_05";
-			- _objectCreation = "4523061102220162110822445";
-			- _umlDependencyID = "4164";
-			- _lastModifiedTime = "4.11.2016::0:22:3";
+			- _objectCreation = "294101105720162229965429";
+			- _umlDependencyID = "4141";
+			- _lastModifiedTime = "4.11.2016::1:57:19";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 338e6526-0699-499c-b6b4-93ea64c72097;
 				- m_type = 0;
@@ -2282,7 +2282,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 				- m_drawBehavior = 0;
 				- m_bIsPreferencesInitialized = 0;
-				- elementList = 27;
+				- elementList = 28;
 				{ CGIClass 
 					- _id = GUID cbe743a9-93d8-4b8d-93fe-5a38658f4c13;
 					- m_type = 78;
@@ -3264,12 +3264,12 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- m_bgColor = 0;
 							- m_bgFlag = 0;
 						}
-						- m_position = 4 -6 -9  62 -9  62 9  -6 9  ;
+						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
 						- m_nIdent = 0;
-						- m_bImplicitSetRectPoints = 0;
-						- m_transform = 1 0 0 1 797 483 ;
-						- m_nHorizontalSpacing = 49;
-						- m_nVerticalSpacing = 9;
+						- m_bImplicitSetRectPoints = 1;
+						- m_transform = 1 0 0 1.4375 796 520.938 ;
+						- m_nHorizontalSpacing = 45;
+						- m_nVerticalSpacing = 45;
 						- m_nOrientationCtrlPt = 8;
 					}
 					- m_anglePoint1 = 0 0 ;
@@ -3655,7 +3655,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- m_nOrientationCtrlPt = 5;
 					}
 					- m_drawBehavior = 2152;
-					- m_transform = 0.135033 0 0 0.128342 29.7299 613.776 ;
+					- m_transform = 0.247403 0 0 0.153297 29.5051 592.566 ;
 					- m_bIsPreferencesInitialized = 1;
 					- m_AdditionalLabel = { CGIText 
 						- m_str = "";
@@ -3681,7 +3681,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- size = 0;
 					}
 					- Operations = { IRPYRawContainer 
-						- size = 3;
+						- size = 5;
 						- value = 
 						{ IHandle 
 							- _m2Class = "IPrimitiveOperation";
@@ -3706,6 +3706,22 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _class = "buzzer_hal";
 							- _name = "setBuzz()";
 							- _id = GUID 6561f7ec-2910-46e4-b4be-e4773d9baf35;
+						}
+						{ IHandle 
+							- _m2Class = "IPrimitiveOperation";
+							- _filename = "Buzzer.sbs";
+							- _subsystem = "Buzzer";
+							- _class = "buzzer_hal";
+							- _name = "initPeriodic(unsigned int)";
+							- _id = GUID e1e4348c-2712-4236-a92e-9fd0f6a474be;
+						}
+						{ IHandle 
+							- _m2Class = "IPrimitiveOperation";
+							- _filename = "Buzzer.sbs";
+							- _subsystem = "Buzzer";
+							- _class = "buzzer_hal";
+							- _name = "stopPeriodic()";
+							- _id = GUID 1c864e4e-fb62-43d8-bbed-a4290b99f58d;
 						}
 					}
 				}
@@ -3786,7 +3802,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- m_anglePoint1 = 0 0 ;
 					- m_anglePoint2 = 0 0 ;
 					- m_line_style = 2;
-					- m_SourcePort = 609 376 ;
+					- m_SourcePort = 333 381 ;
 					- m_TargetPort = 18 907 ;
 					- m_ShowName = 0;
 					- m_ShowStereotype = 1;
@@ -3938,7 +3954,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- m_anglePoint2 = 0 0 ;
 					- m_line_style = 2;
 					- m_SourcePort = 75 859 ;
-					- m_TargetPort = 269 508 ;
+					- m_TargetPort = 148 505 ;
 					- m_pInverseModelObject = { IAssociationEndHandle 
 						- _m2Class = "";
 					}
@@ -4087,7 +4103,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- m_nOrientationCtrlPt = 5;
 					}
 					- m_drawBehavior = 2568;
-					- m_transform = 0.513692 0 0 0.208556 930.973 475.385 ;
+					- m_transform = 0.456091 0 0 0.208556 931.088 475.385 ;
 					- m_bIsPreferencesInitialized = 1;
 					- m_AdditionalLabel = { CGIText 
 						- m_str = "";
@@ -4119,7 +4135,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "GPIO.sbs";
 							- _subsystem = "GPIO";
 							- _class = "gpio_hal";
-							- _name = "GPIO_UNGATE_PORT(Port_id)";
+							- _name = "UNGATE_PORT(Port_id)";
 							- _id = GUID de9d0e08-f7a8-45b4-872d-a69396d013f0;
 						}
 						{ IHandle 
@@ -4127,7 +4143,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "GPIO.sbs";
 							- _subsystem = "GPIO";
 							- _class = "gpio_hal";
-							- _name = "GPIO_INIT_PIN(Port_id,unsigned short)";
+							- _name = "INIT_PIN(Port_id,unsigned short)";
 							- _id = GUID 5b4fd962-c8e6-401d-b109-2340c94cbbd8;
 						}
 						{ IHandle 
@@ -4135,7 +4151,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "GPIO.sbs";
 							- _subsystem = "GPIO";
 							- _class = "gpio_hal";
-							- _name = "GPIO_WRITE_PIN(Port_id,unsigned short,GPIO_VAL)";
+							- _name = "WRITE_PIN(Port_id,unsigned short,GPIO_VAL)";
 							- _id = GUID d451de83-f1f4-4fbc-ad37-2cd41e62d9fb;
 						}
 						{ IHandle 
@@ -4143,7 +4159,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "GPIO.sbs";
 							- _subsystem = "GPIO";
 							- _class = "gpio_hal";
-							- _name = "GPIO_WRITE_MASK(Port_id,unsigned int,GPIO_VAL)";
+							- _name = "WRITE_MASK(Port_id,unsigned int,GPIO_VAL)";
 							- _id = GUID c32eaa68-a82a-4204-89e1-7d955fb27299;
 						}
 						{ IHandle 
@@ -4151,7 +4167,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "GPIO.sbs";
 							- _subsystem = "GPIO";
 							- _class = "gpio_hal";
-							- _name = "GPIO_READ_PIN(Port_id,unsigned short)";
+							- _name = "READ_PIN(Port_id,unsigned short)";
 							- _id = GUID 9a3098fb-33a3-4301-813e-e2bf70187cbd;
 						}
 					}
@@ -4223,18 +4239,18 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						}
 						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
 						- m_nIdent = 0;
-						- m_bImplicitSetRectPoints = 0;
-						- m_transform = 1 0 0 1 1023 508 ;
-						- m_nHorizontalSpacing = 73;
-						- m_nVerticalSpacing = 108;
+						- m_bImplicitSetRectPoints = 1;
+						- m_transform = 1 0 0 0.8125 1009 526.312 ;
+						- m_nHorizontalSpacing = 26;
+						- m_nVerticalSpacing = 146;
 						- m_nOrientationCtrlPt = 8;
 					}
-					- m_arrow = 1 990 345  ;
+					- m_arrow = 1 994 347  ;
 					- m_anglePoint1 = 0 0 ;
 					- m_anglePoint2 = 0 0 ;
 					- m_line_style = 0;
-					- m_SourcePort = 117 396 ;
-					- m_TargetPort = 1054 862 ;
+					- m_SourcePort = 136 348 ;
+					- m_TargetPort = 980 873 ;
 					- m_ShowName = 0;
 					- m_ShowStereotype = 1;
 				}
@@ -4306,16 +4322,16 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
 						- m_nIdent = 0;
 						- m_bImplicitSetRectPoints = 0;
-						- m_transform = 1 0 0 1 266 736 ;
-						- m_nHorizontalSpacing = -224;
-						- m_nVerticalSpacing = -29;
+						- m_transform = 1 0 0 1 297 720 ;
+						- m_nHorizontalSpacing = -258;
+						- m_nVerticalSpacing = -36;
 						- m_nOrientationCtrlPt = 8;
 					}
 					- m_anglePoint1 = 0 0 ;
 					- m_anglePoint2 = 0 0 ;
 					- m_line_style = 0;
-					- m_SourcePort = 987 1054 ;
-					- m_TargetPort = 58 1322 ;
+					- m_SourcePort = 1025 968 ;
+					- m_TargetPort = 25 1269 ;
 					- m_ShowName = 0;
 					- m_ShowStereotype = 1;
 				}
@@ -4402,7 +4418,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "PIT.sbs";
 							- _subsystem = "PIT";
 							- _class = "pit_hal";
-							- _name = "pit_enable(unsigned short)";
+							- _name = "enable(unsigned short)";
 							- _id = GUID 29fa486c-d9cc-49e1-8cd6-fa74880c92f2;
 						}
 						{ IHandle 
@@ -4410,7 +4426,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "PIT.sbs";
 							- _subsystem = "PIT";
 							- _class = "pit_hal";
-							- _name = "pit_start_timer_interrupt(unsigned short,unsigned int,void *)";
+							- _name = "start_timer_interrupt(unsigned short,unsigned int,void *)";
 							- _id = GUID 868df793-13b1-42b8-b167-68ac00cf9069;
 						}
 						{ IHandle 
@@ -4418,7 +4434,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "PIT.sbs";
 							- _subsystem = "PIT";
 							- _class = "pit_hal";
-							- _name = "pit_stop_timer_interrupt(unsigned int)";
+							- _name = "stop_timer_interrupt(unsigned int)";
 							- _id = GUID 492eb741-c8f4-4901-80c6-18df278a3d46;
 						}
 						{ IHandle 
@@ -4426,7 +4442,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "PIT.sbs";
 							- _subsystem = "PIT";
 							- _class = "pit_hal";
-							- _name = "pit_mark_interrupt_handled(unsigned short)";
+							- _name = "mark_interrupt_handled(unsigned short)";
 							- _id = GUID c373f3fd-3719-4b1d-903e-8f63ca680dac;
 						}
 					}
@@ -4564,7 +4580,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- m_nOrientationCtrlPt = 5;
 					}
 					- m_drawBehavior = 2824;
-					- m_transform = 0.464589 0 0 0.226381 323.071 713.521 ;
+					- m_transform = 0.40982 0 0 0.226381 323.181 713.521 ;
 					- m_bIsPreferencesInitialized = 1;
 					- m_AdditionalLabel = { CGIText 
 						- m_str = "";
@@ -4614,7 +4630,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "SevenSeg.sbs";
 							- _subsystem = "SevenSeg";
 							- _class = "sevenseg_hal";
-							- _name = "sevenseg_init()";
+							- _name = "init()";
 							- _id = GUID c93fa302-e40a-4654-97d1-e210633b2f4b;
 						}
 						{ IHandle 
@@ -4622,7 +4638,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "SevenSeg.sbs";
 							- _subsystem = "SevenSeg";
 							- _class = "sevenseg_hal";
-							- _name = "sevenseg_setSegs(seven_segment_seg_type_e)";
+							- _name = "setSegs(seven_segment_seg_type_e)";
 							- _id = GUID 3d96518a-5b41-4a36-a681-ff49bde8cd96;
 						}
 						{ IHandle 
@@ -4630,7 +4646,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "SevenSeg.sbs";
 							- _subsystem = "SevenSeg";
 							- _class = "sevenseg_hal";
-							- _name = "sevenseg_setDisp(seven_segment_disp_type_e)";
+							- _name = "setDisp(seven_segment_disp_type_e)";
 							- _id = GUID f83de8e2-eee8-4c6e-a07d-ce04face1b4d;
 						}
 						{ IHandle 
@@ -4638,7 +4654,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "SevenSeg.sbs";
 							- _subsystem = "SevenSeg";
 							- _class = "sevenseg_hal";
-							- _name = "sevenseg_printHex(unsigned int)";
+							- _name = "printHex(unsigned int)";
 							- _id = GUID a083fe61-f281-4a43-8b5d-32f312c36e19;
 						}
 						{ IHandle 
@@ -4646,7 +4662,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "SevenSeg.sbs";
 							- _subsystem = "SevenSeg";
 							- _class = "sevenseg_hal";
-							- _name = "sevenseg_printDec(unsigned int)";
+							- _name = "printDec(unsigned int)";
 							- _id = GUID 2f16c6cf-c5a2-4df9-a3f6-566c189d6f07;
 						}
 						{ IHandle 
@@ -4654,7 +4670,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "SevenSeg.sbs";
 							- _subsystem = "SevenSeg";
 							- _class = "sevenseg_hal";
-							- _name = "sevenseg_dec2segArray(unsigned int,seven_segment_seg_type_e)";
+							- _name = "dec2segArray(unsigned int,seven_segment_seg_type_e)";
 							- _id = GUID f22579dd-0594-48ec-a7ee-1a12a4e4ff0e;
 						}
 						{ IHandle 
@@ -4662,7 +4678,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "SevenSeg.sbs";
 							- _subsystem = "SevenSeg";
 							- _class = "sevenseg_hal";
-							- _name = "sevenseg_hex2segArray(unsigned int,seven_segment_seg_type_e)";
+							- _name = "hex2segArray(unsigned int,seven_segment_seg_type_e)";
 							- _id = GUID ef9b6900-9958-4fe9-a30d-d6d5c9459d65;
 						}
 					}
@@ -4734,10 +4750,10 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						}
 						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
 						- m_nIdent = 0;
-						- m_bImplicitSetRectPoints = 0;
-						- m_transform = 1 0 0 1 814 773 ;
-						- m_nHorizontalSpacing = -26;
-						- m_nVerticalSpacing = 152;
+						- m_bImplicitSetRectPoints = 1;
+						- m_transform = 1 0 0 0.6875 789 793.188 ;
+						- m_nHorizontalSpacing = -51;
+						- m_nVerticalSpacing = 138;
 						- m_nOrientationCtrlPt = 8;
 					}
 					- m_arrow = 2 880 804  880 375  ;
@@ -4817,9 +4833,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
 						- m_nIdent = 0;
 						- m_bImplicitSetRectPoints = 0;
-						- m_transform = 1 0 0 1 835 859 ;
-						- m_nHorizontalSpacing = -84;
-						- m_nVerticalSpacing = 1;
+						- m_transform = 1 0 0 1 785 835 ;
+						- m_nHorizontalSpacing = -101;
+						- m_nVerticalSpacing = -23;
 						- m_nOrientationCtrlPt = 8;
 					}
 					- m_arrow = 1 1036 842  ;
@@ -4827,7 +4843,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- m_anglePoint2 = 0 0 ;
 					- m_line_style = 0;
 					- m_SourcePort = 1061 568 ;
-					- m_TargetPort = 204 1398 ;
+					- m_TargetPort = 232 1350 ;
 					- m_ShowName = 0;
 					- m_ShowStereotype = 1;
 				}
@@ -4899,9 +4915,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
 						- m_nIdent = 0;
 						- m_bImplicitSetRectPoints = 0;
-						- m_transform = 1 0 0 1 830 955 ;
-						- m_nHorizontalSpacing = -15;
-						- m_nVerticalSpacing = 4;
+						- m_transform = 1 0 0 1 793 926 ;
+						- m_nHorizontalSpacing = -20;
+						- m_nVerticalSpacing = -25;
 						- m_nOrientationCtrlPt = 8;
 					}
 					- m_anglePoint1 = 0 0 ;
@@ -4986,7 +5002,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- m_anglePoint2 = 0 0 ;
 					- m_line_style = 2;
 					- m_SourcePort = 942 1433 ;
-					- m_TargetPort = 79 369 ;
+					- m_TargetPort = 90 369 ;
 					- m_pInverseModelObject = { IAssociationEndHandle 
 						- _m2Class = "";
 					}
@@ -5083,6 +5099,88 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- m_nOrientationCtrlPt = 8;
 					}
 					- m_specificType = type_122;
+				}
+				{ CGIInheritance 
+					- _id = GUID a96cfe5a-90d1-44da-8bf5-29e40209473e;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ShowLabels";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 128;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IDependency";
+						- _filename = "Buzzer.sbs";
+						- _subsystem = "Buzzer";
+						- _class = "buzzer_hal";
+						- _name = "pit_hal";
+						- _id = GUID f1188ff2-452b-44e5-be71-c3568da2f62e;
+					}
+					- m_pParent = ;
+					- m_name = { CGIText 
+						- m_str = "pit_hal";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_drawBehavior = 8;
+					- m_bIsPreferencesInitialized = 1;
+					- m_pSource = GUID 3f8810d3-53ea-41d0-bdf4-0fe0a2ef434e;
+					- m_sourceType = 'F';
+					- m_pTarget = GUID d4dcef82-cab7-4d4c-ab4d-7748879a35a3;
+					- m_targetType = 'T';
+					- m_direction = ' ';
+					- m_rpn = { CGIText 
+						- m_str = "Usage";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_transform = 1 0 0 1 175 856 ;
+						- m_nHorizontalSpacing = -218;
+						- m_nVerticalSpacing = -214;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_arrow = 1 236 1054  ;
+					- m_anglePoint1 = 0 0 ;
+					- m_anglePoint2 = 0 0 ;
+					- m_line_style = 0;
+					- m_SourcePort = 835 1431 ;
+					- m_TargetPort = 4 1389 ;
+					- m_ShowName = 0;
+					- m_ShowStereotype = 1;
 				}
 				
 				- m_access = 'Z';

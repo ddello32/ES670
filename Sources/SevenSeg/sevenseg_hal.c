@@ -63,7 +63,7 @@ void sevenseg_init(void){
 
 	//Init pit interrupts
 	pit_enable();
-	//Init timer 1
+	//Init timer 0
 	pit_start_timer_interrupt(SEV_SEG_PIT_TIMER_NUMB, SEVEN_SEG_PIT_PERIOD, &_sevenseg_interrupt_handler);
 }
 

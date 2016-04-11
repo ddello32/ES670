@@ -29,8 +29,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 				- _name = "diag_definicao_semana_04_05";
 				- _id = GUID f53d507c-79b1-4f7f-850a-0c96a124e9bd;
 			}
-			- _UpLeft = 0 330 ;
-			- _DownRight = 1124 1119 ;
+			- _UpLeft = 64 0 ;
+			- _DownRight = 1188 789 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 2;
 		}
@@ -91,7 +91,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 			- m_nDiagramIndex = 0;
 		}
 	}
-	- _fullName = "C:\\users\\dello\\Meus Documentos\\Workspace\\es670\\modelo\\Projeto_ES670";
+	- _fullName = "C:\\users\\dello\\Meus Documentos\\Workspace\\es670\\workspace.kds\\emb\\modelo\\Projeto_ES670";
 	- m_SearchScopeList = { IRPYRawContainer 
 		- size = 0;
 	}

@@ -37,6 +37,8 @@ typedef int E;
 #define BUZZER_GPIO_BASE_PNT        PTD                                     /* peripheral gpio base pointer */
 #define BUZZER_PORT_ID				D                                       /* peripheral port identifier*/
 
+#define BUZZER_PIT_TIMER_NUMB		1
+
 #define BUZZER_PIN                  1                                      /* buzzer pin */
 #define BUZZER_DIR                  kGpioDigitalOutput
 #define BUZZER_ALT                  0x01u

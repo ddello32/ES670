@@ -37,6 +37,17 @@ void buzzer_clearBuzz(void);
 /* ************************************************ */
 void buzzer_setBuzz(void);
 
+/**
+ * Starts the buzzer with the specified period
+ *
+ * @param period - the period of the buzzer signal, in clock cycles (40MHz)
+ */
+void buzzer_initPeriodic(unsigned int period);
+
+/**
+ * Stops any periodic buzzer signal
+ */
+void buzzer_stopPeriodic(void);
 
 
 #endif /* SOURCES_BUZZER_HAL_H_ */
