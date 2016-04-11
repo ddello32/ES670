@@ -49,6 +49,7 @@ void pit_enable(void){
 
 /**
  * Start interruptions for given timer, unchained mode.
+ * Timer interruptions are masked.
  *
  * @param timer_number 	The number for the desired timer (0,1)
  * @param timer_period  The number of bus_clock cycles between interrupts

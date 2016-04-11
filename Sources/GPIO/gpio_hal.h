@@ -1,5 +1,5 @@
 /* ***************************************************************** */
-/* File name:        gpio_util.h                                     */
+/* File name:        gpio_hal.h                                     */
 /* File description: This file has a couple of useful macros to      */
 /*                   control and init the GPIO pins from the KLM25Z  */
 /* Author name:      ddello                                          */
@@ -7,8 +7,8 @@
 /* Revision date:    08abr2016                                       */
 /* ***************************************************************** */
 
-#ifndef SOURCES_GPIO_GPIO_UTIL_H_
-#define SOURCES_GPIO_GPIO_UTIL_H_
+#ifndef SOURCES_GPIO_GPIO_HAL_H_
+#define SOURCES_GPIO_GPIO_HAL_H_
 
 #include "KL25Z/es670_peripheral_board.h"
 

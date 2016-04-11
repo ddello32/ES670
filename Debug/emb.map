@@ -409,7 +409,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x7c ./Sources/Main/es670.o
  .debug_macro   0x00000000     0x7658 ./Sources/Main/es670.o
  .debug_macro   0x00000000     0x1108 ./Sources/Main/es670.o
- .debug_macro   0x00000000      0x196 ./Sources/Main/es670.o
+ .debug_macro   0x00000000      0x1a4 ./Sources/Main/es670.o
+ .debug_macro   0x00000000       0x16 ./Sources/Main/es670.o
  .group         0x00000000        0x8 ./Sources/LedSwi/ledswi_hal.o
  .group         0x00000000        0x8 ./Sources/LedSwi/ledswi_hal.o
  .group         0x00000000        0x8 ./Sources/LedSwi/ledswi_hal.o
@@ -438,7 +439,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x306 ./Sources/LedSwi/ledswi_hal.o
  .debug_macro   0x00000000       0x63 ./Sources/LedSwi/ledswi_hal.o
  .debug_macro   0x00000000     0x8439 ./Sources/LedSwi/ledswi_hal.o
- .debug_macro   0x00000000      0x196 ./Sources/LedSwi/ledswi_hal.o
+ .debug_macro   0x00000000      0x1a4 ./Sources/LedSwi/ledswi_hal.o
  .group         0x00000000        0x8 ./Sources/Buzzer/buzzer_hal.o
  .group         0x00000000        0x8 ./Sources/Buzzer/buzzer_hal.o
  .group         0x00000000        0x8 ./Sources/Buzzer/buzzer_hal.o
@@ -470,7 +471,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x306 ./Sources/Buzzer/buzzer_hal.o
  .debug_macro   0x00000000       0x63 ./Sources/Buzzer/buzzer_hal.o
  .debug_macro   0x00000000     0x8439 ./Sources/Buzzer/buzzer_hal.o
- .debug_macro   0x00000000      0x196 ./Sources/Buzzer/buzzer_hal.o
+ .debug_macro   0x00000000      0x1a4 ./Sources/Buzzer/buzzer_hal.o
+ .debug_macro   0x00000000       0x5e ./Sources/Buzzer/buzzer_hal.o
  .group         0x00000000        0x8 ./Project_Settings/Startup_Code/startup.o
  .group         0x00000000        0x8 ./Project_Settings/Startup_Code/startup.o
  .group         0x00000000        0x8 ./Project_Settings/Startup_Code/startup.o
@@ -2506,106 +2508,104 @@ OUTPUT(emb.elf elf32-littlearm)
  .debug_ranges  0x00000538       0xe0 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal.o)
  .debug_ranges  0x00000618       0x88 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal_modes.o)
 
-.debug_macro    0x00000000    0x12891
- .debug_macro   0x00000000      0x157 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00000157       0x16 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x0000016d       0x16 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00000183       0x44 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000001c7      0x209 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000003d0       0x3a ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x0000040a       0x3a ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00000444       0x26 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x0000046a      0x306 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00000770       0x63 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000007d3     0x8439 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00008c0c      0x196 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00008da2       0x10 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00008db2       0x58 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00008e0a       0x35 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00008e3f       0xa3 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00008ee2      0x166 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00009048       0x52 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x0000909a       0x16 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000090b0       0x43 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000090f3      0x180 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00009273       0xde ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00009351       0x64 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000093b5      0x184 ./Sources/PIT/pit_hal.o
- .debug_macro   0x00009539       0x22 ./Sources/PIT/pit_hal.o
- .debug_macro   0x0000955b       0x16 ./Sources/PIT/pit_hal.o
- .debug_macro   0x00009571       0x11 ./Sources/PIT/pit_hal.o
- .debug_macro   0x00009582       0x4c ./Sources/PIT/pit_hal.o
- .debug_macro   0x000095ce       0x16 ./Sources/PIT/pit_hal.o
- .debug_macro   0x000095e4      0x10e ./Sources/PIT/pit_hal.o
- .debug_macro   0x000096f2       0x7f ./Sources/PIT/pit_hal.o
- .debug_macro   0x00009771       0x22 ./Sources/PIT/pit_hal.o
- .debug_macro   0x00009793       0x7c ./Sources/PIT/pit_hal.o
- .debug_macro   0x0000980f     0x7658 ./Sources/PIT/pit_hal.o
- .debug_macro   0x00010e67     0x1108 ./Sources/PIT/pit_hal.o
- .debug_macro   0x00011f6f      0x2c2 ./Sources/Mcg/mcg_hal.o
- .debug_macro   0x00012231       0x10 ./Sources/Mcg/mcg_hal.o
- .debug_macro   0x00012241       0x11 ./Sources/Mcg/mcg_hal.o
- .debug_macro   0x00012252       0x10 ./Sources/Mcg/mcg_hal.o
- .debug_macro   0x00012262      0x1a0 ./Sources/Main/es670.o
- .debug_macro   0x00012402       0x10 ./Sources/Main/es670.o
- .debug_macro   0x00012412       0x16 ./Sources/Main/es670.o
- .debug_macro   0x00012428       0xa1 ./Sources/LedSwi/ledswi_hal.o
- .debug_macro   0x000124c9       0xab ./Sources/Buzzer/buzzer_hal.o
- .debug_macro   0x00012574       0x5e ./Sources/Buzzer/buzzer_hal.o
- .debug_macro   0x000125d2      0x167 ./Project_Settings/Startup_Code/startup.o
- .debug_macro   0x00012739      0x158 ./Project_Settings/Startup_Code/system_MKL25Z4.o
+.debug_macro    0x00000000    0x1281f
+ .debug_macro   0x00000000      0x14b ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x0000014b       0x16 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000161       0x16 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000177       0x44 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000001bb      0x209 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000003c4       0x3a ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000003fe       0x3a ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000438       0x26 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x0000045e      0x306 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000764       0x63 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000007c7     0x8439 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00008c00      0x1a4 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00008da4       0x5e ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00008e02       0x16 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00008e18       0x58 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00008e70       0x35 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00008ea5       0xa3 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00008f48      0x166 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000090ae       0x52 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00009100       0x16 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00009116       0x43 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00009159      0x180 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000092d9       0xde ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000093b7      0x184 ./Sources/PIT/pit_hal.o
+ .debug_macro   0x0000953b       0x22 ./Sources/PIT/pit_hal.o
+ .debug_macro   0x0000955d       0x16 ./Sources/PIT/pit_hal.o
+ .debug_macro   0x00009573       0x11 ./Sources/PIT/pit_hal.o
+ .debug_macro   0x00009584       0x4c ./Sources/PIT/pit_hal.o
+ .debug_macro   0x000095d0       0x16 ./Sources/PIT/pit_hal.o
+ .debug_macro   0x000095e6      0x10e ./Sources/PIT/pit_hal.o
+ .debug_macro   0x000096f4       0x7f ./Sources/PIT/pit_hal.o
+ .debug_macro   0x00009773       0x22 ./Sources/PIT/pit_hal.o
+ .debug_macro   0x00009795       0x7c ./Sources/PIT/pit_hal.o
+ .debug_macro   0x00009811     0x7658 ./Sources/PIT/pit_hal.o
+ .debug_macro   0x00010e69     0x1108 ./Sources/PIT/pit_hal.o
+ .debug_macro   0x00011f71      0x2c2 ./Sources/Mcg/mcg_hal.o
+ .debug_macro   0x00012233       0x10 ./Sources/Mcg/mcg_hal.o
+ .debug_macro   0x00012243       0x11 ./Sources/Mcg/mcg_hal.o
+ .debug_macro   0x00012254       0x10 ./Sources/Mcg/mcg_hal.o
+ .debug_macro   0x00012264      0x1a0 ./Sources/Main/es670.o
+ .debug_macro   0x00012404       0x10 ./Sources/Main/es670.o
+ .debug_macro   0x00012414       0xa1 ./Sources/LedSwi/ledswi_hal.o
+ .debug_macro   0x000124b5       0xab ./Sources/Buzzer/buzzer_hal.o
+ .debug_macro   0x00012560      0x167 ./Project_Settings/Startup_Code/startup.o
+ .debug_macro   0x000126c7      0x158 ./Project_Settings/Startup_Code/system_MKL25Z4.o
 
-.debug_line     0x00000000     0x3e63
- .debug_line    0x00000000      0x424 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_line    0x00000424      0x44f ./Sources/PIT/pit_hal.o
- .debug_line    0x00000873      0x568 ./Sources/Mcg/mcg_hal.o
- .debug_line    0x00000ddb      0x40c ./Sources/Main/es670.o
- .debug_line    0x000011e7      0x2ea ./Sources/LedSwi/ledswi_hal.o
- .debug_line    0x000014d1      0x2c4 ./Sources/Buzzer/buzzer_hal.o
- .debug_line    0x00001795      0x35f ./Project_Settings/Startup_Code/startup.o
- .debug_line    0x00001af4       0x6c ./Project_Settings/Startup_Code/startup_MKL25Z4.o
- .debug_line    0x00001b60      0x380 ./Project_Settings/Startup_Code/system_MKL25Z4.o
- .debug_line    0x00001ee0      0x19e /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_interrupt_manager.o)
- .debug_line    0x0000207e      0x89b /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_MKL25Z4.o)
- .debug_line    0x00002919      0x775 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_manager.o)
- .debug_line    0x0000308e      0x153 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_manager_common.o)
- .debug_line    0x000031e1      0x36a /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_sim_hal_MKL25Z4.o)
- .debug_line    0x0000354b      0x103 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_osc_hal.o)
- .debug_line    0x0000364e      0x45d /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal.o)
- .debug_line    0x00003aab      0x3b8 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal_modes.o)
+.debug_line     0x00000000     0x3e61
+ .debug_line    0x00000000      0x423 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_line    0x00000423      0x44f ./Sources/PIT/pit_hal.o
+ .debug_line    0x00000872      0x568 ./Sources/Mcg/mcg_hal.o
+ .debug_line    0x00000dda      0x40c ./Sources/Main/es670.o
+ .debug_line    0x000011e6      0x2ea ./Sources/LedSwi/ledswi_hal.o
+ .debug_line    0x000014d0      0x2c3 ./Sources/Buzzer/buzzer_hal.o
+ .debug_line    0x00001793      0x35f ./Project_Settings/Startup_Code/startup.o
+ .debug_line    0x00001af2       0x6c ./Project_Settings/Startup_Code/startup_MKL25Z4.o
+ .debug_line    0x00001b5e      0x380 ./Project_Settings/Startup_Code/system_MKL25Z4.o
+ .debug_line    0x00001ede      0x19e /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_interrupt_manager.o)
+ .debug_line    0x0000207c      0x89b /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_MKL25Z4.o)
+ .debug_line    0x00002917      0x775 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_manager.o)
+ .debug_line    0x0000308c      0x153 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_manager_common.o)
+ .debug_line    0x000031df      0x36a /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_sim_hal_MKL25Z4.o)
+ .debug_line    0x00003549      0x103 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_osc_hal.o)
+ .debug_line    0x0000364c      0x45d /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal.o)
+ .debug_line    0x00003aa9      0x3b8 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal_modes.o)
 
-.debug_str      0x00000000    0xa068e
- .debug_str     0x00000000    0x3485d ./Sources/SevenSeg/sevenseg_hal.o
-                              0x34cf4 (size before relaxing)
- .debug_str     0x0003485d    0x6887f ./Sources/PIT/pit_hal.o
+.debug_str      0x00000000    0xa0690
+ .debug_str     0x00000000    0x3485f ./Sources/SevenSeg/sevenseg_hal.o
+                              0x34cf6 (size before relaxing)
+ .debug_str     0x0003485f    0x6887f ./Sources/PIT/pit_hal.o
                               0x9bfc4 (size before relaxing)
- .debug_str     0x0009d0dc      0xa49 ./Sources/Mcg/mcg_hal.o
+ .debug_str     0x0009d0de      0xa49 ./Sources/Mcg/mcg_hal.o
                               0x9c72d (size before relaxing)
- .debug_str     0x0009db25       0x84 ./Sources/Main/es670.o
-                              0x9c2b6 (size before relaxing)
- .debug_str     0x0009dba9       0xb0 ./Sources/LedSwi/ledswi_hal.o
-                              0x32991 (size before relaxing)
- .debug_str     0x0009dc59       0x4b ./Sources/Buzzer/buzzer_hal.o
-                              0x32dbf (size before relaxing)
- .debug_str     0x0009dca4      0x12f ./Project_Settings/Startup_Code/startup.o
+ .debug_str     0x0009db27       0x84 ./Sources/Main/es670.o
+                              0x9c2ef (size before relaxing)
+ .debug_str     0x0009dbab       0xb0 ./Sources/LedSwi/ledswi_hal.o
+                              0x329ca (size before relaxing)
+ .debug_str     0x0009dc5b       0x4b ./Sources/Buzzer/buzzer_hal.o
+                              0x32df7 (size before relaxing)
+ .debug_str     0x0009dca6      0x12f ./Project_Settings/Startup_Code/startup.o
                               0x9bc6e (size before relaxing)
- .debug_str     0x0009ddd3       0x97 ./Project_Settings/Startup_Code/system_MKL25Z4.o
+ .debug_str     0x0009ddd5       0x97 ./Project_Settings/Startup_Code/system_MKL25Z4.o
                               0x9bcb5 (size before relaxing)
- .debug_str     0x0009de6a      0x200 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_interrupt_manager.o)
+ .debug_str     0x0009de6c      0x200 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_interrupt_manager.o)
                                 0x488 (size before relaxing)
- .debug_str     0x0009e06a      0xe52 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_MKL25Z4.o)
+ .debug_str     0x0009e06c      0xe52 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_MKL25Z4.o)
                                0x150e (size before relaxing)
- .debug_str     0x0009eebc      0xb85 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_manager.o)
+ .debug_str     0x0009eebe      0xb85 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_manager.o)
                                0x16f4 (size before relaxing)
- .debug_str     0x0009fa41       0x64 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_manager_common.o)
+ .debug_str     0x0009fa43       0x64 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_clock_manager_common.o)
                                 0x354 (size before relaxing)
- .debug_str     0x0009faa5      0x452 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_sim_hal_MKL25Z4.o)
+ .debug_str     0x0009faa7      0x452 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_sim_hal_MKL25Z4.o)
                                 0x77e (size before relaxing)
- .debug_str     0x0009fef7       0x5b /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_osc_hal.o)
+ .debug_str     0x0009fef9       0x5b /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_osc_hal.o)
                                 0x239 (size before relaxing)
- .debug_str     0x0009ff52      0x5d4 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal.o)
+ .debug_str     0x0009ff54      0x5d4 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal.o)
                                 0xb61 (size before relaxing)
- .debug_str     0x000a0526      0x168 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal_modes.o)
+ .debug_str     0x000a0528      0x168 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug//libksdk_platform.a(fsl_mcg_hal_modes.o)
                                 0x8da (size before relaxing)
 
 .comment        0x00000000       0x70

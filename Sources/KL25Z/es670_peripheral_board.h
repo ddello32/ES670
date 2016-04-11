@@ -77,6 +77,8 @@ typedef int E;
 #define SEV_SEG_PORT_ID            C                                       /* peripheral port identifier*/
 #define SEV_SEG_GPIO_BASE_PNT      PTC                                     /* peripheral gpio base pointer */
 
+#define SEV_SEG_PIT_TIMER_NUMB		 0										/* timer number for seven seg PIT */
+#define SEVEN_SEG_PIT_PERIOD 		0x0001E847								/*125000 cycles = 3.125ms (40MHz)*/
 
 #define SEGA_PIN                     0                                      /* Segment A*/
 #define SEGA_DIR_OUTPUT              (GPIO_OUTPUT << SEGA_PIN)

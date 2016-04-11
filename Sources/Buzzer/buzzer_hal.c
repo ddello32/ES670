@@ -7,8 +7,8 @@
 /* Revision date:    25fev2016                                       */
 /* ***************************************************************** */
 
+#include "GPIO/gpio_hal.h"
 #include "buzzer_hal.h"
-#include "GPIO/gpio_util.h"
 #include "KL25Z/es670_peripheral_board.h"
 
 /* ************************************************ */

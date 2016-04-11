@@ -8,21 +8,17 @@
 /* Revision date:    10abr2016          	                         */
 /* ***************************************************************** */
 
+#include "GPIO/gpio_hal.h"
 #include "sevenseg_hal.h"
 #include "math.h"
-#include "GPIO/gpio_util.h"
 #include "KL25Z/es670_peripheral_board.h"
 #include "PIT/pit_hal.h"
 
 #define SEV_SEG_SEGMENT_MASK GPIO_HIGH << SEGA_PIN | GPIO_HIGH << SEGB_PIN | GPIO_HIGH << SEGC_PIN | GPIO_HIGH << SEGD_PIN | GPIO_HIGH << SEGE_PIN | GPIO_HIGH << SEGF_PIN | GPIO_HIGH << SEGG_PIN | GPIO_HIGH << SEGDP_PIN
 #define SEV_SEG_DISP_MASK GPIO_HIGH << SEG_DISP1_PIN | GPIO_HIGH << SEG_DISP2_PIN | GPIO_HIGH << SEG_DISP3_PIN | GPIO_HIGH << SEG_DISP4_PIN
 
-#define SEVEN_SEG_PIT_TIMER 0
-#define SEVEN_SEG_PIT_PERIOD 0x0001E847	//125000 cycles = 3.125ms (40MHz)
-
 static unsigned short isHex = 0;
 static unsigned int printVal = -1;
-
 
 /**
  * Method name: sevenseg_interrupt_handler
@@ -40,7 +36,7 @@ void _sevenseg_interrupt_handler(void){
 	sevenseg_setSegs(seg_array);
 	sevenseg_setDisp(displays[cur_disp]);
 	cur_disp = (cur_disp+1)%4;
-	pit_mark_interrupt_handled(SEVEN_SEG_PIT_TIMER);
+	pit_mark_interrupt_handled(SEV_SEG_PIT_TIMER_NUMB);
 }
 
 /**
@@ -68,7 +64,7 @@ void sevenseg_init(void){
 	//Init pit interrupts
 	pit_enable();
 	//Init timer 1
-	pit_start_timer_interrupt(SEVEN_SEG_PIT_TIMER, SEVEN_SEG_PIT_PERIOD, &_sevenseg_interrupt_handler);
+	pit_start_timer_interrupt(SEV_SEG_PIT_TIMER_NUMB, SEVEN_SEG_PIT_PERIOD, &_sevenseg_interrupt_handler);
 }
 
 
