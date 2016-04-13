@@ -20,7 +20,7 @@
 /*                                                                   */
 /* Author name:      dloubach                                        */
 /* Creation date:    21out2015                                       */
-/* Revision date:    21mar2016                                       */
+/* Revision date:    13abr2016                                       */
 /* ***************************************************************** */
 
 #include "mcg_hal.h"
@@ -169,12 +169,9 @@ const clock_manager_user_config_t g_defaultClockConfigRun =
 };
 
 
-/* ************************************************ */
-/* Method name:        mcg_initOsc0                 */
-/* Method description: Oscillator configuration     */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Oscillator configuration
+ */
 void mcg_initOsc0(void)
 {
     /* OSC0 configuration */
@@ -196,14 +193,9 @@ void mcg_initOsc0(void)
 
 
 
-/* ************************************************ */
-/* Method name:        mcg_initRtcOsc               */
-/* Method description: Function to initialize RTC   */
-/*                     external clock base on       */
-/*                     board configuration          */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Function to initialize RTC external clock base on board configuration
+ */
 void mcg_initRtcOsc(void)
 {
 
@@ -234,12 +226,9 @@ void mcg_initRtcOsc(void)
 
 
 
-/* ************************************************ */
-/* Method name:        mcg_initSystemClock          */
-/* Method description: System clock configuration   */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * System clock configuration
+ */
 void mcg_initSystemClock(void)
 {
     /* Set system clock configuration. */

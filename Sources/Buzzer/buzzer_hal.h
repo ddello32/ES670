@@ -5,44 +5,35 @@
 /*                   peripheral board                                */
 /* Author name:      dloubach                                        */
 /* Creation date:    12jan2016                                       */
-/* Revision date:    25fev2016                                       */
+/* Revision date:    13abr2016                                       */
 /* ***************************************************************** */
 
 #ifndef SOURCES_BUZZER_HAL_H_
 #define SOURCES_BUZZER_HAL_H_
 
-/* ************************************************ */
-/* Method name:        buzzer_init                  */
-/* Method description: Initialize the buzzer device */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Initialize the buzzer device
+ */
 void buzzer_init(void);
 
 
-/* ************************************************ */
-/* Method name:        buzzer_clearBuzz             */
-/* Method description: Clear the buzzer             */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Clear the buzzer
+ */
 void buzzer_clearBuzz(void);
 
 
-/* ************************************************ */
-/* Method name:        buzzer_setBuzz               */
-/* Method description: Set the buzzer               */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Set the buzzer
+ */
 void buzzer_setBuzz(void);
 
 /**
  * Starts the buzzer with the specified period
  *
- * @param period - the period of the buzzer signal, in clock cycles (40MHz)
+ * @param uiPeriod The period of the buzzer signal, in clock cycles (40MHz)
  */
-void buzzer_initPeriodic(unsigned int period);
+void buzzer_initPeriodic(unsigned int uiPeriod);
 
 /**
  * Stops any periodic buzzer signal

@@ -4,7 +4,7 @@
 /*                   control and init the GPIO pins from the KLM25Z  */
 /* Author name:      ddello                                          */
 /* Creation date:    01abr2016                                       */
-/* Revision date:    08abr2016                                       */
+/* Revision date:    13abr2016                                       */
 /* ***************************************************************** */
 
 #ifndef SOURCES_GPIO_GPIO_HAL_H_
@@ -21,13 +21,10 @@
 #define GPIO_HIGH    1
 #define GPIO_LOW     0
 
-/* **************************************************  */
-/* Macro name:        GPIO_UNGATE_PORT                 */
-/* Macro description: Ungates the clock for a gpio port*/
-/* Input params:       PORT_ID = the GPIO port         */
-/*                                        id(A,B)      */
-/* Output params:       n/a                            */
-/* **************************************************  */
+/**
+ * Ungates the clock for a gpio port
+ * @param PORT_ID the GPIO port id(A,B)
+ */
 #define GPIO_UNGATE_PORT(PORT_ID)\
 	_GPIO_UNGATE_PORT(PORT_ID)
 
@@ -36,17 +33,12 @@
 	/* un-gate port clock*/\
     SIM_SCGC5 = SIM_SCGC5_PORT ## PORT_ID (CGC_CLOCK_ENABLED)
 
-/* ************************************************** */
-/* Macro name:        GPIO_INIT_PIN                   */
-/* Macro description: inits a pin as GPIO in the      */
-/*                     given direction                */
-/* Input params:       PORT_ID = the GPIO port        */
-/*                                        id(A,B)     */
-/*                     PIN_NUM = pin number in port   */
-/*                     DIR = pin direction            */
-/*                           (GPIO_HIGH, GPIO_LOW)    */
-/* Output params:       n/a                           */
-/* ************************************************** */
+/**
+ * inits a pin as GPIO in the given direction
+ * @param PORT_ID the GPIO port id(A,B)
+ * @param PIN_NUM pin number in port
+ * @param DIR pin direction (GPIO_HIGH, GPIO_LOW)
+ */
 #define GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)\
     _GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)
 
@@ -62,16 +54,12 @@
     }
 
 
-/* *************************************************** */
-/* Macro name:        GPIO_WRITE_PIN                   */
-/* Macro description: Writes a pin with the given value*/
-/* Input params:       PORT_ID = the GPIO port         */
-/*                                        id(A,B)      */
-/*                     PIN_NUM = pin number in port    */
-/*                     VAL = pin value                 */
-/*                           (GPIO_HIGH, GPIO_LOW)     */
-/* Output params:       n/a                            */
-/* *************************************************** */
+/**
+ * Writes a pin with the given value
+ * @param PORT_ID the GPIO port id(A,B)
+ * @oaram PIN_NUM pin number in port
+ * @param VAL pin value (GPIO_HIGH, GPIO_LOW)
+ */
 #define GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)\
     _GPIO_WRITE_PIN(PORT_ID, PIN_NUM, VAL)
 
@@ -83,19 +71,12 @@
 		GPIO ## PORT_ID ## _PCOR = GPIO_PCOR_PTCO( (0x01U << PIN_NUM) );\
 	}
 
-/* **************************************************** */
-/* Macro name:        GPIO_SET_MASK                     */
-/* Macro description: Writes the given value to the pins*/
-/*						given in the MASK			    */
-/* Input params:       PORT_ID = the GPIO port          */
-/*                                        id(A,B)       */
-/*                     MASK = 31 bit Mask with 1 in the */
-/*							   bits corresponding to the*/
-/*							   pins of interest.        */
-/*                     VAL = pins value                 */
-/*                           (GPIO_HIGH, GPIO_LOW)      */
-/* Output params:       n/a                             */
-/* **************************************************** */
+/**
+ * Writes the given value to the pins given in the MASK
+ * @param PORT_ID the GPIO port id(A,B)
+ * @param MASK 31 bit Mask with 1 in the bits corresponding to the pins of interest.
+ * @param VAL pins value (GPIO_HIGH, GPIO_LOW)
+ */
 #define GPIO_WRITE_MASK(PORT_ID, MASK, VAL)\
     _GPIO_WRITE_MASK(PORT_ID, MASK, VAL)
 
@@ -107,16 +88,12 @@
 	}
 
 
-/* *************************************************** */
-/* Macro name:        GPIO_READ_PIN                    */
-/* Macro description: Reads the status of a GPIO PIN   */
-/* Input params:       PORT_ID = the GPIO port         */
-/*                                        id(A,B)      */
-/*                     PIN_NUM = pin number in port    */
-/*                     VAL = pin value                 */
-/*                           (GPIO_HIGH, GPIO_LOW)     */
-/* Output params:       n/a                            */
-/* *************************************************** */
+/**
+ * Reads the status of a GPIO PIN
+ * @param PORT_ID the GPIO port id(A,B)
+ * @param PIN_NUM pin number in port
+ * @param VAL pin value (GPIO_HIGH, GPIO_LOW)
+ */
 #define GPIO_READ_PIN(PORT_ID, PIN_NUM)\
     _GPIO_READ_PIN(PORT_ID, PIN_NUM)
 

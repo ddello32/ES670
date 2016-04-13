@@ -21,24 +21,30 @@ void pit_enable(void);
  * Start interruptions for given timer, unchained mode.
  * Timer interruptions are masked.
  *
- * @param timer_number 	The number for the desired timer (0,1)
- * @param timer_period  The number of bus_clock cycles between interrupts
- * @param handler   	Timer interrupt handler routine address pointer
+ * @param usTimer_numb 	The number for the desired timer (0,1)
+ * @param uiTimer_period  The number of bus_clock cycles between interrupts
+ * @param fpInterrupt_handler   	Timer interrupt handler routine address pointer
  */
-void pit_start_timer_interrupt(unsigned short timer_numb, unsigned int timer_period, void (*interrupt_handler)(void));
+void pit_start_timer_interrupt(unsigned short usTimer_numb, unsigned int uiTimer_period, void (*fpInterrupt_handler)(void));
 
 /**
  * Stop interruptions for given timer, unchained mode.
  *
- * @param timer_number 	The number for the desired timer (0,1)
+ * @param usTimer_numb 	The number for the desired timer (0,1)
  */
-void pit_stop_timer_interrupt(unsigned short timer_numb);
+void pit_stop_timer_interrupt(unsigned short usTimer_numb);
 
 /**
  * Mark interruption as handled for the given timer, this should be called by timer
  * interruption handlers once they are finished.
  *
- * @param timer_number 	The number for the desired timer (0,1)
+ * @param usTimer_numb 	The number for the desired timer (0,1)
  */
-void pit_mark_interrupt_handled(unsigned short timer_numb);
+void pit_mark_interrupt_handled(unsigned short usTimer_numb);
+
+/**
+ * Pit interruption handler. Checks what timer caused the interruption and call the
+ * correct timer interruption handler.
+ */
+void PIT_IRQHandler(void);
 #endif /* SOURCES_PIT_PIT_HAL_H_ */

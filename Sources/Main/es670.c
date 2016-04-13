@@ -4,6 +4,7 @@
 #include "Mcg/mcg_hal.h"
 #include "Buzzer/buzzer_hal.h"
 #include "SevenSeg/sevenseg_hal.h"
+#include "PIT/pit_hal.h"
 #include "Util/util.h"
 
 
@@ -14,18 +15,18 @@ int main(void)
 	ledswi_initLedSwitch(3,1);
 	sevenseg_init();
 	sevenseg_printHex(0xABCDu);
-	unsigned short printHex = 1;
-	unsigned short ledOn = 1;
+	unsigned short usPrintHex = 1;
+	unsigned short usLedOn = 1;
 	while(1){
 		if(ledswi_getSwitchStatus(3) == SWITCH_ON){
-			printHex = !printHex;
-			ledOn = !ledOn;
-			if(printHex){
+			usPrintHex = !usPrintHex;
+			usLedOn = !usLedOn;
+			if(usPrintHex){
 				sevenseg_printHex(0xABCDu);
 			}else{
 				sevenseg_printDec(0xABCDu);
 			}
-			if(ledOn){
+			if(usLedOn){
 				ledswi_setLed(4);
 			}else{
 				ledswi_clearLed(4);

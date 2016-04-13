@@ -4,7 +4,7 @@
 /*                   prototypes of ledswi.c                          */
 /* Author name:      dloubach                                        */
 /* Creation date:    09jan2015                                       */
-/* Revision date:    25fev2016                                       */
+/* Revision date:    13abr2016                                       */
 /* ***************************************************************** */
 
 #ifndef SOURCES_LEDSWI_LEDSWI_HAL_H_
@@ -18,47 +18,35 @@ typedef enum
     SWITCH_ON
 } switch_status_type_e;
 
-/* ************************************************ */
-/* Method name:        ledswi_initLedSwitch         */
-/* Method description: As the hardware board was    */
-/*                     designed with LEDs/Switches  */
-/*                     sharing the same pins, this  */
-/*                     method configures how many   */
-/*                     LEDS and switches will be    */
-/*                     available for the application*/
-/* Input params:       cLedNum    = num of LEDs     */
-/*                     cSwitchNum = num of Switches */
-/*                     cLedNum +                    */
-/*                     cSwitchNum <= MAX_LED_SWI    */
-/* Outpu params:       n/a                          */
-/* ************************************************ */
+/**
+ * As the hardware board was designed with LEDs/Switches sharing
+ * 	the same pins, this method configures how many LEDS and switches
+ * 	will be available for the application
+ * @param cLedNum num of LEDs
+ * @param cSwitchNum num of Switches (cLedNum + cSwitchNum <= MAX_LED_SWI)
+ */
 void ledswi_initLedSwitch(char cLedNum, char cSwitchNum);
 
 
-/* ************************************************ */
-/* Method name:        ledswi_setLed                */
-/* Method description: set the led ON               */
-/* Input params:       cLedNum    = which LED {1..4}*/
-/* Outpu params:       n/a                          */
-/* ************************************************ */
+/**
+ * set the led ON
+ * @param cLedNum which LED {1..4}
+ */
 void ledswi_setLed(char cLedNum);
 
 
-/* ************************************************ */
-/* Method name:        ledswi_clearLed              */
-/* Method description: set the led OFF              */
-/* Input params:       cLedNum    = which LED {1..4}*/
-/* Outpu params:       n/a                          */
-/* ************************************************ */
+/**
+ * set the led OFF
+ * @param cLedNum which LED {1..4}
+ */
 void ledswi_clearLed(char cLedNum);
 
 
-/* ************************************************ */
-/* Method name:        ledswi_getSwitchStatus       */
-/* Method description: return the switch status     */
-/* Input params:       cSwitchNum = which switch    */
-/* Outpu params:       switch_status_type_e         */
-/* ************************************************ */
+/**
+ * return the switch status
+ * @param cSwitchNum which switch
+ * @return If the switch is ON or OFF
+ */
 switch_status_type_e ledswi_getSwitchStatus(char cSwitchNum);
 
 
