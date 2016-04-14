@@ -15,7 +15,7 @@ int main(void)
 	ledswi_initLedSwitch(1,3);
 	sevenseg_init();
 	sevenseg_printHex(0xABCDu);
-//	buzzer_initPeriodic(0xB18Eu);
+	buzzer_initPeriodic(0xB18Eu);
 	ledswi_setLed(4);
 	unsigned short usPrintHex = 1;
 	unsigned short usLedOn = 1;
