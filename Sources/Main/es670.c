@@ -15,23 +15,31 @@ int main(void)
 	ledswi_initLedSwitch(1,3);
 	sevenseg_init();
 	sevenseg_printHex(0xABCDu);
-	buzzer_initPeriodic(0x1631Du);
+//	buzzer_initPeriodic(0xB18Eu);
+	ledswi_setLed(4);
 	unsigned short usPrintHex = 1;
 	unsigned short usLedOn = 1;
+	unsigned short usBuzzOn = 1;
 	while(1){
-		if(ledswi_getSwitchStatus(3) == SWITCH_ON){
+		if(ledswi_getSwitchStatus(3) == SWITCH_OFF){
 			usPrintHex = !usPrintHex;
 			usLedOn = !usLedOn;
+			usBuzzOn = !usBuzzOn;
 			if(usPrintHex){
 				sevenseg_printHex(0xABCDu);
 			}else{
 				sevenseg_printDec(0xABCDu);
 			}
-		}
-		if(usLedOn){
-			ledswi_setLed(4);
-		}else{
-			ledswi_clearLed(4);
+			if(usLedOn){
+				ledswi_setLed(4);
+			}else{
+				ledswi_clearLed(4);
+			}
+			if(usBuzzOn){
+				buzzer_initPeriodic(0xB18Eu);
+			}else{
+				buzzer_stopPeriodic();
+			}
 		}
 	}
     /* Never leave main */

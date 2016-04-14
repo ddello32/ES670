@@ -28,9 +28,9 @@ void _sevenseg_interrupt_handler(void){
 	static seven_segment_seg_type_e epSeg_array[9];
 	static volatile unsigned short usCur_disp = 0;
 	if(usIsHex){
-		sevenseg_hex2segArray(uiPrintVal/pow(16,usCur_disp), epSeg_array);
+		sevenseg_hex2segArray(uiPrintVal/pow(16,3-usCur_disp), epSeg_array);
 	}else{
-		sevenseg_dec2segArray(uiPrintVal/pow(10,usCur_disp), epSeg_array);
+		sevenseg_dec2segArray(uiPrintVal/pow(10,3-usCur_disp), epSeg_array);
 	}
 	sevenseg_setSegs(epSeg_array);
 	sevenseg_setDisp(epDisplays[usCur_disp]);
