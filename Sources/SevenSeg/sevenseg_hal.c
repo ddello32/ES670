@@ -26,7 +26,7 @@ static unsigned int uiPrintVal = -1;
 void _sevenseg_interrupt_handler(void){
 	static seven_segment_disp_type_e epDisplays[] = {DISP_1, DISP_2, DISP_3, DISP_4};
 	static seven_segment_seg_type_e epSeg_array[9];
-	static unsigned short usCur_disp = 0;
+	static volatile unsigned short usCur_disp = 0;
 	if(usIsHex){
 		sevenseg_hex2segArray(uiPrintVal/pow(16,usCur_disp), epSeg_array);
 	}else{

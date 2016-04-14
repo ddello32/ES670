@@ -13,7 +13,7 @@ Sources/Main/es670.o: ../Sources/Main/es670.c \
  ../SDK/platform/devices/MKL25Z4/include/MKL25Z4.h \
  ../Sources/LedSwi/ledswi_hal.h ../Sources/Mcg/mcg_hal.h \
  ../Sources/Buzzer/buzzer_hal.h ../Sources/SevenSeg/sevenseg_hal.h \
- ../Sources/Util/util.h
+ ../Sources/PIT/pit_hal.h ../Sources/Util/util.h
 
 ../SDK/platform/devices/fsl_device_registers.h:
 
@@ -46,5 +46,7 @@ Sources/Main/es670.o: ../Sources/Main/es670.c \
 ../Sources/Buzzer/buzzer_hal.h:
 
 ../Sources/SevenSeg/sevenseg_hal.h:
+
+../Sources/PIT/pit_hal.h:
 
 ../Sources/Util/util.h:

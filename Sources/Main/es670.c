@@ -12,9 +12,10 @@ int main(void)
 {
 	mcg_clockInit();
 	buzzer_init();
-	ledswi_initLedSwitch(3,1);
+	ledswi_initLedSwitch(1,3);
 	sevenseg_init();
 	sevenseg_printHex(0xABCDu);
+	buzzer_initPeriodic(0x1631Du);
 	unsigned short usPrintHex = 1;
 	unsigned short usLedOn = 1;
 	while(1){
@@ -26,11 +27,11 @@ int main(void)
 			}else{
 				sevenseg_printDec(0xABCDu);
 			}
-			if(usLedOn){
-				ledswi_setLed(4);
-			}else{
-				ledswi_clearLed(4);
-			}
+		}
+		if(usLedOn){
+			ledswi_setLed(4);
+		}else{
+			ledswi_clearLed(4);
 		}
 	}
     /* Never leave main */

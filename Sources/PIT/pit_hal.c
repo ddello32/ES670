@@ -61,13 +61,13 @@ void pit_enable(void){
  */
 void pit_start_timer_interrupt(unsigned short usTimer_numb, unsigned int uiTimer_period, void (*fpInterrupt_handler)(void)){
 	if(!usTimer_numb){
-		timer0Handler = fpInterrupt_handler;
+		fpTimer0Handler = fpInterrupt_handler;
 		PIT_LDVAL0 = PIT_LDVAL_TSV(uiTimer_period);
 		PIT_TCTRL0 &= ~PIT_TCTRL_CHN(0x1u);		/*Disable chain mode*/
 		PIT_TCTRL0 |= PIT_TCTRL_TIE(0x1u);		/*Enable interrupts for timer 0*/
 		PIT_TCTRL0 |= PIT_TCTRL_TEN(0x1u);		/*Enable timer 0*/
 	}else{
-		timer1Handler = fpInterrupt_handler;
+		fpTimer1Handler = fpInterrupt_handler;
 		PIT_LDVAL1 = PIT_LDVAL_TSV(uiTimer_period);
 		PIT_TCTRL1 &= ~PIT_TCTRL_CHN(0x1u);		/*Disable chain mode*/
 		PIT_TCTRL1 |= PIT_TCTRL_TIE(0x1u);		/*Enable interrupts for timer 1*/

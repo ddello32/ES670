@@ -46,8 +46,13 @@ void buzzer_setBuzz(void)
  * Handler for buzzer interruptions
  */
 void _buzzer_interrupt_handler(void){
-	buzzer_setBuzz();
-	buzzer_clearBuzz();
+	static volatile unsigned short usBusOn = 0;
+	if(!usBusOn){
+		buzzer_setBuzz();
+	}else{
+		buzzer_clearBuzz();
+	}
+	usBusOn = !usBusOn;
 	pit_mark_interrupt_handled(BUZZER_PIT_TIMER_NUMB);
 }
 
@@ -58,7 +63,7 @@ void _buzzer_interrupt_handler(void){
  */
 void buzzer_initPeriodic(unsigned int uiPeriod){
 	//Init timer 1
-	pit_start_timer_interrupt(BUZZER_PIT_TIMER_NUMB, uiPeriod, &_buzzer_interrupt_handler);
+	pit_start_timer_interrupt(BUZZER_PIT_TIMER_NUMB, uiPeriod/2, &_buzzer_interrupt_handler);
 }
 
 /**

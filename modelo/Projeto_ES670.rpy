@@ -28,8 +28,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- _name = "Projeto_ES670";
-	- _objectCreation = "515131334201693092445";
-	- _umlDependencyID = "2577";
+	- _objectCreation = "221022813432016122611422";
+	- _umlDependencyID = "2708";
 	- _lastID = 18;
 	- _UserColors = { IRPYRawContainer 
 		- size = 16;
@@ -292,8 +292,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_requisitos";
-			- _objectCreation = "515151334201693092245";
-			- _umlDependencyID = "3046";
+			- _objectCreation = "221051013432016122329422";
+			- _umlDependencyID = "3177";
 			- _description = { IDescription 
 				- _textRTF = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1046{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
 \\viewkind4\\uc1\\pard\\fs20 Diagrama de requisitos de sistema do projeto pr\\'e1tico da ES670 \\par
@@ -301,7 +301,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 }
 ";
 			}
-			- _lastModifiedTime = "1.12.2016::18:42:25";
+			- _lastModifiedTime = "4.13.2016::15:43:22";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 2fe99eb3-10f9-42d0-adf7-80beaef157a7;
 				- m_type = 0;
@@ -394,7 +394,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 											- value = 
 											{ IProperty 
 												- _Name = "FitBoxToItsTextuals";
-												- _Value = "False";
+												- _Value = "True";
 												- _Type = Bool;
 											}
 										}
@@ -1480,8 +1480,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_pacotes";
-			- _objectCreation = "515171334201693092045";
-			- _umlDependencyID = "2685";
+			- _objectCreation = "221051213432016122327422";
+			- _umlDependencyID = "2816";
 			- _lastModifiedTime = "4.11.2016::0:13:46";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 84c7ed09-6a53-4e4a-925b-6e70d2f9ea4a;
@@ -2256,9 +2256,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_definicao_semana_04_05";
-			- _objectCreation = "515191334201693091845";
-			- _umlDependencyID = "3988";
-			- _lastModifiedTime = "4.13.2016::12:33:54";
+			- _objectCreation = "221051413432016122325422";
+			- _umlDependencyID = "4110";
+			- _lastModifiedTime = "4.13.2016::15:43:17";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 338e6526-0699-499c-b6b4-93ea64c72097;
 				- m_type = 0;
