@@ -1,5 +1,6 @@
 \documentclass{article}
 
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[brazilian]{babel}
 \usepackage{graphicx}
@@ -86,7 +87,7 @@ O objetivo do projeto é, de maneira incremental, implementar no target os requi
 	
 \section{Modelagem}
 % Diagramas requisitos implementados, digrama de blocos, etc
-Utilizando o Rational Rhapsody Modeler e tomando como base os requisitos propostos mostrados na figura \ref{fig:requisitos}, complementamos o modelo inicial\cite{bb:modelo} (requisitos de teclado e LEDs) adicionando um bloco ao modelo referente aos displays de sete segmentos (REQ1C), conforme mostrado na figura \ref{fig:blocos}. Adicionamos também alguns blocos auxiliares relacionados ao gerenciamento de pinos GPIO, e a interrupções periódicas, que foram utilizados para nossa implementação do display de sete segmentos e do buzzer. Ao tratar o gerenciamento do display e do buzzer através de interrupções, livramos a thread principal para que essa lide com outros problemas sem precisar se preocupar com a atualização periódica dos displays.
+Utilizando o Rational Rhapsody Modeler e tomando como base os requisitos propostos mostrados na figura \ref{fig:requisitos}, complementamos o modelo inicial\cite{bb:modelo} (requisitos de teclado e LEDs) adicionando um bloco ao modelo referente aos displays de sete segmentos (REQ1C), conforme mostrado na figura \ref{fig:blocos}. Adicionamos também alguns blocos auxiliares relacionados ao gerenciamento de pinos GPIO e a interrupções periódicas, que foram utilizados para nossa implementação do display de sete segmentos e do buzzer. Ao tratar o gerenciamento do display e do buzzer através de interrupções, livramos a thread principal para que essa lide com outros problemas sem precisar se preocupar com a atualização periódica dos displays.
 
 \begin{figure}[H]
 	\centering
@@ -100,7 +101,14 @@ Utilizando o Rational Rhapsody Modeler e tomando como base os requisitos propost
 	\caption{Diagrama de definição de blocos}
 	\label{fig:blocos}
 \end{figure}
-O bloco SevenSeg possui três operações: inicialização, definição de saída (recebendo qual dos displays será usado e qual valor deve ser exibido) e definição de saída com inteiro (recebendo apenas o valor inteiro a ser exibido no conjunto de quatro displays).
+
+O bloco de \textit{GPIO\_hal} tem operações para desbloquear o \textit{clock} para uma porta, inicializar um pino em uma dada direção, escrever em um pino, escrever em um conjunto de pinos da mesma porta e ler a entrada em um pino.
+
+O bloco \textit{pit\_hal} tem tem operações para inicializar o \textit{PIT}, criar interrupções periódicas em um dos dois \textit{timers} disponíveis, desativar as interrupções em um \textit{timer} e marcar uma interrupção como tratada (deve ser feito pelos tratamentos de interrupção). Além disso esse bloco tem mais uma operação chamada \textit{PIT\_IRQHandler }que trata as interrupções do \textit{PIT}, essa operação precisa ser visível para o \textit{linker}, mas não deve ser chamada pelo usuário. É importante ressaltar que o \textit{clock} do \textit{PIT} é o \textit{bus\_clock} que no nosso caso é de $20MHz$
+
+As operações do bloco \textit{sevenseg\_hal} cobrem a inicialização dos \textit{displays}, seleção manual de quais segmentos estarão ativos (feita através da passagem de um vetor com os segmentos desejados), ativação manual de um dos \textit{displays} (desativando todos os outros), conversão de dígito hexadecimal ou decimal em vetor de segmentos (para ser passado para a função de seleção de segmentos) e impressão automática de um valor hexadecimal ou decimal através das interrupções de \textit{timer}.
+
+O bloco do \textit{buzzer\_hal} também ganhou duas novas operações, uma para criar uma onda quadrada no \textit{buzzer} com um certo período (e \textit{duty cycle} de $50\%$), através de interrupções de \textit{timer}, e outra para remover essa onda.
 
 \section{Diagramas Esquemáticos}
 % Diagramas esquemáticos do target utilizados
@@ -117,7 +125,16 @@ O bloco SevenSeg possui três operações: inicialização, definição de saíd
 	\caption{Esquema sete segmentos}
 	\label{fig:esq_7seg}
 \end{figure}
-Como pode ser visto na figura \ref{fig:esq_7seg}, é necessário fazer um gerenciamento dos pinos PTC-0 a PTC-7 para selecionar os segmentos que serão ativados e PTC-10 a PTC-13 para selecionar quais displays estarão ativos. Para isso, é preciso alternar qual display está ativo fazendo a mudança nos segmentos para que cada display esteja mostrando um valor diferente. É importante lembrar que a frequência dessa alternância seja escolhida de modo que o olho humano não perceba que os displays estão ligando e desligando. Afim de garantir que essa alternância funcionará apropriadamente nós utilizamos o módulo PIT para gerar uma interrupção a cada 3.125 ms, conforme sugerido na aula 6 \cite{bb:aula6}. 
+
+Os pinos apresentados acima, devem ser mapeados para os da placa \textit{FRDM-KL25Z} através do mapeamento apresentado na figura \ref{fig:pinout}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{Pinout}
+	\caption{Mapeamento entre pinos dos esquemáticos e da placa FRDM-KL25Z}
+	\label{fig:pinout}
+\end{figure}
+
+Como pode ser visto na figura \ref{fig:esq_7seg}, é necessário fazer um gerenciamento dos pinos PTC-0 a PTC-7 para selecionar os segmentos que serão ativados e PTC-10 a PTC-13 para selecionar quais \textit{displays} estarão ativos. Para isso, é preciso alternar qual \textit{display} está ativo e fazer a mudança nos segmentos para que cada \textit{display} esteja mostrando um valor diferente. É importante lembrar que a frequência dessa alternância seja escolhida de modo que o olho humano não perceba que os \textit{displays} estão ligando e desligando. Afim de garantir que essa alternância funcionará apropriadamente nós utilizamos o módulo \textit{PIT} para gerar uma interrupção a cada $3.125 ms$, conforme sugerido na aula 6 \cite{bb:aula6}. 
 
 
 \section{Matriz de Rastreabilidade}
@@ -130,7 +147,7 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 	\small
 	\begin{tabular}{|c|l|}
 		\hline \bfseries{ID do Requisito} & \bfseries{Implementação}\\ 
-		\hline REQ1A 	& \texttt{ledswi.c}\\ 
+		\hline REQ1A 	& \texttt{ledswi\_hal.c}\\ 
 						& \texttt{- void ledswi\_initLedSwitch(char cLedNum, char cSwitchNum)}\\
 						& \texttt{- switch\_status\_type\_e ledswi\_getSwitchStatus(char cSwitchNum)}\\
 		\hline REQ1B 	& \texttt{ledswi.c}\\ 
@@ -147,16 +164,23 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 \end{table}
 \section{Notas}
 % Dificuldades, observações relevantes, correções, ...
-Detectamos logo no início do projeto um defeito estrutural no código fornecido quando lidando com GPIO, o identificador da porta e o número do pino utilizado eram referenciados em diversos locais diferentes do código, dificultando de maneira agravante mudanças na configuração de hardware. Para resolver isso, inicialmente pensamos em utilizar o arquivo \i{fsl\_gpio\_hal.h} da biblioteca da \i{FRDM-Kl25Z}, como isso não nos foi permitido e calcular as posições na memória de cada registrador seria reimplementar a biblioteca, escolhemos por criar macros que geram o mesmo estilo de código utilizado no exemplo fornecido, utilizando o operador do pré processador de concatenação \#\#. Porém, esse operador apresenta algumas particularidades, por exemplo macros que o utilizam no seu corpo não tem seus argumentos expandidos \cite{bb:preprocessor}, para circular essa dificuldade criamos uma outras macros que funcionam como uma \i{wrappers} para essas macros, fazendo assim que seus argumentos sejam expandidos antes da chamada da concatenação. As macros que fazem a concatenação propriamente ditas não devem ser chamadas pelo usuário (sendo identificadas por um \_ no início de seus nomes).
-Outra dificuldade relacionada à esse módulo é que a expansão dos argumentos das macros não parava quando chegava no identificador das portas (A,B,C,D,E), para contornar esse problema utilizamos \i{typedefs} para definir esses identificadores como parte do código.
+\subsection{Gerenciamento de GPIO e macros}
+Detectamos logo no início do projeto um defeito estrutural no código fornecido quando lidando com GPIO, o identificador da porta e o número do pino utilizado eram referenciados em diversos locais diferentes do código, dificultando de maneira agravante mudanças na configuração de hardware. Para resolver isso, inicialmente pensamos em utilizar o arquivo \textit{fsl\_gpio\_hal.h} da biblioteca da \textit{FRDM-Kl25Z}, como isso não nos foi permitido e calcular as posições na memória de cada registrador seria reimplementar a biblioteca, escolhemos por criar macros que geram o mesmo estilo de código utilizado no exemplo fornecido, utilizando o operador do pré processador de concatenação \#\#. Porém, esse operador apresenta algumas particularidades, por exemplo macros que o utilizam no seu corpo não tem seus argumentos expandidos \cite{bb:preprocessor}, para circular essa dificuldade criamos uma outras macros que funcionam como uma \i{wrappers} para essas macros, fazendo assim que seus argumentos sejam expandidos antes da chamada da concatenação. As macros que fazem a concatenação propriamente ditas não devem ser chamadas pelo usuário (sendo identificadas por um \_ no início de seus nomes).
+Outra dificuldade relacionada à esse módulo é que a expansão dos argumentos das macros não parava quando chegava no identificador das portas (A,B,C,D,E), para contornar esse problema utilizamos \textit{typedefs} para definir esses identificadores como parte do código.
 
-Outro problema que enfrentamos foi com a implementação das interrupções por timer através do PIT, notavelmente pela dificuldade de encontrar uma documentação clara sobre o NVIC e pelo fato da documentação fornecida inverter a endianness em relação aos registradores de GPIO quando se refere aos registradores do PIT.
+\subsection{Interrupções por timer}
+Outro problema que enfrentamos foi com a implementação das interrupções por timer através do PIT, notavelmente pela dificuldade de encontrar uma documentação clara sobre o NVIC e pois a documentação fornecida para o PIT inverte a endianness dos registradores em relação aos registradores de GPIO.
 
-Ainda enfrentamos dificuldades com a leitura dos botões por poling, uma vez que embora implementada pelo professor e não alterada em nosso código, ela não parece funcionar apropriadamente, sendo um sintoma enfrentado por alguns de nossos colegas também.
+\subsection{Leitura digital}
+Ainda enfrentamos dificuldades com a leitura dos botões por polling, uma vez que embora implementada pelo professor e não alterada em nosso código, ela não parece funcionar apropriadamente, sendo um sintoma enfrentado por alguns de nossos colegas também.
 
+\subsection{Estilo de Documentação}
 Não conseguimos nos adaptar ao estilo de comentários sugerido pelo professor, que nos parece introduzir uma quantidade desnecessária de burocracia. Formatar todos os comentários para caber dentro daquele quadrado tomava mais tempo que a implementação do código e muita informação redundante estava sendo inserida (bastava ler a interface da função para saber seu nome e o tipo de seus argumentos). Escolhemos então substituir todos os comentários do código pelo padrão javadoc, com o qual estamos mais familiarizados e acreditamos que é capaz de documentar de maneira eficiente o código.
 
-Também tivemos grandes dificuldades com a instalação do Rhapsody Rational Modeler no Linux (através do Wine).
+\subsection{Outros}
+Também tivemos grandes dificuldades com a instalação do \textit{Rhapsody Rational Modeler} no \textit{Linux} (através do \textit{Wine}), pois ele necessita da instalação das seguintes dlls nativas: \textit{comctl32} e \textit{msvcirt}. Ainda não conseguímos fazer com que o \textit{Modeler} mostre as caixas de comentário corretamente.
+
+ 
 
 \begin{thebibliography}{widestlabel}
 	\bibitem{bb:roteiro}{Roteiro de Laboratório - Semanas 04 e 05 (disponibilizado para os alunos)}

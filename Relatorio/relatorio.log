@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.30)  13 APR 2016 09:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.3.30)  14 APR 2016 10:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -23,6 +23,13 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
@@ -849,20 +856,20 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 ) (./relatorio.aux)
 \openout1 = `relatorio.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
-LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
+LaTeX Font Info:    ... okay on input line 81.
  (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count148
@@ -878,7 +885,7 @@ LaTeX Font Info:    ... okay on input line 80.
 \everyMPtoPDFconversion=\toks38
 )
 \AtBeginShipoutBox=\box44
-Package hyperref Info: Link coloring OFF on input line 80.
+Package hyperref Info: Link coloring OFF on input line 81.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -887,9 +894,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count154
 )
-LaTeX Info: Redefining \ref on input line 80.
-LaTeX Info: Redefining \pageref on input line 80.
-LaTeX Info: Redefining \nameref on input line 80.
+LaTeX Info: Redefining \ref on input line 81.
+LaTeX Info: Redefining \pageref on input line 81.
+LaTeX Info: Redefining \nameref on input line 81.
 
 (./relatorio.out) (./relatorio.out)
 \@outlinefile=\write4
@@ -901,7 +908,7 @@ Package caption Info: End \AtBeginDocument code.
  ABD: EveryShipout initializing macros
 \c@lstlisting=\count155
 
-(./capa.tex <logoUnicamp.pdf, id=95, 302.71455pt x 339.65475pt>
+(./capa.tex <logoUnicamp.pdf, id=115, 302.71455pt x 339.65475pt>
 File: logoUnicamp.pdf Graphic file (type pdf)
 
 <use logoUnicamp.pdf>
@@ -923,87 +930,124 @@ Package babel Info: Redefining portuges shorthand "|
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logoUnicamp.pdf>])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 84.
+(babel)             in language  on input line 85.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 87.
+(babel)             in language  on input line 88.
 
-<requisitos.png, id=112, 480.38293pt x 460.6008pt>
+<requisitos.png, id=133, 480.38293pt x 460.6008pt>
 File: requisitos.png Graphic file (type png)
  <use requisitos.png>
-Package pdftex.def Info: requisitos.png used on input line 95.
+Package pdftex.def Info: requisitos.png used on input line 94.
 (pdftex.def)             Requested size: 310.4979pt x 297.71426pt.
 
-<blocos.png, id=114, 548.56372pt x 462.528pt>
+<blocos.png, id=135, 548.56372pt x 462.528pt>
 File: blocos.png Graphic file (type png)
  <use blocos.png>
-Package pdftex.def Info: blocos.png used on input line 101.
+Package pdftex.def Info: blocos.png used on input line 100.
 (pdftex.def)             Requested size: 310.4979pt x 261.80872pt.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 104.
+(babel)             in language  on input line 103.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 104.
+(babel)             in language  on input line 103.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.104 \end{figure}
+l.103 \end{figure}
                    [1]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 105.
+(babel)             in language  on input line 104.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 105.
+(babel)             in language  on input line 104.
  [2 <./requisitos.png>]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 107.
-
-<esq_ledswi.png, id=129, 581.0508pt x 395.5578pt>
-File: esq_ledswi.png Graphic file (type png)
- <use esq_ledswi.png>
-Package pdftex.def Info: esq_ledswi.png used on input line 112.
-(pdftex.def)             Requested size: 241.49895pt x 164.40088pt.
-
-<esq_7seg.png, id=130, 532.99126pt x 408.02437pt>
-File: esq_7seg.png Graphic file (type png)
- <use esq_7seg.png>
-Package pdftex.def Info: esq_7seg.png used on input line 118.
-(pdftex.def)             Requested size: 310.4979pt x 237.70648pt.
+(babel)             in language  on input line 112.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 121.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 121.
+(babel)             in language  on input line 112.
  [3 <./blocos.png>]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 123.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 123.
- [4 <./esq_ledswi.png> <./esq_7seg.png>]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 125.
+(babel)             in language  on input line 113.
 
-Overfull \hbox (41.16081pt too wide) in paragraph at lines 133--149
+<esq_ledswi.png, id=157, 581.0508pt x 395.5578pt>
+File: esq_ledswi.png Graphic file (type png)
+ <use esq_ledswi.png>
+Package pdftex.def Info: esq_ledswi.png used on input line 118.
+(pdftex.def)             Requested size: 241.49895pt x 164.40088pt.
+
+<esq_7seg.png, id=158, 532.99126pt x 408.02437pt>
+File: esq_7seg.png Graphic file (type png)
+ <use esq_7seg.png>
+Package pdftex.def Info: esq_7seg.png used on input line 124.
+(pdftex.def)             Requested size: 310.4979pt x 237.70648pt.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 128.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 128.
+ [4 <./esq_ledswi.png>] <Pinout.pdf, id=166, 845.1575pt x 597.23125pt>
+File: Pinout.pdf Graphic file (type pdf)
+ <use Pinout.pdf>
+Package pdftex.def Info: Pinout.pdf used on input line 132.
+(pdftex.def)             Requested size: 310.4979pt x 219.41377pt.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 136.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 136.
+
+[5 <./esq_7seg.png>]
+
+LaTeX Warning: Citation `bb:aula6' on page 6 undefined on input line 137.
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 140.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 150.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Overfull \hbox (46.36731pt too wide) in paragraph at lines 148--164
  [][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 150.
+(babel)             in language  on input line 165.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 155.
+(babel)             in language  on input line 165.
+[6 <./Pinout.pdf>]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 159.
+(babel)             in language  on input line 165.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 159.
-[5]
-Underfull \hbox (badness 1454) in paragraph at lines 159--160
-[]\OT1/cmr/m/n/10 The C Pre-pro-ces-sor (Con-cate-na-tion) []$\OT1/cmtt/m/n/10 
-https : / / gcc . gnu . org /
+(babel)             in language  on input line 167.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 171.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 173.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 173.
+ [7]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 174.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 177.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 180.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 185.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 189.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 189.
+ [8]
+Underfull \hbox (badness 1478) in paragraph at lines 189--190
+[]\T1/cmr/m/n/10 The C Pre-pro-ces-sor (Con-cate-na-tion) []$\T1/cmtt/m/n/10 ht
+tps : / / gcc . gnu . org /
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 162.
+(babel)             in language  on input line 192.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 165.
+(babel)             in language  on input line 195.
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 165.
+nput line 195.
 (../Sources/LedSwi/ledswi_hal.h
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1.
 
@@ -1013,12 +1057,12 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1.
 
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 8--10
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 8--10
 [][][][] 
  []
 
@@ -1026,28 +1070,21 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 17.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 17.
-[6]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 26.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 26.
+[9]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 50.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 50.
- [7])
+ [10])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 166.
-
-(../Sources/LedSwi/ledswi_hal.c
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+(babel)             in language  on input line 196.
+ (../Sources/LedSwi/ledswi_hal.c
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 8--10
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 8--10
 [][][][] 
  []
 
@@ -1055,41 +1092,41 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 18.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 18.
-[8]
+[11]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 49.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 49.
- [9]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 79.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 79.
- [10]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 109.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 109.
- [11]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 141.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 141.
  [12]
 Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 79.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 79.
+ [13]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 109.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 109.
+ [14]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 141.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 141.
+ [15]
+Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 173.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 173.
- [13])
+ [16])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 167.
+(babel)             in language  on input line 197.
  (../Sources/Mcg/mcg_hal.h
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 9--11
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 9--11
 [][][][] 
  []
 
@@ -1097,11 +1134,11 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 14.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 14.
-[14])
+[17])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 168.
+(babel)             in language  on input line 198.
  (../Sources/Mcg/mcg_hal.c
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
@@ -1109,8 +1146,8 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 12.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 12.
-[15]
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 24--26
+[18]
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 24--26
 [][][][] 
  []
 
@@ -1118,56 +1155,56 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 33.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 33.
-[16]
+[19]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 69.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 69.
- [17]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 94.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 94.
- [18]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 121.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 121.
- [19]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 144.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 144.
  [20]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 164.
+(babel)             in language  on input line 94.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 164.
+(babel)             in language  on input line 94.
  [21]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 197.
+(babel)             in language  on input line 121.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 197.
+(babel)             in language  on input line 121.
  [22]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 229.
+(babel)             in language  on input line 144.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 229.
+(babel)             in language  on input line 144.
  [23]
 Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 164.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 164.
+ [24]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 197.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 197.
+ [25]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 229.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 229.
+ [26]
+Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 261.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 261.
- [24])
+ [27])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 169.
+(babel)             in language  on input line 199.
  (../Sources/PIT/pit_hal.h
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 9--11
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 9--11
 [][][][] 
  []
 
@@ -1175,83 +1212,83 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 11.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 11.
-[25]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 37.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 37.
- [26])
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 170.
- (../Sources/PIT/pit_hal.c
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
-[][][][] 
- []
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 8.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 8.
-[27]
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 9--10
-[][][][] 
- []
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 38.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 38.
 [28]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 68.
+(babel)             in language  on input line 37.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 68.
- [29]
+(babel)             in language  on input line 37.
+ [29])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 96.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 96.
- [30])
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 171.
- (../Sources/SevenSeg/sevenseg_hal.h
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
-[][][][] 
- []
-
-
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 9--11
+(babel)             in language  on input line 200.
+ (../Sources/PIT/pit_hal.c
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 11.
+(babel)             in language  on input line 8.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 11.
+(babel)             in language  on input line 8.
+[30]
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 9--10
+[][][][] 
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 38.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 38.
 [31]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 47.
+(babel)             in language  on input line 68.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 47.
+(babel)             in language  on input line 68.
  [32]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 75.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 75.
+(babel)             in language  on input line 96.
  [33])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 172.
- (../Sources/SevenSeg/sevenseg_hal.c
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+(babel)             in language  on input line 201.
+ (../Sources/SevenSeg/sevenseg_hal.h
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
+[][][][] 
+ []
+
+
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 9--11
 [][][][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 5.
+(babel)             in language  on input line 11.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 5.
+(babel)             in language  on input line 11.
 [34]
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 9--11
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 47.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 47.
+ [35]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 75.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 75.
+ [36])
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 202.
+ (../Sources/SevenSeg/sevenseg_hal.c
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
+[][][][] 
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 5.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 5.
+[37]
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 9--11
 [][][][] 
  []
 
@@ -1259,249 +1296,255 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 27.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 27.
-[35]
+[38]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 58.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 58.
- [36]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 83.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 83.
- [37]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 114.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 114.
- [38]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 145.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 145.
  [39]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 181.
+(babel)             in language  on input line 83.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 181.
+(babel)             in language  on input line 83.
  [40]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 213.
+(babel)             in language  on input line 114.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 213.
+(babel)             in language  on input line 114.
  [41]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 249.
+(babel)             in language  on input line 145.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 249.
- [42])
+(babel)             in language  on input line 145.
+ [42]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 173.
- (../Sources/GPIO/gpio_hal.h
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
-[][][][] 
- []
-
-
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 8--10
-[][][][] 
- []
-
+(babel)             in language  on input line 181.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 13.
+(babel)             in language  on input line 181.
+ [43]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 13.
-[43]
+(babel)             in language  on input line 213.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 46.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 46.
+(babel)             in language  on input line 213.
  [44]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 75.
+(babel)             in language  on input line 249.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 75.
+(babel)             in language  on input line 249.
  [45])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 174.
+(babel)             in language  on input line 203.
+ (../Sources/GPIO/gpio_hal.h
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
+[][][][] 
+ []
+
+
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 8--10
+[][][][] 
+ []
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 174.
+(babel)             in language  on input line 13.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 174.
- [46] (../Sources/Main/es670.c
+(babel)             in language  on input line 13.
+[46]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 46.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 46.
+ [47]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 75.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 75.
+ [48])
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 204.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 204.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 204.
+ [49] (../Sources/Main/es670.c
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 37.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 37.
- [47])
+ [50])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 175.
+(babel)             in language  on input line 205.
 
 (../Sources/Buzzer/buzzer_hal.c
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 8--10
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 8--10
 [][][][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 21.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 22.
-[48]
+(babel)             in language  on input line 21.
+[51]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 58.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 58.
- [49])
+(babel)             in language  on input line 57.
+ [52])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 176.
+(babel)             in language  on input line 206.
  (../Sources/Buzzer/buzzer_hal.h
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
-[][][][] 
- []
-
-
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 9--11
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 11.
+(babel)             in language  on input line 7.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 11.
-[50]
+(babel)             in language  on input line 7.
+[53]
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 9--11
+[][][][] 
+ []
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 44.
+(babel)             in language  on input line 38.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 44.
- [51])
+(babel)             in language  on input line 38.
+[54])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 177.
+(babel)             in language  on input line 207.
  (../Sources/KL25Z/es670_peripheral_board.h
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 8--10
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 8--10
 [][][][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 16.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 22.
-[52]
+(babel)             in language  on input line 16.
+[55]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 49.
+(babel)             in language  on input line 44.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 49.
- [53]
+(babel)             in language  on input line 44.
+ [56]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 70.
+(babel)             in language  on input line 66.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 70.
- [54]
+(babel)             in language  on input line 66.
+ [57]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 91.
+(babel)             in language  on input line 87.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 91.
- [55]
+(babel)             in language  on input line 87.
+ [58]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 119.
+(babel)             in language  on input line 115.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 119.
- [56])
+(babel)             in language  on input line 115.
+ [59])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 178.
+(babel)             in language  on input line 208.
  (../Sources/Util/util.h
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 6.
+(babel)             in language  on input line 3.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 6.
-[57]
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 11--13
+(babel)             in language  on input line 3.
+[60]
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 11--13
 [][][][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 34.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 34.
-[58])
+(babel)             in language  on input line 28.
+[61])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 179.
+(babel)             in language  on input line 209.
  (../Sources/Util/util.c
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 1--2
-[][][][] 
- []
-
-
-Overfull \hbox (65.00397pt too wide) in paragraph at lines 13--15
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 1--2
 [][][][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 15.
+(babel)             in language  on input line 11.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 15.
-[59]
+(babel)             in language  on input line 11.
+[62]
+Overfull \hbox (64.90776pt too wide) in paragraph at lines 13--15
+[][][][] 
+ []
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 48.
+(babel)             in language  on input line 45.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 48.
- [60]
+(babel)             in language  on input line 45.
+[63]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 84.
+(babel)             in language  on input line 78.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 84.
- [61])
+(babel)             in language  on input line 78.
+ [64])
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 180.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 180.
- [62]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 180.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 180.
+(babel)             in language  on input line 210.
+ [65]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 210.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 210.
  (./relatorio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 180.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 180.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 210.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 210.
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: 7B27F4E2F89C1B66F6E8CCC58040AB8E;1514.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 180.
+(rerunfilecheck)             Checksum: 694BAB5489CD6F02EC27FE82CCF414FA;1871.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 210.
  ) 
 Here is how much of TeX's memory you used:
- 21994 strings out of 495000
- 386429 string characters out of 6181169
- 703725 words of memory out of 5000000
- 23165 multiletter control sequences out of 15000+600000
- 12150 words of font info for 47 fonts, out of 8000000 for 9000
+ 22210 strings out of 495000
+ 388517 string characters out of 6181169
+ 706780 words of memory out of 5000000
+ 23350 multiletter control sequences out of 15000+600000
+ 20939 words of font info for 52 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 55i,10n,54p,987b,1908s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-tt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pf
-b>
-Output written on relatorio.pdf (63 pages, 1069981 bytes).
+ 55i,9n,54p,1261b,1908s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/dello/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0500.600pk> </home/d
+ello/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/dello/.texmf
+-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/dello/.texmf-var/fonts/
+pk/ljfour/jknappen/ec/ectt0900.600pk> </home/dello/.texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecrm0900.600pk> </home/dello/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecbx0900.600pk> </home/dello/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.60
+0pk> </home/dello/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home
+/dello/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/dello/.tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/dello/.texmf-var/font
+s/pk/ljfour/jknappen/ec/ecti1200.600pk> </home/dello/.texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecbx1440.600pk> </home/dello/.texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecbx2074.600pk> </home/dello/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1440.
+600pk> </home/dello/.texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on relatorio.pdf (66 pages, 1118082 bytes).
 PDF statistics:
- 2377 PDF objects out of 2487 (max. 8388607)
- 2268 compressed objects within 23 object streams
- 1671 named destinations out of 1728 (max. 500000)
- 214 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2890 PDF objects out of 2984 (max. 8388607)
+ 2364 compressed objects within 24 object streams
+ 1686 named destinations out of 1728 (max. 500000)
+ 259 words of extra memory for PDF output out of 10000 (max. 10000000)
 
