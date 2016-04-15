@@ -275,7 +275,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x306 ./Sources/PIT/pit_hal.o
  .debug_macro   0x00000000       0x63 ./Sources/PIT/pit_hal.o
  .debug_macro   0x00000000     0x8439 ./Sources/PIT/pit_hal.o
- .debug_macro   0x00000000      0x1ab ./Sources/PIT/pit_hal.o
+ .debug_macro   0x00000000      0x1a5 ./Sources/PIT/pit_hal.o
  .group         0x00000000        0x8 ./Sources/Mcg/mcg_hal.o
  .group         0x00000000        0x8 ./Sources/Mcg/mcg_hal.o
  .group         0x00000000        0x8 ./Sources/Mcg/mcg_hal.o
@@ -355,7 +355,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x306 ./Sources/Main/es670.o
  .debug_macro   0x00000000       0x63 ./Sources/Main/es670.o
  .debug_macro   0x00000000     0x8439 ./Sources/Main/es670.o
- .debug_macro   0x00000000      0x1ab ./Sources/Main/es670.o
+ .debug_macro   0x00000000      0x1a5 ./Sources/Main/es670.o
  .debug_macro   0x00000000       0x16 ./Sources/Main/es670.o
  .group         0x00000000        0x8 ./Sources/LedSwi/ledswi_hal.o
  .group         0x00000000        0x8 ./Sources/LedSwi/ledswi_hal.o
@@ -385,7 +385,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x306 ./Sources/LedSwi/ledswi_hal.o
  .debug_macro   0x00000000       0x63 ./Sources/LedSwi/ledswi_hal.o
  .debug_macro   0x00000000     0x8439 ./Sources/LedSwi/ledswi_hal.o
- .debug_macro   0x00000000      0x1ab ./Sources/LedSwi/ledswi_hal.o
+ .debug_macro   0x00000000      0x1a5 ./Sources/LedSwi/ledswi_hal.o
  .group         0x00000000        0x8 ./Sources/Buzzer/buzzer_hal.o
  .group         0x00000000        0x8 ./Sources/Buzzer/buzzer_hal.o
  .group         0x00000000        0x8 ./Sources/Buzzer/buzzer_hal.o
@@ -417,7 +417,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x306 ./Sources/Buzzer/buzzer_hal.o
  .debug_macro   0x00000000       0x63 ./Sources/Buzzer/buzzer_hal.o
  .debug_macro   0x00000000     0x8439 ./Sources/Buzzer/buzzer_hal.o
- .debug_macro   0x00000000      0x1ab ./Sources/Buzzer/buzzer_hal.o
+ .debug_macro   0x00000000      0x1a5 ./Sources/Buzzer/buzzer_hal.o
  .debug_macro   0x00000000       0x5e ./Sources/Buzzer/buzzer_hal.o
  .group         0x00000000        0x8 ./Project_Settings/Startup_Code/startup.o
  .group         0x00000000        0x8 ./Project_Settings/Startup_Code/startup.o
@@ -2338,18 +2338,18 @@ OUTPUT(emb.elf elf32-littlearm)
  .debug_ranges  0x00000650       0xc0 /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug/libksdk_platform.a(fsl_mcg_hal_modes.o)
 
 .debug_macro    0x00000000    0x1267a
- .debug_macro   0x00000000      0x14b ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x0000014b       0x16 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00000161       0x16 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00000177       0x44 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000001bb      0x209 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000003c4       0x3a ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000003fe       0x3a ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00000438       0x26 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x0000045e      0x306 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00000764       0x63 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x000007c7     0x8439 ./Sources/SevenSeg/sevenseg_hal.o
- .debug_macro   0x00008c00      0x1ab ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000000      0x151 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000151       0x16 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000167       0x16 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x0000017d       0x44 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000001c1      0x209 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000003ca       0x3a ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000404       0x3a ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x0000043e       0x26 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00000464      0x306 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x0000076a       0x63 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x000007cd     0x8439 ./Sources/SevenSeg/sevenseg_hal.o
+ .debug_macro   0x00008c06      0x1a5 ./Sources/SevenSeg/sevenseg_hal.o
  .debug_macro   0x00008dab       0x5e ./Sources/SevenSeg/sevenseg_hal.o
  .debug_macro   0x00008e09       0x16 ./Sources/SevenSeg/sevenseg_hal.o
  .debug_macro   0x00008e1f       0x58 ./Sources/SevenSeg/sevenseg_hal.o
@@ -2407,15 +2407,15 @@ OUTPUT(emb.elf elf32-littlearm)
  .debug_str     0x00000000    0x3489d ./Sources/SevenSeg/sevenseg_hal.o
                               0x34d34 (size before relaxing)
  .debug_str     0x0003489d      0x34b ./Sources/PIT/pit_hal.o
-                              0x32c37 (size before relaxing)
+                              0x32c17 (size before relaxing)
  .debug_str     0x00034be8    0x68f74 ./Sources/Mcg/mcg_hal.o
                               0x9c72d (size before relaxing)
  .debug_str     0x0009db5c       0x7e ./Sources/Main/es670.o
-                              0x3289b (size before relaxing)
+                              0x3287b (size before relaxing)
  .debug_str     0x0009dbda       0xaf ./Sources/LedSwi/ledswi_hal.o
-                              0x329e1 (size before relaxing)
+                              0x329c1 (size before relaxing)
  .debug_str     0x0009dc89       0x9e ./Sources/Buzzer/buzzer_hal.o
-                              0x32e7b (size before relaxing)
+                              0x32e5b (size before relaxing)
  .debug_str     0x0009dd27      0x12f ./Project_Settings/Startup_Code/startup.o
                               0x9bc6e (size before relaxing)
  .debug_str     0x0009de56       0x97 ./Project_Settings/Startup_Code/system_MKL25Z4.o

@@ -17,6 +17,8 @@
 #define SEV_SEG_SEGMENT_MASK GPIO_HIGH << SEGA_PIN | GPIO_HIGH << SEGB_PIN | GPIO_HIGH << SEGC_PIN | GPIO_HIGH << SEGD_PIN | GPIO_HIGH << SEGE_PIN | GPIO_HIGH << SEGF_PIN | GPIO_HIGH << SEGG_PIN | GPIO_HIGH << SEGDP_PIN
 #define SEV_SEG_DISP_MASK GPIO_HIGH << SEG_DISP1_PIN | GPIO_HIGH << SEG_DISP2_PIN | GPIO_HIGH << SEG_DISP3_PIN | GPIO_HIGH << SEG_DISP4_PIN
 
+#define SEVEN_SEG_PIT_PERIOD	0x0000F423		/* 62500 cycles = 3.125ms (20MHz)*/
+
 static unsigned short usIsHex = 0;
 static unsigned int uiPrintVal = -1;
 
@@ -25,16 +27,16 @@ static unsigned int uiPrintVal = -1;
  */
 void _sevenseg_interrupt_handler(void){
 	static seven_segment_disp_type_e epDisplays[] = {DISP_1, DISP_2, DISP_3, DISP_4};
-	static seven_segment_seg_type_e epSeg_array[9];
+	static seven_segment_seg_type_e epSeg_array[MAX_SEGMENT_NUMBER+1];
 	static volatile unsigned short usCur_disp = 0;
 	if(usIsHex){
-		sevenseg_hex2segArray(uiPrintVal/pow(16,3-usCur_disp), epSeg_array);
+		sevenseg_hex2segArray(uiPrintVal/pow(16,MAX_DISP_NUMBER-1-usCur_disp), epSeg_array);
 	}else{
-		sevenseg_dec2segArray(uiPrintVal/pow(10,3-usCur_disp), epSeg_array);
+		sevenseg_dec2segArray(uiPrintVal/pow(10,MAX_DISP_NUMBER-1-usCur_disp), epSeg_array);
 	}
 	sevenseg_setSegs(epSeg_array);
 	sevenseg_setDisp(epDisplays[usCur_disp]);
-	usCur_disp = (usCur_disp+1)%4;
+	usCur_disp = (usCur_disp+1)%MAX_DISP_NUMBER;
 	pit_mark_interrupt_handled(SEV_SEG_PIT_TIMER_NUMB);
 }
 
