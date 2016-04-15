@@ -10,7 +10,7 @@
 #include "ledswi_hal.h"
 #include "KL25Z/es670_peripheral_board.h"
 
-#define USING_OPENSDA_DEBUG
+#undef USING_OPENSDA_DEBUG
 
 /**
  * As the hardware board was designed with LEDs/Switches sharing
@@ -22,7 +22,7 @@
 void ledswi_initLedSwitch(char cLedNum, char cSwitchNum)
 {
     /* un-gate port clock*/
-    SIM_SCGC5 = SIM_SCGC5_PORTA(CGC_CLOCK_ENABLED);
+    SIM_SCGC5 |= SIM_SCGC5_PORTA(CGC_CLOCK_ENABLED);
 
     /* set pin as gpio */
 #ifndef USING_OPENSDA_DEBUG

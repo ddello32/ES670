@@ -31,7 +31,7 @@
 //Wrapper macro above is needed for argument expansion when using concatenation
 #define _GPIO_UNGATE_PORT(PORT_ID)\
 	/* un-gate port clock*/\
-    SIM_SCGC5 = SIM_SCGC5_PORT ## PORT_ID (CGC_CLOCK_ENABLED)
+    SIM_SCGC5 |= SIM_SCGC5_PORT ## PORT_ID (CGC_CLOCK_ENABLED)
 
 /**
  * inits a pin as GPIO in the given direction

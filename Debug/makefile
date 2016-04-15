@@ -53,14 +53,11 @@ endif
 # All Target
 all: emb.elf secondary-outputs
 
-dependents:
-	-cd /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/release && $(MAKE) all
-
 # Tool invocations
-emb.elf: $(OBJS) $(USER_OBJS) /mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/release/libksdk_platform.a
+emb.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "MKL25Z128xxx4_flash.ld" -Xlinker --gc-sections -L"/home/dello/Workspace/es670/workspace.kds/emb/Project_Settings/Linker_Files" -L"/mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/debug/" -Wl,-Map,"emb.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "emb.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "MKL25Z128xxx4_flash.ld" -Xlinker --gc-sections -L"/home/dello/Workspace/es670/workspace.kds/emb/Project_Settings/Linker_Files" -Wl,-Map,"emb.map" -specs=nosys.specs -specs=nano.specs -Xlinker -z -Xlinker muldefs -o "emb.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -73,6 +70,5 @@ secondary-outputs:
 
 .PHONY: all clean dependents
 .SECONDARY:
-/mnt/9A68FEAD68FE8773/ksdk/lib/ksdk_platform_lib/kds/KL25Z4/release/libksdk_platform.a:
 
 -include ../makefile.targets

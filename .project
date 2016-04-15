@@ -3,7 +3,6 @@
 	<name>emb</name>
 	<comment></comment>
 	<projects>
-		<project>ksdk_platform_lib_KL25Z4</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
