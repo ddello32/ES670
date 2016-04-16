@@ -5,6 +5,9 @@ Sources/Buzzer/buzzer_hal.o: ../Sources/Buzzer/buzzer_hal.c \
  ../SDK/platform/CMSIS/Include/core_cmInstr.h \
  ../SDK/platform/CMSIS/Include/core_cmFunc.h \
  ../Project_Settings/Startup_Code/system_MKL25Z4.h \
+ ../SDK/platform/devices/MKL25Z4/include/MKL25Z4_extension.h \
+ ../SDK/platform/devices/MKL25Z4/include/MKL25Z4.h \
+ ../SDK/platform/devices/MKL25Z4/include/fsl_bitaccess.h \
  ../Sources/Buzzer/buzzer_hal.h ../Sources/PIT/pit_hal.h
 
 ../Sources/GPIO/gpio_hal.h:
@@ -20,6 +23,12 @@ Sources/Buzzer/buzzer_hal.o: ../Sources/Buzzer/buzzer_hal.c \
 ../SDK/platform/CMSIS/Include/core_cmFunc.h:
 
 ../Project_Settings/Startup_Code/system_MKL25Z4.h:
+
+../SDK/platform/devices/MKL25Z4/include/MKL25Z4_extension.h:
+
+../SDK/platform/devices/MKL25Z4/include/MKL25Z4.h:
+
+../SDK/platform/devices/MKL25Z4/include/fsl_bitaccess.h:
 
 ../Sources/Buzzer/buzzer_hal.h:
 

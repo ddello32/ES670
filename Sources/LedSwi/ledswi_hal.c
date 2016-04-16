@@ -10,7 +10,7 @@
 #include "ledswi_hal.h"
 #include "KL25Z/es670_peripheral_board.h"
 
-#undef USING_OPENSDA_DEBUG
+#define USING_OPENSDA_DEBUG
 
 /**
  * As the hardware board was designed with LEDs/Switches sharing
