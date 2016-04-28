@@ -6,7 +6,9 @@
 #include "PIT/pit_hal.h"
 #include "Util/util.h"
 #include "Util/debugUart.h"
-#include "fsl_debug_console.h"
+#include "Serial/serial_hal.h"
+#include "Protocolo/cmdmachine_hal.h"
+#include <string.h>
 
 int main(void)
 {
@@ -14,22 +16,16 @@ int main(void)
 	ledswi_initLedSwitch(1,3);
 	sevenseg_init();
 	buzzer_init();
-	debugUart_init();
+	serial_setConfig();
 
-	unsigned int uiReceiveBuff;
-	sevenseg_printHex(0xABCDu);
-	buzzer_initPeriodic(0xB18Eu);		//440Hz (Base 20MHz)
-	ledswi_setLed(4);
+	char rcvBuffer[100];
+	char sndBuffer[100];
+	int iCmdSize = 0;
 	while(1){
-		if(UART0_BRD_S1_RDRF(UART0)){
-			uiReceiveBuff = GETCHAR();
-			PUTCHAR(uiReceiveBuff);
-		}
-
-		if(ledswi_getSwitchStatus(3) == SWITCH_OFF || ledswi_getSwitchStatus(2) == SWITCH_OFF || ledswi_getSwitchStatus(1) == SWITCH_OFF){
-			ledswi_setLed(0x4);
-		}else{
-			ledswi_clearLed(0x4);
+		iCmdSize = serial_recieveBuffer(rcvBuffer, 100);
+		if(iCmdSize > 0){
+			cmdmachine_interpretCmdBuffer(rcvBuffer, iCmdSize, sndBuffer);
+			serial_sendBuffer(sndBuffer, strlen(sndBuffer));
 		}
 	}
     /* Never leave main */

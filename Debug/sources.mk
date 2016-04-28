@@ -27,6 +27,8 @@ SUBDIRS := \
 Sources \
 Sources/Util \
 Sources/SevenSeg \
+Sources/Serial \
+Sources/Protocolo \
 Sources/PIT \
 Sources/Mcg \
 Sources/Main \

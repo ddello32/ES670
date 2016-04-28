@@ -28,9 +28,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- _name = "Projeto_ES670";
-	- _objectCreation = "221022813432016122611422";
-	- _umlDependencyID = "2708";
-	- _lastID = 18;
+	- _objectCreation = "92192015212016222475149";
+	- _umlDependencyID = "2679";
+	- _lastID = 19;
 	- _UserColors = { IRPYRawContainer 
 		- size = 16;
 		- value = 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 
@@ -72,7 +72,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- Subsystems = { IRPYRawContainer 
-		- size = 10;
+		- size = 11;
 		- value = 
 		{ ISubsystem 
 			- fileName = "_Projeto_Pratico";
@@ -113,6 +113,10 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		{ ISubsystem 
 			- fileName = "SevenSeg";
 			- _id = GUID e536725c-fa59-4de6-a2b0-d993b44d2f45;
+		}
+		{ ISubsystem 
+			- fileName = "Serial";
+			- _id = GUID 390ad4f1-dfda-4735-982c-17d02addfdb0;
 		}
 	}
 	- Diagrams = { IRPYRawContainer 
@@ -292,8 +296,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_requisitos";
-			- _objectCreation = "221051013432016122329422";
-			- _umlDependencyID = "3177";
+			- _objectCreation = "92193415212016222473749";
+			- _umlDependencyID = "3157";
 			- _description = { IDescription 
 				- _textRTF = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1046{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
 \\viewkind4\\uc1\\pard\\fs20 Diagrama de requisitos de sistema do projeto pr\\'e1tico da ES670 \\par
@@ -1480,8 +1484,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_pacotes";
-			- _objectCreation = "221051213432016122327422";
-			- _umlDependencyID = "2816";
+			- _objectCreation = "92193615212016222473549";
+			- _umlDependencyID = "2796";
 			- _lastModifiedTime = "4.11.2016::0:13:46";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 84c7ed09-6a53-4e4a-925b-6e70d2f9ea4a;
@@ -2256,9 +2260,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_definicao_semana_04_05";
-			- _objectCreation = "221051413432016122325422";
-			- _umlDependencyID = "4110";
-			- _lastModifiedTime = "4.13.2016::15:43:17";
+			- _objectCreation = "92193815212016222473349";
+			- _umlDependencyID = "4090";
+			- _lastModifiedTime = "4.16.2016::1:21:0";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 338e6526-0699-499c-b6b4-93ea64c72097;
 				- m_type = 0;
@@ -2282,7 +2286,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 				- m_drawBehavior = 0;
 				- m_bIsPreferencesInitialized = 0;
-				- elementList = 28;
+				- elementList = 29;
 				{ CGIClass 
 					- _id = GUID cbe743a9-93d8-4b8d-93fe-5a38658f4c13;
 					- m_type = 78;
@@ -5189,6 +5193,60 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- m_TargetPort = 4 1389 ;
 					- m_ShowName = 0;
 					- m_ShowStereotype = 1;
+				}
+				{ CGIClass 
+					- _id = GUID 29e79e72-1b82-49eb-a560-b60bc1c0e2ed;
+					- m_type = 87;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IClass";
+						- _filename = "Serial.sbs";
+						- _subsystem = "Serial";
+						- _class = "";
+						- _name = "serial_hal";
+						- _id = GUID c9803631-8374-420b-bdb0-4133b4715396;
+					}
+					- m_pParent = GUID cbe743a9-93d8-4b8d-93fe-5a38658f4c13;
+					- m_name = { CGIText 
+						- m_str = "Serial::serial_hal";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 5;
+					}
+					- m_drawBehavior = 2056;
+					- m_transform = 0.104816 0 0 0.101604 1046.79 340.572 ;
+					- m_bIsPreferencesInitialized = 1;
+					- m_AdditionalLabel = { CGIText 
+						- m_str = "";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 1;
+					}
+					- m_polygon = 4 2 329  2 1451  1061 1451  1061 329  ;
+					- m_nNameFormat = 0;
+					- m_nIsNameFormat = 0;
+					- frameset = "<frameset rows=50%,50%>
+<frame name=AttributeListCompartment>
+<frame name=PrimitiveOperationListCompartment>";
+					- Attrs = { IRPYRawContainer 
+						- size = 0;
+					}
+					- Operations = { IRPYRawContainer 
+						- size = 0;
+					}
 				}
 				
 				- m_access = 'Z';
