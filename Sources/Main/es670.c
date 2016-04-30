@@ -10,19 +10,23 @@
 #include "Protocolo/cmdmachine_hal.h"
 #include <string.h>
 
+#define RCV_BUF_SIZE 100
+#define SND_BUF_SIZE 100
+
+
 int main(void)
 {
 	mcg_clockInit();
 	ledswi_initLedSwitch(1,3);
-	sevenseg_init();
+//	sevenseg_init();
 	buzzer_init();
 	serial_setConfig();
 
-	char rcvBuffer[100];
-	char sndBuffer[100];
+	char rcvBuffer[RCV_BUF_SIZE];
+	char sndBuffer[SND_BUF_SIZE];
 	int iCmdSize = 0;
 	while(1){
-		iCmdSize = serial_recieveBuffer(rcvBuffer, 100);
+		iCmdSize = serial_recieveBuffer(rcvBuffer, RCV_BUF_SIZE);
 		if(iCmdSize > 0){
 			cmdmachine_interpretCmdBuffer(rcvBuffer, iCmdSize, sndBuffer);
 			serial_sendBuffer(sndBuffer, strlen(sndBuffer));

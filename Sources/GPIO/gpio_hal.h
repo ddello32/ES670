@@ -45,7 +45,7 @@
 //Wrapper macro above is needed for argument expansion when using concatenation
 #define _GPIO_INIT_PIN(PORT_ID, PIN_NUM, DIR)\
     /* set pin as gpio */\
-    PORT ## PORT_ID ## _PCR ## PIN_NUM = PORT_PCR_MUX(GPIO_MUX_ALT);\
+	PORT_PCR_REG(PORT ## PORT_ID , PIN_NUM) = PORT_PCR_MUX(GPIO_MUX_ALT);\
     /* Set pin direction */\
     if(DIR == GPIO_OUTPUT){\
     	GPIO ## PORT_ID ## _PDDR |= GPIO_PDDR_PDD(0x01 << PIN_NUM);\
@@ -99,6 +99,19 @@
 
 //Wrapper macro above is needed for argument expansion when using concatenation
 #define _GPIO_READ_PIN(PORT_ID, PIN_NUM)\
-		((GPIO ## PORD_ID ## _PDIR & (0x01u << PIN_NUM)) >> PIN_NUM) )
+		( ((GPIO ## PORT_ID ## _PDIR & (0x01u << PIN_NUM)) >> PIN_NUM) )
+
+/**
+ * Reads the driven status of a output GPIO PIN
+ * @param PORT_ID the GPIO port id(A,B)
+ * @param PIN_NUM pin number in port
+ * @param VAL pin value (GPIO_HIGH, GPIO_LOW)
+ */
+#define GPIO_GET_OUTPUT_STATE(PORT_ID, PIN_NUM)\
+    _GPIO_GET_OUTPUT_STATE(PORT_ID, PIN_NUM)
+
+//Wrapper macro above is needed for argument expansion when using concatenation
+#define _GPIO_GET_OUTPUT_STATE(PORT_ID, PIN_NUM)\
+		( ((GPIO ## PORT_ID ## _PDOR & (0x01u << PIN_NUM)) >> PIN_NUM) )
 
 #endif /* SOURCES_GPIO_GPIO_HAL_H_ */

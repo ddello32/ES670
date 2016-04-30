@@ -7,7 +7,8 @@ Sources/LedSwi/ledswi_hal.o: ../Sources/LedSwi/ledswi_hal.c \
  ../Project_Settings/Startup_Code/system_MKL25Z4.h \
  ../SDK/platform/devices/MKL25Z4/include/MKL25Z4_extension.h \
  ../SDK/platform/devices/MKL25Z4/include/MKL25Z4.h \
- ../SDK/platform/devices/MKL25Z4/include/fsl_bitaccess.h
+ ../SDK/platform/devices/MKL25Z4/include/fsl_bitaccess.h \
+ ../Sources/GPIO/gpio_hal.h
 
 ../Sources/LedSwi/ledswi_hal.h:
 
@@ -28,3 +29,5 @@ Sources/LedSwi/ledswi_hal.o: ../Sources/LedSwi/ledswi_hal.c \
 ../SDK/platform/devices/MKL25Z4/include/MKL25Z4.h:
 
 ../SDK/platform/devices/MKL25Z4/include/fsl_bitaccess.h:
+
+../Sources/GPIO/gpio_hal.h:

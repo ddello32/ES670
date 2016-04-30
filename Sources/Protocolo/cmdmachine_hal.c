@@ -27,6 +27,15 @@ static int iState = STATE_IDLE;
 //============================================================================
 // IDLE STATE MACHINE
 //============================================================================
+/**
+ * Handles parsing while in IDLE state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the commmand response
+ *
+ * @return The number of characters parsed while in the IDLE state
+ */
 unsigned int handleIdle(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	unsigned int uiCounter = 0;
 	while(uiCounter < uiSize && iState == STATE_IDLE){
@@ -56,76 +65,128 @@ unsigned int handleIdle(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 //==========================================================================
 // LED CMD STATE MACHINE
 //==========================================================================
-char parseLedNum(char cLedInput){
+/**
+ * Parses character ledNumberReference into a led number
+ *
+ * @param ccLedInput Character between '1' and '4' refering to the desired
+ * 						led number
+ *
+ * @return Led number reference (number between 1 and 4) or -1 in case of invalid
+ * 				input
+ */
+ledswi_pin_type_e parseLedNum(char cLedInput){
 	switch(cLedInput){
 		case '1':
-			return 1;
+			return LS_1;
 		case '2':
-			return 2;
+			return LS_2;
 		case '3':
-			return 3;
+			return LS_3;
 		case '4':
-			return 4;
+			return LS_4;
 		default:
 			iState = STATE_ERR;
-			return -1;
+			return UNKNOWN;
 	}
 }
 
-
+/**
+ * Handles parsing while in LED_COMMAND state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the command response
+ *
+ * @return The number of characters parsed while in the LED_COMMAND state
+ */
 unsigned int handleLed(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	unsigned int uiCounter = 0;
-	char cLedNum = -1;
-	void (*fpLedFunction)(char);
+	ledswi_pin_type_e eLedNum = UNKNOWN;
+	void (*fpLedFunction)(ledswi_pin_type_e);
 	while(uiCounter < uiSize && iState == STATE_LED_CMD){
 		switch(cpCmdBuffer[uiCounter++]){
 			case 'C':
-				cLedNum = parseLedNum(cpCmdBuffer[uiCounter++]);
+				eLedNum = parseLedNum(cpCmdBuffer[uiCounter++]);
 				fpLedFunction = &ledswi_clearLed;
 				break;
 			case 'S':
-				cLedNum = parseLedNum(cpCmdBuffer[uiCounter++]);
+				eLedNum = parseLedNum(cpCmdBuffer[uiCounter++]);
 				fpLedFunction = &ledswi_setLed;
+				break;
+			case 'R':
+				eLedNum = parseLedNum(cpCmdBuffer[uiCounter++]);
+				if(eLedNum != UNKNOWN){
+					strcat(cpCmdRes, ACK_STR);
+					ledswi_setLed(eLedNum);
+					if(ledswi_getLedStatus(eLedNum) == LED_ON){
+						strcat(cpCmdRes, "O\n");
+					}else{
+						strcat(cpCmdRes, "C\n");
+					}
+					iState = STATE_IDLE;
+				}else{
+					iState = STATE_ERR;
+				}
+				return uiCounter;
 				break;
 			default:
 				iState = STATE_ERR;
 		}
 	}
-	if(cLedNum > 0){
+	if(eLedNum != UNKNOWN){
 		strcat(cpCmdRes, ACK_STR);
-		(*fpLedFunction)(cLedNum);
+		ledswi_initLed(eLedNum);
+		(*fpLedFunction)(eLedNum);
 		iState = STATE_IDLE;
+	}else{
+		iState = STATE_ERR;
 	}
 	return uiCounter;
 }
 //==========================================================================
 // SWITCH CMD STATE MACHINE
 //==========================================================================
+/**
+ * Handles parsing while in SWITCH_COMMAND state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the command response
+ *
+ * @return The number of characters parsed while in the SWITCH_COMMAND state
+ */
 unsigned int handleSwitch(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	unsigned int uiCounter = 0;
-	char cSwiNum = -1;
+	ledswi_pin_type_e eSwiNum = UNKNOWN;
 	while(uiCounter < uiSize && iState == STATE_SWITCH_CMD){
 		switch(cpCmdBuffer[uiCounter++]){
 			case '1':
-				cSwiNum = 1;
+				eSwiNum = LS_1;
+				break;
 			case '2':
-				cSwiNum = 2;
+				eSwiNum = LS_2;
+				break;
 			case '3':
-				cSwiNum = 3;
+				eSwiNum = LS_3;
+				break;
 			case '4':
-				cSwiNum = 4;
+				eSwiNum = LS_4;
+				break;
 			default:
-				cSwiNum = -1;
-				iState = STATE_ERR;
+				eSwiNum = UNKNOWN;
+				break;
 		}
-		if(cSwiNum > 0){
+		if(eSwiNum !=  UNKNOWN){
 			strcat(cpCmdRes, ACK_STR);
-			if(ledswi_getSwitchStatus(cSwiNum) == SWITCH_ON){
+			ledswi_initSwitch(eSwiNum);
+			if(ledswi_getSwitchStatus(eSwiNum) == SWITCH_ON){
 				strcat(cpCmdRes, "O\n");
 			}else{
 				strcat(cpCmdRes, "C\n");
 			}
 			iState = STATE_IDLE;
+		}else{
+			iState = STATE_ERR;
 		}
 	}
 	return uiCounter;
@@ -135,31 +196,47 @@ unsigned int handleSwitch(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes
 //==========================================================================
 // BUZZER CMD STATE MACHINE
 //==========================================================================
-unsigned int getBuzzMs(char *cpCmdBuffer, unsigned int uiSize){
-	unsigned int uiMs = -1;
-	if(uiSize >= 3){
-		if(!sscanf(cpCmdBuffer, "%3u", &uiMs)){
-			uiMs = -1;
-		}
+/**
+ * Parses Buzzer command milliseconds input into integer
+ *
+ * @param cpCmdBuffer The start of the Buzzer command milliseconds input string
+ *
+ * @return The parsed number of milliseconds contained in the start of the command
+ * 				string or -1 in case of parsing failure
+ */
+int getBuzzMs(char *cpCmdBuffer){
+	int iMs = -1;
+	if(!sscanf(cpCmdBuffer, "%3d", &iMs)){
+		iMs = -1;
 	}
-	return uiMs;
+	return iMs;
 }
 
+/**
+ * Handles parsing while in BUZZER_COMMAND state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the command response
+ *
+ * @return The number of characters parsed while in the BUZZER_COMMAND state
+ */
 int handleBuzzer(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	unsigned int uiCounter = 0;
-	unsigned int buzzMs = -1;
+	int iBuzzMs = -1;
 	if(uiCounter < uiSize){
-		buzzMs = getBuzzMs(cpCmdBuffer, uiSize);
+		iBuzzMs = getBuzzMs(cpCmdBuffer);
 	}
-	if(buzzMs >= 0){
+	if(iBuzzMs >= 0){
 		strcat(cpCmdRes, ACK_STR);
 		buzzer_initPeriodic(0xB18Eu);		//440Hz (Base 20MHz)
-		for(int i = 0; i < buzzMs; i++){
+		for(int i = 0; i < iBuzzMs; i++){
 			util_genDelay1ms();
 		}
 		buzzer_stopPeriodic();
 		iState = STATE_IDLE;
-		while(uiCounter < 3 && cpCmdBuffer[uiCounter] >= '0' && cpCmdBuffer[uiCounter] <= '9'){
+		//Exactly how many characters where read.
+		while(uiCounter < 3 && uiCounter < uiSize && cpCmdBuffer[uiCounter] >= '0' && cpCmdBuffer[uiCounter] <= '9'){
 			uiCounter++;
 		}
 	}else{
@@ -171,6 +248,15 @@ int handleBuzzer(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 //============================================================================
 // ERROR STATE MACHINE
 //============================================================================
+/**
+ * Handles parsing while in ERR state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the command response
+ *
+ * @return The number of characters parsed while in the ERR state
+ */
 int handleError(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	int uiCounter = 0;
 	while(uiCounter < uiSize && iState == STATE_ERR){
@@ -227,6 +313,9 @@ void cmdmachine_interpretCmdBuffer(char *cpCmdBuffer, unsigned int uiSize, char*
 				break;
 			case STATE_SWITCH_CMD:
 				uiCounter += handleSwitch(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
+				break;
+			case STATE_BUZZER_CMD:
+				uiCounter += handleBuzzer(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
 				break;
 			case STATE_ERR:
 				uiCounter += handleError(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);

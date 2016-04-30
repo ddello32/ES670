@@ -63,11 +63,14 @@ int serial_recieveBuffer(char *cpBuffer, unsigned int uiSize){
 
 		switch(*cpBuffer){
 			case '\n':
+			case '\r':
+				*(++cpBuffer) = '\0';
 			case '\0':
 				return ret;
 			default:
 				cpBuffer++;
 		}
 	}
+	*cpBuffer = '\0';
 	return ret;
 }

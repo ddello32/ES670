@@ -8,7 +8,7 @@
 /* ***************************************************************** */
 
 #include "ledswi_hal.h"
-#include "KL25Z/es670_peripheral_board.h"
+#include "GPIO/gpio_hal.h"
 
 #define USING_OPENSDA_DEBUG
 
@@ -75,106 +75,69 @@ void ledswi_initLedSwitch(char cLedNum, char cSwitchNum)
 }
 
 
+/**
+ * initializes pin as LED
+ * @param ePin which pin {1..4}
+ */
+void ledswi_initLed(ledswi_pin_type_e ePin){
+	GPIO_INIT_PIN(LS_PORT_ID, ePin, GPIO_OUTPUT);
+}
+
+/**
+ * initializes pin as SWITCH
+ * @param ePin which pin {1..4}
+ */
+void ledswi_initSwitch(ledswi_pin_type_e ePin){
+	GPIO_INIT_PIN(LS_PORT_ID, ePin, GPIO_INPUT);
+}
 
 /**
  * set the led ON
- * @param cLedNum which LED {1..4}
+ * @param eLedPin which LED {1..4}
  */
-void ledswi_setLed(char cLedNum)
+void ledswi_setLed(ledswi_pin_type_e eLedPin)
 {
-    /* sanity check */
-    if(cLedNum <= MAX_LED_SWI)
-    {
-        switch(cLedNum)
-        {
-            case 1:
-                GPIOA_PSOR = GPIO_PSOR_PTSO( (0x01U << LS1_PIN) );
-                break;
-            case 2:
-                GPIOA_PSOR = GPIO_PSOR_PTSO( (0x01U << LS2_PIN) );
-                break;
-            case 3:
-                GPIOA_PSOR = GPIO_PSOR_PTSO( (0x01U << LS3_PIN) );
-                break;
-            case 4:
-                GPIOA_PSOR = GPIO_PSOR_PTSO( (0x01U << LS4_PIN) );
-                break;
-        } /* switch(cLedNum) */
-
-    } /* if(cLedNum <= MAX_LED_SWI) */
+   GPIO_WRITE_PIN(LS_PORT_ID, eLedPin, GPIO_HIGH);
 }
 
 
 
 /**
  * set the led OFF
- * @param cLedNum which LED {1..4}
+ * @param eLedPin which LED {1..4}
  */
-void ledswi_clearLed(char cLedNum)
+void ledswi_clearLed(ledswi_pin_type_e eLedPin)
 {
-    /* sanity check */
-    if(cLedNum <= MAX_LED_SWI)
-    {
-        switch(cLedNum)
-        {
-            case 1:
-                GPIOA_PCOR = GPIO_PCOR_PTCO( (0x01U << LS1_PIN) );
-                break;
-            case 2:
-                GPIOA_PCOR = GPIO_PCOR_PTCO( (0x01U << LS2_PIN) );
-                break;
-            case 3:
-                GPIOA_PCOR = GPIO_PCOR_PTCO( (0x01U << LS3_PIN) );
-                break;
-            case 4:
-                GPIOA_PCOR = GPIO_PCOR_PTCO( (0x01U << LS4_PIN) );
-                break;
-        } /* switch(cLedNum) */
-
-    } /* if(cLedNum <= MAX_LED_SWI) */
+   GPIO_WRITE_PIN(LS_PORT_ID, eLedPin, GPIO_LOW);
 }
 
 
+/**
+ * return the led status
+ *
+ * @param eLedPin which LED {1..4}
+ *
+ * @return If the led is ON or OFF
+ */
+led_status_type_e ledswi_getLedStatus(ledswi_pin_type_e eLedPin){
+	  led_status_type_e lstReturn = LED_OFF;
+	  if(GPIO_GET_OUTPUT_STATE(LS_PORT_ID, eLedPin) == LED_ON){
+		  lstReturn = LED_ON;
+	  }
+	  return(lstReturn);
+}
 
 /**
  * return the switch status
- * @param cSwitchNum which switch
+ *
+ * @param eSwPin which Switch {1..4}
+ *
  * @return If the switch is ON or OFF
  */
-switch_status_type_e ledswi_getSwitchStatus(char cSwitchNum)
-{
-    switch_status_type_e sstReturn = SWITCH_OFF;
-
-    /* sanity check */
-    if(cSwitchNum <= MAX_LED_SWI)
-    {
-        switch(cSwitchNum)
-        {
-            case 1:
-                if(SWITCH_ON == ((GPIOA_PDIR & LS1_DIR_INPUT) >> LS1_PIN) )
-                    sstReturn = SWITCH_ON;
-                break;
-
-            case 2:
-                if(SWITCH_ON == ((GPIOA_PDIR & LS2_DIR_INPUT) >> LS2_PIN) )
-                    sstReturn = SWITCH_ON;
-                break;
-
-            case 3:
-                if(SWITCH_ON == ((GPIOA_PDIR & LS3_DIR_INPUT) >> LS3_PIN) )
-                    sstReturn = SWITCH_ON;
-                break;
-
-            case 4:
-                if(SWITCH_ON == ((GPIOA_PDIR & LS4_DIR_INPUT) >> LS4_PIN) )
-                    sstReturn = SWITCH_ON;
-                break;
-
-        } /* switch(cSwitchNum) */
-
-    } /* if(cSwitchNum <= MAX_LED_SWI) */
-
-    /* return the result */
-    return(sstReturn);
-
+switch_status_type_e ledswi_getSwitchStatus(ledswi_pin_type_e eSwPin){
+	  switch_status_type_e sstReturn = SWITCH_OFF;
+	  if(GPIO_READ_PIN(LS_PORT_ID, eSwPin) == SWITCH_ON){
+		  sstReturn = SWITCH_ON;
+	  }
+	  return(sstReturn);
 }

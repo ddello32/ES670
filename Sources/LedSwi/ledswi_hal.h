@@ -10,13 +10,31 @@
 #ifndef SOURCES_LEDSWI_LEDSWI_HAL_H_
 #define SOURCES_LEDSWI_LEDSWI_HAL_H_
 
+#include "KL25Z/es670_peripheral_board.h"
+
+
 #define MAX_LED_SWI        04
 
 typedef enum
 {
-    SWITCH_OFF,
-    SWITCH_ON
+    LS_1 =	LS1_PIN,
+	LS_2 = 	LS2_PIN,
+	LS_3 = 	LS3_PIN,
+	LS_4 = 	LS4_PIN,
+	UNKNOWN = -1
+} ledswi_pin_type_e;
+
+typedef enum
+{
+    SWITCH_ON,
+    SWITCH_OFF
 } switch_status_type_e;
+
+typedef enum
+{
+    LED_OFF,
+    LED_ON
+} led_status_type_e;
 
 /**
  * As the hardware board was designed with LEDs/Switches sharing
@@ -29,25 +47,47 @@ void ledswi_initLedSwitch(char cLedNum, char cSwitchNum);
 
 
 /**
- * set the led ON
- * @param cLedNum which LED {1..4}
+ * initializes pin as LED
+ * @param ePin which pin {1..4}
  */
-void ledswi_setLed(char cLedNum);
+void ledswi_initLed(ledswi_pin_type_e ePin);
+
+/**
+ * initializes pin as SWITCH
+ * @param ePin which pin {1..4}
+ */
+void ledswi_initSwitch(ledswi_pin_type_e ePin);
+
+/**
+ * set the led ON
+ * @param eLedPin which LED {1..4}
+ */
+void ledswi_setLed(ledswi_pin_type_e eLedPin);
+
 
 
 /**
  * set the led OFF
- * @param cLedNum which LED {1..4}
+ * @param eLedPin which LED {1..4}
  */
-void ledswi_clearLed(char cLedNum);
+void ledswi_clearLed(ledswi_pin_type_e eLedPin);
 
 
 /**
+ * return the led status
+ *
+ * @param eLedPin which LED {1..4}
+ *
+ * @return If the led is ON or OFF
+ */
+led_status_type_e ledswi_getLedStatus(ledswi_pin_type_e eLedPin);
+
+/**
  * return the switch status
- * @param cSwitchNum which switch
+ *
+ * @param eSwPin which Switch {1..4}
+ *
  * @return If the switch is ON or OFF
  */
-switch_status_type_e ledswi_getSwitchStatus(char cSwitchNum);
-
-
+switch_status_type_e ledswi_getSwitchStatus(ledswi_pin_type_e eSwPin);
 #endif /* SOURCES_LEDSWI_LEDSWI_HAL_H_ */
