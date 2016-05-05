@@ -90,6 +90,8 @@ O objetivo do projeto é, de maneira incremental, implementar no \textit{target}
 % Diagramas requisitos implementados, digrama de blocos, etc
 Utilizando o Rational Rhapsody Modeler e tomando como base os requisitos propostos mostrados na figura \ref{fig:requisitos}, complementamos o modelo inicial\cite{bb:modelo} (requisitos de teclado e LEDs) adicionando um bloco ao modelo referente aos \textit{displays} de sete segmentos (REQ1C), conforme mostrado na figura \ref{fig:blocos}. Adicionamos também alguns blocos auxiliares relacionados ao gerenciamento de pinos \textit{GPIO} e a interrupções periódicas, que foram utilizados para nossa implementação do \textit{display} de sete segmentos e do \textit{buzzer}. Ao tratar o gerenciamento do \textit{display} e do \textit{buzzer} através de interrupções, livramos a \textit{thread} principal para que essa lide com outros problemas sem precisar se preocupar com a atualização periódica dos \textit{displays}.
 
+Continuamos a complementar nosso diagrama adicionando um bloco responsável pela comunicação serial e um pela interpretação dos comandos referentes ao protocolo do requisito REQ2.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{requisitos}
@@ -109,13 +111,26 @@ Utilizando o Rational Rhapsody Modeler e tomando como base os requisitos propost
 	\label{fig:blocos}
 \end{figure}
 
-O bloco de \textit{GPIO\_hal} tem operações para desbloquear o \textit{clock} para uma porta, inicializar um pino em uma dada direção, escrever em um pino, escrever em um conjunto de pinos da mesma porta e ler a entrada em um pino.
+O bloco de \textit{GPIO\_hal} tem operações para desbloquear o \textit{clock} para uma porta, inicializar um pino em uma dada direção, escrever em um pino, escrever em um conjunto de pinos da mesma porta, ler a entrada em um pino e ler o valor de saída que está sendo controlado em um pino.
 
 O bloco \textit{pit\_hal} tem tem operações para inicializar o \textit{PIT}, criar interrupções periódicas em um dos dois \textit{timers} disponíveis, desativar as interrupções em um \textit{timer} e marcar uma interrupção como tratada (deve ser feito pelos tratamentos de interrupção). Além disso esse bloco tem mais uma operação chamada \textit{PIT\_IRQHandler }que trata as interrupções do \textit{PIT}, essa operação precisa ser visível para o \textit{linker}, mas não deve ser chamada pelo usuário. É importante ressaltar que o \textit{clock} do \textit{PIT} é o \textit{bus\_clock} que no nosso caso é de $20MHz$
 
 As operações do bloco \textit{sevenseg\_hal} cobrem a inicialização dos \textit{displays}, seleção manual de quais segmentos estarão ativos (feita através da passagem de um vetor com os segmentos desejados), ativação manual de um dos \textit{displays} (desativando todos os outros), conversão de dígito hexadecimal ou decimal em vetor de segmentos (para ser passado para a função de seleção de segmentos) e impressão automática de um valor hexadecimal ou decimal através das interrupções de \textit{timer}.
 
 O bloco do \textit{buzzer\_hal} também ganhou duas novas operações, uma para criar uma onda quadrada no \textit{buzzer} com um certo período (e \textit{duty cycle} de $50\%$), através de interrupções de \textit{timer}, e outra para remover essa onda.
+
+O bloco \textit{ledswi\_hal} foi alterado para lidar melhor com a inicialização separada dos pinos como Led e Switch e também foi adicionada uma função para ler o estado atual de um pino configurado como LED.
+
+O bloco \textit{serial\_hal} é responsável pela configuração da UART para comunicação serial e pelo envio de recebimento de dados através desse protocolo.
+
+O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e geração da string de resposta. Em nossa implementação, escolhemos tratar uma string já bufferada de commandos ao invés de trabalhar caractere a caractere. A máquina de estados do tratamento dos comandos pode ser vista na figura \ref{fig:estados}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.5\linewidth, center]{estados}
+	\caption{Diagrama de máquina de estados para interpretação dos comandos}
+	\label{fig:esta}
+\end{figure}
 
 \section{Diagramas Esquemáticos}
 % Diagramas esquemáticos do target utilizados
@@ -152,23 +167,41 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 	\caption{Matriz de Rastreabilidade}
 	\label{tab:rastreabilidade}
 	\small
+	\scalebox{0.8}{
 	\begin{tabular}{|c|l|}
 		\hline \bfseries{ID do Requisito} & \bfseries{Implementação}\\ 
 		\hline REQ1A 	& \texttt{ledswi\_hal.c}\\ 
 						& \texttt{- void ledswi\_initLedSwitch(char cLedNum, char cSwitchNum)}\\
 						& \texttt{- switch\_status\_type\_e ledswi\_getSwitchStatus(char cSwitchNum)}\\
-		\hline REQ1B 	& \texttt{ledswi.c}\\ 
+						& \texttt{- void ledswi\_initSwich(ledswi\_pin\_type\_e ePin)}\\
+		\hline REQ1B 	& \texttt{ledswi\_hal.c}\\ 
 						& \texttt{- void ledswi\_initLedSwitch(char cLedNum, char cSwitchNum)}\\
 						& \texttt{- void ledswi\_setLed(char cLedNum)}\\ 
 						& \texttt{- void ledswi\_clearLed(char cLedNum)}\\
-		\hline REQ1C 	& \texttt{sevenSeg.c}\\ 
+						& \texttt{- void ledswi\_initLed(ledswi\_pin\_type\_e ePin)}\\
+						& \texttt{- led\_status\_type\_e ledswi\_getLedStatus(ledswi\_pin\_type\_e eLedPin)}\\
+		\hline REQ1C 	& \texttt{sevenseg\_hal.c}\\ 
 						& \texttt{- void sevenseg\_init(void)}\\
 						& \texttt{- void sevenseg\_setSegs(seven\_segment\_seg\_type\_e* epSet\_segments)}\\
 						& \texttt{- void sevenseg\_setDisp(seven\_segment\_disp\_type\_e eDisplay)}\\
 						& \texttt{- void sevenseg\_printDec(unsigned int uiDec)}\\
 						& \texttt{- void sevenseg\_printHex(unsigned int uiHex)}\\
+		\hline REQ2 	& \texttt{serial\_hal.c}\\ 
+						& \texttt{- void serial\_initUart(void)}\\
+						& \texttt{- void serial\_sendBuffer(char *cpBuffer, unsigned int uiSize)}\\
+						& \texttt{- int serial\_recieveBuffer(char *cpBuffer, unsigned int uiSize)}\\
+						& \texttt{cmdMachine\_hal.c}\\
+						& \texttt{- void cmdmachine\_interpretCmdBuffer(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{- int handleError(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{- int handleBuzzer(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)};\\
+						& \texttt{-int getBuzzMs(char *cpCmdBuffer)}\\
+						& \texttt{-unsigned int handleSwitch(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{-unsigned int handleLed(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{-ledswi\_pin\_type\_e parseLedNum(char cLedInput)}\\
+						& \texttt{-unsigned int handleIdle(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
 		\hline 
-	\end{tabular} 
+	\end{tabular}
+	} 
 	\normalsize
 \end{table}
 \section{Notas}
@@ -221,5 +254,6 @@ Listagem dos códigos fonte:
 \code{../Sources/KL25Z/es670_peripheral_board.h}
 \code{../Sources/Util/util.h}
 \code{../Sources/Util/util.c}
+\code{../}
 \end{document}
 
