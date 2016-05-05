@@ -22,10 +22,10 @@ void pit_enable(void);
  * Timer interruptions are masked.
  *
  * @param usTimer_numb 	The number for the desired timer (0,1)
- * @param uiTimer_period  The number of bus_clock cycles between interrupts
+ * @param uiTimer_period_ms  The number of microseconds between interrupts
  * @param fpInterrupt_handler   	Timer interrupt handler routine address pointer
  */
-void pit_start_timer_interrupt(unsigned short usTimer_numb, unsigned int uiTimer_period, void (*fpInterrupt_handler)(void));
+void pit_start_timer_interrupt(unsigned short usTimer_numb, unsigned int uiTimer_period_us, void (*fpInterrupt_handler)(void));
 
 /**
  * Stop interruptions for given timer, unchained mode.

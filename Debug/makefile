@@ -16,6 +16,7 @@ RM := rm -rf
 -include Sources/Mcg/subdir.mk
 -include Sources/Main/subdir.mk
 -include Sources/LedSwi/subdir.mk
+-include Sources/LCD/subdir.mk
 -include Sources/Buzzer/subdir.mk
 -include Sources/subdir.mk
 -include Project_Settings/Startup_Code/subdir.mk

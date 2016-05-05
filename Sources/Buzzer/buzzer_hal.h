@@ -31,9 +31,11 @@ void buzzer_setBuzz(void);
 /**
  * Starts the buzzer with the specified period
  *
- * @param uiPeriod The period of the buzzer signal, in clock cycles (40MHz)
+ * @param uiBuzzFreq_hz The frequency of the buzzer signal, in Hz
+ * @param uiDuration_ms How many milliseconds the buzzer should be producing sound
+ * 							if 0 buzzer will stay on indeterminaly.
  */
-void buzzer_initPeriodic(unsigned int uiPeriod);
+void  buzzer_initPeriodic(unsigned int uiBuzzFreq_hz, unsigned int uiDuration_ms);
 
 /**
  * Stops any periodic buzzer signal

@@ -20,8 +20,14 @@
 #define  CGC_CLOCK_DISABLED         0x00U
 #define  CGC_CLOCK_ENABLED          0x01U
 
-/* GPIO DIRECTION    */
-#define GPIO_OUTPUT 				0x01U
+/* GPIO input / output */
+#define GPIO_INPUT                  0x00U
+#define GPIO_OUTPUT                 0x01U
+
+#define GPIO_MUX_ALT                0x01u
+
+#define GPIO_HIGH					1
+#define GPIO_LOW					0
 
 /*	Workaround for PORT_ID macro expansion to stop at port level*/
 typedef int A;
@@ -131,6 +137,48 @@ typedef int E;
 #define SEG_DISP4_ALT                 SEGA_ALT
 
 /*                 END of SEVEN SEGMENT DISPLAY Definitions                    */
+
+
+/*                 END OF General uC definitions         */
+
+
+/*                 LCD definitions                 */
+
+/* LCD Register Selector
+ * Used as register selector input
+ * When (LCD_RS = LCD_RS_HIGH) => DATA register is selected
+ * When (LCD_RS = LCD_RS_LOW)  => INSTRUCTION register is selected
+*/
+#define LCD_PORT_BASE_PNT           PORTC                                   /* peripheral port base pointer */
+#define LCD_PORT_ID					C
+#define LCD_GPIO_BASE_PNT           PTC                                     /* peripheral gpio base pointer */
+
+#define LCD_RS_PIN                  8                                      /* register selector */
+#define LCD_RS_DIR                  GPIO_OUTPUT
+
+#define LCD_ENABLE_PIN              9                                      /* enable pin */
+#define LCD_ENABLE_DIR              GPIO_OUTPUT
+
+#define LCD_RS_HIGH                 GPIO_HIGH
+#define LCD_RS_DATA                 LCD_RS_HIGH
+
+#define LCD_RS_LOW                  GPIO_LOW
+#define LCD_RS_CMD                  LCD_RS_LOW
+
+#define LCD_ENABLED                 1U
+#define LCD_DISABLED                0U
+
+#define LCD_DATA_DIR                GPIO_OUTPUT                      /* LCD data pins */
+
+#define LCD_DATA_DB0_PIN            0
+#define LCD_DATA_DB1_PIN            1
+#define LCD_DATA_DB2_PIN            2
+#define LCD_DATA_DB3_PIN            3
+#define LCD_DATA_DB4_PIN            4
+#define LCD_DATA_DB5_PIN            5
+#define LCD_DATA_DB6_PIN            6
+#define LCD_DATA_DB7_PIN            7
+/*                 END OF LCD definitions                 */
 
 
 #endif /* SOURCES_ES670_PERIPHERAL_BOARD_H_ */

@@ -8,14 +8,37 @@
 /* ***************************************************************** */
 
 #include "serial_hal.h"
-#include "Util/debugUart.h"
 #include "KL25Z/es670_peripheral_board.h"
+#include "fsl_clock_manager.h"
+#include "fsl_debug_console.h"
+
+
+/* The UART to use for debug messages */
+#ifndef BOARD_DEBUG_UART_INSTANCE
+    #define BOARD_DEBUG_UART_INSTANCE   0
+    #define BOARD_DEBUG_UART_BASEADDR   UART0
+#endif
+#ifndef BOARD_DEBUG_UART_BAUD
+    #define BOARD_DEBUG_UART_BAUD       9600
+#endif
+
 
 /**
  * Initialize the serial device configuration
  */
-void serial_setConfig(void){
-	debugUart_init();
+void serial_initUart(void){
+    /* LPSCI0 */
+    /* UART0_RX */
+	PORT_PCR_REG(PORTA , 1) = PORT_PCR_MUX(2U);
+    /* UART0_TX */
+	PORT_PCR_REG(PORTA , 2) = PORT_PCR_MUX(2U);
+
+
+    /* Select different clock source for LPSCI */
+    CLOCK_SYS_SetLpsciSrc(BOARD_DEBUG_UART_INSTANCE, kClockLpsciSrcPllFllSel);
+
+    /* init the debug console */
+    DbgConsole_Init(BOARD_DEBUG_UART_INSTANCE, BOARD_DEBUG_UART_BAUD, kDebugConsoleLPSCI);
 }
 
 

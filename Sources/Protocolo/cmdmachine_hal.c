@@ -229,11 +229,7 @@ int handleBuzzer(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	}
 	if(iBuzzMs >= 0){
 		strcat(cpCmdRes, ACK_STR);
-		buzzer_initPeriodic(0xB18Eu);		//440Hz (Base 20MHz)
-		for(int i = 0; i < iBuzzMs; i++){
-			util_genDelay1ms();
-		}
-		buzzer_stopPeriodic();
+		buzzer_initPeriodic(440, iBuzzMs);		//440Hz
 		iState = STATE_IDLE;
 		//Exactly how many characters where read.
 		while(uiCounter < 3 && uiCounter < uiSize && cpCmdBuffer[uiCounter] >= '0' && cpCmdBuffer[uiCounter] <= '9'){

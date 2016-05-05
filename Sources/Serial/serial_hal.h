@@ -13,7 +13,7 @@
 /**
  * Initialize the serial device configuration
  */
-void serial_setConfig(void);
+void serial_initUart(void);
 
 
 /**

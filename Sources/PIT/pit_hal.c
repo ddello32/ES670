@@ -11,6 +11,7 @@
 
 #include "pit_hal.h"
 #include "KL25Z/es670_peripheral_board.h"
+#include "fsl_clock_manager.h"
 
 #define PIT_IRQ_NUMBER PIT_IRQn
 
@@ -56,19 +57,21 @@ void pit_enable(void){
  * Timer interruptions are masked.
  *
  * @param usTimer_numb 	The number for the desired timer (0,1)
- * @param uiTimer_period  The number of bus_clock cycles between interrupts
+ * @param uiTimer_period_ms  The number of microseconds between interrupts
  * @param fpInterrupt_handler   	Timer interrupt handler routine address pointer
  */
-void pit_start_timer_interrupt(unsigned short usTimer_numb, unsigned int uiTimer_period, void (*fpInterrupt_handler)(void)){
+void pit_start_timer_interrupt(unsigned short usTimer_numb, unsigned int uiTimer_period_us, void (*fpInterrupt_handler)(void)){
+	uint32_t ui32BusFreq = CLOCK_SYS_GetBusClockFreq()/1000;	//Freq in kHz
+	uint32_t ui32cyclePeriod = ui32BusFreq*uiTimer_period_us - 1;
 	if(!usTimer_numb){
 		fpTimer0Handler = fpInterrupt_handler;
-		PIT_LDVAL0 = PIT_LDVAL_TSV(uiTimer_period);
+		PIT_LDVAL0 = PIT_LDVAL_TSV(ui32cyclePeriod);
 		PIT_TCTRL0 &= ~PIT_TCTRL_CHN(0x1u);		/*Disable chain mode*/
 		PIT_TCTRL0 |= PIT_TCTRL_TIE(0x1u);		/*Enable interrupts for timer 0*/
 		PIT_TCTRL0 |= PIT_TCTRL_TEN(0x1u);		/*Enable timer 0*/
 	}else{
 		fpTimer1Handler = fpInterrupt_handler;
-		PIT_LDVAL1 = PIT_LDVAL_TSV(uiTimer_period);
+		PIT_LDVAL1 = PIT_LDVAL_TSV(ui32cyclePeriod);
 		PIT_TCTRL1 &= ~PIT_TCTRL_CHN(0x1u);		/*Disable chain mode*/
 		PIT_TCTRL1 |= PIT_TCTRL_TIE(0x1u);		/*Enable interrupts for timer 1*/
 		PIT_TCTRL1 |= PIT_TCTRL_TEN(0x1u);		/*Enable timer 1*/

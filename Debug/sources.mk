@@ -33,6 +33,7 @@ Sources/PIT \
 Sources/Mcg \
 Sources/Main \
 Sources/LedSwi \
+Sources/LCD \
 Sources/Buzzer \
 Project_Settings/Startup_Code \
 

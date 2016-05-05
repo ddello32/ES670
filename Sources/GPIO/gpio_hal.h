@@ -12,15 +12,6 @@
 
 #include "KL25Z/es670_peripheral_board.h"
 
-/* GPIO input / output */
-#define GPIO_INPUT                  0x00U
-#define GPIO_OUTPUT                 0x01U
-
-#define GPIO_MUX_ALT                0x01u
-
-#define GPIO_HIGH    1
-#define GPIO_LOW     0
-
 /**
  * Ungates the clock for a gpio port
  * @param PORT_ID the GPIO port id(A,B)

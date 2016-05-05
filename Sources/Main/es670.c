@@ -5,7 +5,6 @@
 #include "SevenSeg/sevenseg_hal.h"
 #include "PIT/pit_hal.h"
 #include "Util/util.h"
-#include "Util/debugUart.h"
 #include "Serial/serial_hal.h"
 #include "Protocolo/cmdmachine_hal.h"
 #include <string.h>
@@ -20,7 +19,7 @@ int main(void)
 	ledswi_initLedSwitch(1,3);
 //	sevenseg_init();
 	buzzer_init();
-	serial_setConfig();
+	serial_initUart();
 
 	char rcvBuffer[RCV_BUF_SIZE];
 	char sndBuffer[SND_BUF_SIZE];
