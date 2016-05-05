@@ -72,8 +72,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- _name = "Projeto_ES670";
-	- _objectCreation = "54106775120161510789554";
-	- _umlDependencyID = "2692";
+	- _objectCreation = "43165045262016174672543";
+	- _umlDependencyID = "2686";
 	- _lastID = 22;
 	- _UserColors = { IRPYRawContainer 
 		- size = 16;
@@ -344,8 +344,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_requisitos";
-			- _objectCreation = "54106795120161510787554";
-			- _umlDependencyID = "3161";
+			- _objectCreation = "43165065262016174670543";
+			- _umlDependencyID = "3155";
 			- _description = { IDescription 
 				- _textRTF = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1046{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
 \\viewkind4\\uc1\\pard\\fs20 Diagrama de requisitos de sistema do projeto pr\\'e1tico da ES670 \\par
@@ -1532,8 +1532,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_pacotes";
-			- _objectCreation = "54106815120161510785554";
-			- _umlDependencyID = "2791";
+			- _objectCreation = "43165085262016174668543";
+			- _umlDependencyID = "2803";
 			- _lastModifiedTime = "5.5.2016::17:53:30";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 84c7ed09-6a53-4e4a-925b-6e70d2f9ea4a;
@@ -2398,9 +2398,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_definicao_semana_04_05";
-			- _objectCreation = "54106835120161510783554";
-			- _umlDependencyID = "4085";
-			- _lastModifiedTime = "5.5.2016::17:52:43";
+			- _objectCreation = "43165105262016174666543";
+			- _umlDependencyID = "4088";
+			- _lastModifiedTime = "5.5.2016::20:15:51";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 338e6526-0699-499c-b6b4-93ea64c72097;
 				- m_type = 0;
@@ -5514,7 +5514,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- size = 0;
 					}
 					- Operations = { IRPYRawContainer 
-						- size = 1;
+						- size = 2;
 						- value = 
 						{ IHandle 
 							- _m2Class = "IPrimitiveOperation";
@@ -5523,6 +5523,14 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _class = "cmdMachine_hal";
 							- _name = "interpretCmdBuffer(char*,unsigned int,char*)";
 							- _id = GUID 3d91b29f-7619-41b0-ba30-5afbe68a14a0;
+						}
+						{ IHandle 
+							- _m2Class = "IReception";
+							- _filename = "Protocolo.sbs";
+							- _subsystem = "Protocolo";
+							- _class = "cmdMachine_hal";
+							- _name = "a()";
+							- _id = GUID 3d1874c5-3c3f-4307-b8ad-de7f97197e00;
 						}
 					}
 				}
