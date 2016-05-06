@@ -129,13 +129,13 @@ O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e gera�
 	\centering
 	\includegraphics[width=1.5\linewidth, center]{estados}
 	\caption{Diagrama de máquina de estados para interpretação dos comandos}
-	\label{fig:esta}
+	\label{fig:estados}
 \end{figure}
 
-A máquina de estados recebe um buffer de caracteres por vez, e avalia caracter a caracter percorrendo o buffer. Após cada ação a máquina retorna para o estado "state_idle" para a avaliação da proxima ação do buffer de dados. Sempre que a máquina de estados encontra um caractere inesperado ou sem significado, ela entra no estado "state_err", retornando um erro e descartando o restante do buffer atual.  Os outros estados são acionados através dos seguintes caracteres: 'B' para buzzer, 'S' para switch e 'L' para led.
-No caso do buzzer,  após interpretar o caracter 'B', a máquina espera ler três caracteres numéricos que correspondem ao tempo em que o buzzer permanecerá ativo, retornando para o estado 'state_idle' após, para avaliar a próxima ação do buffer de entrada.
+A máquina de estados recebe um buffer de caracteres por vez, e avalia caracter a caracter percorrendo o buffer. Após cada ação a máquina retorna para o estado "state\_idle" para a avaliação da próxima ação do buffer de dados. Sempre que a máquina de estados encontra um caractere inesperado ou sem significado, ela entra no estado "state\_err", retornando um erro e descartando todos caracteres até encontrar o próximo espaço em branco. Os outros estados são acionados através dos seguintes caracteres: 'B' para buzzer, 'S' para switch e 'L' para led.
+No caso do buzzer,  após interpretar o caracter 'B', a máquina espera ler três caracteres numéricos que correspondem ao tempo em que o buzzer permanecerá ativo, retornando para o estado 'statez\_idle' após, para avaliar a próxima ação do buffer de entrada.
 Para o switch, após a leitura de 'S', a máquina de estados espera a leitura de um caractere numérico, de 1 a 4, que corresponde de qual switch faremos a leitura. Recebemos como retorno 'O' caso o switch esteje acionado, e 'C' caso contrário.
-No caso do led, após a leitura de 'L' a máquina de estado espera mais um caractere indicando a ação desejada. Este caractere pode ser 'S' no caso de set, 'R' para read e  'C' para clear. Para todos estes casos, a máquina de estados esperará um caractere numérico indicando em qual dos leds a ação deverá ser executada.
+No caso do led, após a leitura de 'L' a máquina de estado espera mais um caractere indicando a ação desejada. Este caractere pode ser 'S' no caso de set, 'R' para read e 'C' para clear. Para todos estes casos, a máquina de estados esperará um caractere numérico indicando em qual dos leds a ação deverá ser executada.
 Após cada ação executada com sucesso, o sistema responderá com 'ACK'.
 
 \section{Diagramas Esquemáticos}

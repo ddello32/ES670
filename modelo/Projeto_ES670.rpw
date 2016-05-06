@@ -10,7 +10,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 			- _placement = { CCommon_WINDOWPLACEMENT 
 				- m_nLength = 44;
 				- m_nFlags = 0;
-				- m_showCmd = 1;
+				- m_showCmd = 3;
 				- m_ptMinPositionX = -1;
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
@@ -29,8 +29,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 				- _name = "StatechartDiagram";
 				- _id = GUID aa776211-9c65-42a9-91fb-77ff5204f176;
 			}
-			- _UpLeft = 0 0 ;
-			- _DownRight = 1593 918 ;
+			- _UpLeft = 0 119 ;
+			- _DownRight = 739 614 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 0;
 		}
@@ -38,7 +38,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 			- _placement = { CCommon_WINDOWPLACEMENT 
 				- m_nLength = 44;
 				- m_nFlags = 0;
-				- m_showCmd = 3;
+				- m_showCmd = 1;
 				- m_ptMinPositionX = -1;
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
@@ -58,7 +58,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 				- _id = GUID f53d507c-79b1-4f7f-850a-0c96a124e9bd;
 			}
 			- _UpLeft = 0 100 ;
-			- _DownRight = 1170 883 ;
+			- _DownRight = 1531 863 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 3;
 		}

@@ -72,8 +72,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- _name = "Projeto_ES670";
-	- _objectCreation = "31126385420161813938531";
-	- _umlDependencyID = "2686";
+	- _objectCreation = "128295635201613779512";
+	- _umlDependencyID = "2591";
 	- _lastID = 22;
 	- _UserColors = { IRPYRawContainer 
 		- size = 16;
@@ -344,8 +344,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_requisitos";
-			- _objectCreation = "31126405420161813936531";
-			- _umlDependencyID = "3146";
+			- _objectCreation = "128297635201613777512";
+			- _umlDependencyID = "3060";
 			- _description = { IDescription 
 				- _textRTF = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1046{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
 \\viewkind4\\uc1\\pard\\fs20 Diagrama de requisitos de sistema do projeto pr\\'e1tico da ES670 \\par
@@ -1532,8 +1532,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_pacotes";
-			- _objectCreation = "31126425420161813934531";
-			- _umlDependencyID = "2785";
+			- _objectCreation = "128299635201613775512";
+			- _umlDependencyID = "2699";
 			- _lastModifiedTime = "5.5.2016::17:53:30";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 84c7ed09-6a53-4e4a-925b-6e70d2f9ea4a;
@@ -2398,9 +2398,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_definicao_semana_04_05";
-			- _objectCreation = "31126445420161813932531";
-			- _umlDependencyID = "4079";
-			- _lastModifiedTime = "5.5.2016::21:4:29";
+			- _objectCreation = "128301635201613773512";
+			- _umlDependencyID = "3975";
+			- _lastModifiedTime = "5.5.2016::21:10:42";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 338e6526-0699-499c-b6b4-93ea64c72097;
 				- m_type = 0;
@@ -4212,17 +4212,18 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- m_bImplicitSetRectPoints = 0;
 						- m_nOrientationCtrlPt = 1;
 					}
+					- m_bFramesetModified = 1;
 					- m_polygon = 4 2 329  2 1451  1061 1451  1061 329  ;
 					- m_nNameFormat = 0;
 					- m_nIsNameFormat = 0;
-					- frameset = "<frameset rows=50%,50%>
+					- frameset = "<frameset rows=35%,65%>
 <frame name=AttributeListCompartment>
 <frame name=PrimitiveOperationListCompartment>";
 					- Attrs = { IRPYRawContainer 
 						- size = 0;
 					}
 					- Operations = { IRPYRawContainer 
-						- size = 5;
+						- size = 6;
 						- value = 
 						{ IHandle 
 							- _m2Class = "IPrimitiveOperation";
@@ -4263,6 +4264,14 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _class = "gpio_hal";
 							- _name = "READ_PIN(Port_id,unsigned short)";
 							- _id = GUID 9a3098fb-33a3-4301-813e-e2bf70187cbd;
+						}
+						{ IHandle 
+							- _m2Class = "IPrimitiveOperation";
+							- _filename = "GPIO.sbs";
+							- _subsystem = "GPIO";
+							- _class = "gpio_hal";
+							- _name = "GET_OUTPUT_STATE(Port_id,unsigned int)";
+							- _id = GUID 3de9be8c-5a44-4fd5-a039-999dd80c4bde;
 						}
 					}
 				}
