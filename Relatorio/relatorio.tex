@@ -206,6 +206,15 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 \end{table}
 \section{Notas}
 % Dificuldades, observações relevantes, correções, ...
+\subsection{Leitura do Estado dos LEDs}
+Como uma extensão ao protocolo proposto no roteiro \cite{bb:roteiro}, acrescentamos o comando \textit{LRd} onde $d$ é um digito de 1 a 4, que nos retorna o estado atual do LED referenciado. Para recuperar esse estado devemos saber qual valor está sendo controlado para um pino de saída digital, o que é feito lendo o registrador GPIOx\_PDOR.
+
+\subsection{Interrupções do Buzzer e mudança de Baud Rate}
+Ao utilizar interrupções para cuidar do acionamento e controle do Buzzer, conseguímos executar essa funcionalidade de maneira assíncrona, garantindo que essa funcionalidade não vai interferir com ou ser interferida pelas outras. Isso é notavelmente importante com a comunicação serial, uma vez que a velocidade de leitura é crítica e se essa for alterada, corremos o risco de perder informações ou alterar o tempo de execução de nosso ciclo.
+
+\subsection{Bufferização dos comandos}
+Para diminuir a chance de perder informações que são enviadas por serial, escolhemos ler uma série de caracteres e armazená-los em um buffer antes de interpretá-los, ao invés de ler e interpretar caractere a caractere. Interrompemos esse processo de leitura no caso de buffer overflow ou quando encontramos uma quebra de linha. Interpretar uma série de comandos bufferizados introduziu uma dificuldade extra ao projeto, pois agora nossa máquina de estados tem que levar em consideração que um comando pode estar errado e o próximo não, logo o primeiro deve ser ignorado e o segundo executado.
+
 \subsection{Gerenciamento de GPIO e macros}
 Detectamos logo no início do projeto um defeito estrutural no código fornecido quando lidando com GPIO: o identificador da porta e o número do pino utilizado eram referenciados em diversos locais diferentes do código dificultando de maneira agravante mudanças na configuração de hardware. Para resolver isso inicialmente pensamos em utilizar o arquivo \textit{fsl\_gpio\_hal.h} da biblioteca da \textit{FRDM-Kl25Z}, mas isso não nos foi permitido. Como calcular as posições na memória de cada registrador seria reimplementar a biblioteca, escolhemos por criar macros que geram o mesmo estilo de código utilizado no exemplo fornecido através do operador de concatenação (\#\#) do pré processador. Esse operador apresenta algumas particularidades, a principal sendo que macros que o utilizam em seu corpo não tem seus argumentos expandidos \cite{bb:preprocessor}. Para circular essa dificuldade criamos uma outras macros que funcionam como uma \textit{wrappers} para essas macros, fazendo assim que seus argumentos sejam expandidos antes da chamada da concatenação. 
 
@@ -239,21 +248,27 @@ Também tivemos dificuldades com a instalação do \textit{Rhapsody Rational Mod
 \section{Apêndice}
 % Colocar como apêndice toda a listagem do código fonte
 Listagem dos códigos fonte:
-\code{../Sources/LedSwi/ledswi_hal.h}
-\code{../Sources/LedSwi/ledswi_hal.c}
-\code{../Sources/Mcg/mcg_hal.h}
-\code{../Sources/Mcg/mcg_hal.c}
-\code{../Sources/PIT/pit_hal.h}
-\code{../Sources/PIT/pit_hal.c}
-\code{../Sources/SevenSeg/sevenseg_hal.h}
-\code{../Sources/SevenSeg/sevenseg_hal.c}
-\code{../Sources/GPIO/gpio_hal.h}
-\code{../Sources/Main/es670.c}
 \code{../Sources/Buzzer/buzzer_hal.c}
 \code{../Sources/Buzzer/buzzer_hal.h}
+\code{../Sources/fsl_debug_console.c}
+\code{../Sources/GPIO/gpio_hal.h}
 \code{../Sources/KL25Z/es670_peripheral_board.h}
-\code{../Sources/Util/util.h}
+\code{../Sources/LedSwi/ledswi_hal.c}
+\code{../Sources/LedSwi/ledswi_hal.h}
+\code{../Sources/Main/es670.c}
+\code{../Sources/Mcg/mcg_hal.c}
+\code{../Sources/Mcg/mcg_hal.h}
+\code{../Sources/PIT/pit_hal.c}
+\code{../Sources/PIT/pit_hal.h}
+\code{../Sources/print_scan.c}
+\code{../Sources/print_scan.h}
+\code{../Sources/Protocolo/cmdmachine_hal.c}
+\code{../Sources/Protocolo/cmdmachine_hal.h}
+\code{../Sources/Serial/serial_hal.c}
+\code{../Sources/Serial/serial_hal.h}
+\code{../Sources/SevenSeg/sevenseg_hal.c}
+\code{../Sources/SevenSeg/sevenseg_hal.h}
 \code{../Sources/Util/util.c}
-\code{../}
+\code{../Sources/Util/util.h}
 \end{document}
 
