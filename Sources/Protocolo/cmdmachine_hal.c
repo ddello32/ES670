@@ -11,6 +11,8 @@
 #include "cmdmachine_hal.h"
 #include "LedSwi/ledswi_hal.h"
 #include "Buzzer/buzzer_hal.h"
+#include "SevenSeg/sevenseg_hal.h"
+#include "LCD/lcd_hal.h"
 #include "Util/util.h"
 
 #define ERR_STR "ERR\n"
@@ -20,6 +22,8 @@
 #define STATE_LED_CMD 1
 #define STATE_BUZZER_CMD 2
 #define STATE_SWITCH_CMD 3
+#define STATE_SEVENSEG_CMD 4
+#define STATE_LCD_CMD 5
 #define STATE_ERR 99
 
 static int iState = STATE_IDLE;
@@ -48,6 +52,12 @@ unsigned int handleIdle(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 				break;
 			case 'B':
 				iState = STATE_BUZZER_CMD;
+				break;
+			case 'D':
+				iState = STATE_SEVENSEG_CMD;
+				break;
+			case 'P':
+				iState = STATE_LCD_CMD;
 				break;
 			case ' ':
 			case '\t':
@@ -241,6 +251,87 @@ int handleBuzzer(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	return uiCounter;
 }
 
+
+//==========================================================================
+// Seven Segment CMD STATE MACHINE
+//==========================================================================
+/**
+ * Parses SevenSeg command hexadecimal input into integer
+ *
+ * @param cpCmdBuffer The start of the Buzzer command hexadecimal input string
+ *
+ * @return The parsed number contained in the start of the command
+ * 				string or -1 in case of parsing failure
+ */
+int getSevenSegHex(char *cpCmdBuffer){
+	int iCommand = -1;
+	if(!sscanf(cpCmdBuffer, "%4x", &iCommand)){
+		iCommand = -1;
+	}
+	return iCommand;
+}
+
+/**
+ * Handles parsing while in SEVSEG_COMMAND state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the command response
+ *
+ * @return The number of characters parsed while in the SEVSEG_COMMAND state
+ */
+int handleSevenSeg(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
+	unsigned int uiCounter = 0;
+	int iHex = -1;
+	if(uiCounter < uiSize){
+		iHex = getSevenSegHex(cpCmdBuffer);
+	}
+	if(iHex >= 0){
+		strcat(cpCmdRes, ACK_STR);
+		sevenseg_printHex(iHex);
+		iState = STATE_IDLE;
+		//Exactly how many characters where read.
+		while(uiCounter < 4 && uiCounter < uiSize && ((cpCmdBuffer[uiCounter] >= '0' && cpCmdBuffer[uiCounter] <= '9') || (cpCmdBuffer[uiCounter] >= 'A' && cpCmdBuffer[uiCounter] <= 'F')) ){
+			uiCounter++;
+		}
+	}else{
+		iState = STATE_ERR;
+	}
+	return uiCounter;
+}
+
+//==========================================================================
+// LCD CMD STATE MACHINE
+//==========================================================================
+/**
+ * Handles parsing while in LCD_COMMAND state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the command response
+ *
+ * @return The number of characters parsed while in the SEVSEG_COMMAND state
+ */
+int handleLCD(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
+	unsigned int uiCounter = 0;
+	char iPrintBuff[30];
+	if(uiCounter < uiSize){
+		sscanf(cpCmdBuffer, "%30s", iPrintBuff);
+		uiCounter += strlen(iPrintBuff);
+		strcat(cpCmdRes, ACK_STR);
+	    // clear LCD
+	    lcd_sendCommand(CMD_CLEAR);
+	    // set the cursor line 0, column 1
+	    lcd_setCursor(0,1);
+	    // send string
+		lcd_writeString(iPrintBuff);
+		iState = STATE_IDLE;
+	}else{
+		iState = STATE_ERR;
+	}
+	return uiCounter;
+}
+
 //============================================================================
 // ERROR STATE MACHINE
 //============================================================================
@@ -312,6 +403,12 @@ void cmdmachine_interpretCmdBuffer(char *cpCmdBuffer, unsigned int uiSize, char*
 				break;
 			case STATE_BUZZER_CMD:
 				uiCounter += handleBuzzer(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
+				break;
+			case STATE_SEVENSEG_CMD:
+				uiCounter += handleSevenSeg(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
+				break;
+			case STATE_LCD_CMD:
+				uiCounter += handleLCD(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
 				break;
 			case STATE_ERR:
 				uiCounter += handleError(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);

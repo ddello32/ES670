@@ -15,6 +15,8 @@
 
 #define PIT_IRQ_NUMBER PIT_IRQn
 
+static unsigned char pit_enabled = 0;
+
 /**
  *Default timer interruption handler. Does nothing.
  */
@@ -50,6 +52,7 @@ void pit_enable(void){
 	PIT_MCR |= PIT_MCR_FRZ(0x1u);
 	NVIC_ClearPendingIRQ(PIT_IRQ_NUMBER);
     NVIC_EnableIRQ(PIT_IRQ_NUMBER);
+    pit_enabled = 1;
 }
 
 /**
@@ -61,7 +64,7 @@ void pit_enable(void){
  * @param fpInterrupt_handler   	Timer interrupt handler routine address pointer
  */
 void pit_start_timer_interrupt(unsigned short usTimer_numb, unsigned int uiTimer_period_us, void (*fpInterrupt_handler)(void)){
-	uint32_t ui32BusFreq = CLOCK_SYS_GetBusClockFreq()/1000;	//Freq in kHz
+	uint32_t ui32BusFreq = CLOCK_SYS_GetBusClockFreq()/1000000;	//Freq in MHz
 	uint32_t ui32cyclePeriod = ui32BusFreq*uiTimer_period_us - 1;
 	if(!usTimer_numb){
 		fpTimer0Handler = fpInterrupt_handler;
@@ -104,5 +107,29 @@ void pit_mark_interrupt_handled(unsigned short usTimer_numb){
 		PIT_TFLG0 |= PIT_TFLG_TIF(0x1u);
 	}else{
 		PIT_TFLG1 |= PIT_TFLG_TIF(0x1u);
+	}
+}
+
+/**
+ * Disables PIT interruptions temporarily
+ */
+void pit_mask_interrupts(){
+	if(pit_enabled){
+		NVIC_ClearPendingIRQ(PIT_IRQ_NUMBER);
+		NVIC_DisableIRQ(PIT_IRQ_NUMBER);
+		PIT_TCTRL0 &= ~PIT_TCTRL_TIE(0x1u);
+		PIT_TCTRL1 &= ~PIT_TCTRL_TIE(0x1u);
+	}
+}
+
+/**
+ * Re-enables PIT interruptions
+ */
+void pit_unmask_interrupts(){
+	if(pit_enabled){
+		NVIC_ClearPendingIRQ(PIT_IRQ_NUMBER);
+		NVIC_EnableIRQ(PIT_IRQ_NUMBER);
+		PIT_TCTRL0 |= PIT_TCTRL_TIE(0x1u);		/*Enable interrupts for timer 0*/
+		PIT_TCTRL1 |= PIT_TCTRL_TIE(0x1u);		/*Enable interrupts for timer 1*/
 	}
 }

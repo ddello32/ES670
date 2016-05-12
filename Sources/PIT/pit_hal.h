@@ -47,4 +47,14 @@ void pit_mark_interrupt_handled(unsigned short usTimer_numb);
  * correct timer interruption handler.
  */
 void PIT_IRQHandler(void);
+
+/**
+ * Disables PIT interruptions temporarily
+ */
+void pit_mask_interrupts();
+
+/**
+ * Re-enables PIT interruptions
+ */
+void pit_unmask_interrupts();
 #endif /* SOURCES_PIT_PIT_HAL_H_ */

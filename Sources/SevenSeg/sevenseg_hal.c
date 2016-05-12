@@ -20,21 +20,16 @@
 #define SEVEN_SEG_PIT_PERIOD	3125		/*3.125ms*/
 
 static unsigned short usIsHex = 0;
-static unsigned int uiPrintVal = -1;
+static unsigned int uiPrintVal = 0;
 
+static seven_segment_seg_type_e epSeg_Matrix[MAX_DISP_NUMBER][MAX_SEGMENT_NUMBER+1];
 /**
  * Interrupt handler for updating in display configuration
  */
 void _sevenseg_interrupt_handler(void){
 	static seven_segment_disp_type_e epDisplays[] = {DISP_1, DISP_2, DISP_3, DISP_4};
-	static seven_segment_seg_type_e epSeg_array[MAX_SEGMENT_NUMBER+1];
 	static volatile unsigned short usCur_disp = 0;
-	if(usIsHex){
-		sevenseg_hex2segArray(uiPrintVal/pow(16,MAX_DISP_NUMBER-1-usCur_disp), epSeg_array);
-	}else{
-		sevenseg_dec2segArray(uiPrintVal/pow(10,MAX_DISP_NUMBER-1-usCur_disp), epSeg_array);
-	}
-	sevenseg_setSegs(epSeg_array);
+	sevenseg_setSegs(epSeg_Matrix[usCur_disp]);
 	sevenseg_setDisp(epDisplays[usCur_disp]);
 	usCur_disp = (usCur_disp+1)%MAX_DISP_NUMBER;
 	pit_mark_interrupt_handled(SEV_SEG_PIT_TIMER_NUMB);
@@ -61,6 +56,7 @@ void sevenseg_init(void){
 	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEG_DISP3_PIN, GPIO_OUTPUT);
 	GPIO_INIT_PIN(SEV_SEG_PORT_ID, SEG_DISP4_PIN, GPIO_OUTPUT);
 
+	sevenseg_printDec(0);
 	//Init pit interrupts
 	pit_enable();
 	//Init timer 0
@@ -98,8 +94,9 @@ void sevenseg_setDisp(seven_segment_disp_type_e eDisplay){
  * @param uiHex the value to be printed
  */
 void sevenseg_printHex(unsigned int uiHex){
-	usIsHex = 1;
-	uiPrintVal = uiHex;
+	for(unsigned short usCur_disp = 0; usCur_disp < MAX_DISP_NUMBER; usCur_disp++){
+		sevenseg_hex2segArray(uiHex/pow(16,MAX_DISP_NUMBER-1-usCur_disp), epSeg_Matrix[usCur_disp]);
+	}
 }
 
 /**
@@ -107,8 +104,9 @@ void sevenseg_printHex(unsigned int uiHex){
  * @param uiDec the value to be printed
  */
 void sevenseg_printDec(unsigned int uiDec){
-	usIsHex = 0;
-	uiPrintVal = uiDec;
+	for(unsigned short usCur_disp = 0; usCur_disp < MAX_DISP_NUMBER; usCur_disp++){
+		sevenseg_dec2segArray(uiDec/pow(10,MAX_DISP_NUMBER-1-usCur_disp), epSeg_Matrix[usCur_disp]);
+	}
 }
 
 /**
@@ -135,7 +133,7 @@ seven_segment_seg_type_e* sevenseg_dec2segArray(unsigned short usDec, seven_segm
 	switch(usDec%10){
 	case 0:
 		//{SEG_A,SEG_B,SEG_C,SEG_D,SEG_G,SEG_E,SEG_F,SEG_END};
-		epRet[7] = SEG_END;
+		epRet[6] = SEG_END;
 		break;
 	case 1:
 		//{SEG_B,SEG_C,SEG_END};

@@ -7,6 +7,7 @@
 #include "Util/util.h"
 #include "Serial/serial_hal.h"
 #include "Protocolo/cmdmachine_hal.h"
+#include "LCD/lcd_hal.h"
 #include <string.h>
 
 #define RCV_BUF_SIZE 100
@@ -17,9 +18,11 @@ int main(void)
 {
 	mcg_clockInit();
 	ledswi_initLedSwitch(1,3);
-//	sevenseg_init();
-	buzzer_init();
 	serial_initUart();
+	lcd_initLcd();
+	lcd_dummyText();
+	sevenseg_init();
+	buzzer_init();
 
 	char rcvBuffer[RCV_BUF_SIZE];
 	char sndBuffer[SND_BUF_SIZE];

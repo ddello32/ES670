@@ -11,7 +11,8 @@ Sources/Main/es670.o: ../Sources/Main/es670.c \
  ../Sources/LedSwi/ledswi_hal.h ../Sources/Mcg/mcg_hal.h \
  ../Sources/Buzzer/buzzer_hal.h ../Sources/SevenSeg/sevenseg_hal.h \
  ../Sources/PIT/pit_hal.h ../Sources/Util/util.h \
- ../Sources/Serial/serial_hal.h ../Sources/Protocolo/cmdmachine_hal.h
+ ../Sources/Serial/serial_hal.h ../Sources/Protocolo/cmdmachine_hal.h \
+ ../Sources/LCD/lcd_hal.h
 
 ../Sources/KL25Z/es670_peripheral_board.h:
 
@@ -46,3 +47,5 @@ Sources/Main/es670.o: ../Sources/Main/es670.c \
 ../Sources/Serial/serial_hal.h:
 
 ../Sources/Protocolo/cmdmachine_hal.h:
+
+../Sources/LCD/lcd_hal.h:

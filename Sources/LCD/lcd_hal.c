@@ -94,6 +94,7 @@ void lcd_write2Lcd(unsigned char ucBuffer,  unsigned char cDataType)
     GPIO_WRITE_PIN(LCD_PORT_ID, LCD_DATA_DB6_PIN, ((ucBuffer & (1u << 6u)) >> 6u));
     GPIO_WRITE_PIN(LCD_PORT_ID, LCD_DATA_DB7_PIN, ((ucBuffer & (1u << 7u)) >> 7u));
 
+    pit_mask_interrupts();
     /* enable, delay, disable LCD */
     /* this generates a pulse in the enable pin */
     GPIO_WRITE_PIN(LCD_PORT_ID, LCD_ENABLE_PIN, LCD_ENABLED);
@@ -101,6 +102,7 @@ void lcd_write2Lcd(unsigned char ucBuffer,  unsigned char cDataType)
     GPIO_WRITE_PIN(LCD_PORT_ID, LCD_ENABLE_PIN, LCD_DISABLED);
     util_genDelay1ms();
     util_genDelay1ms();
+    pit_unmask_interrupts();
 }
 
 

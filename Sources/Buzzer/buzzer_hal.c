@@ -77,7 +77,7 @@ void _buzzer_interrupt_handler(void){
 void buzzer_initPeriodic(unsigned int uiBuzzFreq_hz, unsigned int uiDuration_ms){
 	unsigned int uiPeriod_us = 500000/uiBuzzFreq_hz;	/* 50% duty cycle */
 	if(uiDuration_ms > 0){
-		interrupt_counter = uiDuration_ms/uiPeriod_us;
+		interrupt_counter = uiDuration_ms/(uiPeriod_us/1000);
 	}else{
 		interrupt_counter = -1;
 	}
