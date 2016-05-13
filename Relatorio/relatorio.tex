@@ -90,7 +90,7 @@ O objetivo do projeto é, de maneira incremental, implementar no \textit{target}
 % Diagramas requisitos implementados, digrama de blocos, etc
 Utilizando o Rational Rhapsody Modeler e tomando como base os requisitos propostos mostrados na figura \ref{fig:requisitos}, complementamos o modelo inicial\cite{bb:modelo} (requisitos de teclado e LEDs) adicionando um bloco ao modelo referente aos \textit{displays} de sete segmentos (REQ1C), conforme mostrado na figura \ref{fig:blocos}. Adicionamos também alguns blocos auxiliares relacionados ao gerenciamento de pinos \textit{GPIO} e a interrupções periódicas, que foram utilizados para nossa implementação do \textit{display} de sete segmentos e do \textit{buzzer}. Ao tratar o gerenciamento do \textit{display} e do \textit{buzzer} através de interrupções, livramos a \textit{thread} principal para que essa lide com outros problemas sem precisar se preocupar com a atualização periódica dos \textit{displays}.
 
-Continuamos a complementar nosso diagrama adicionando um bloco responsável pela comunicação serial e um pela interpretação dos comandos referentes ao protocolo do requisito REQ2.
+Continuamos a complementar nosso diagrama adicionando um bloco responsável pela comunicação serial e um pela interpretação dos comandos referentes ao protocolo do requisito REQ2. Adicionamos também um bloco responsável pelo controle do display LCD referente ao REQ3.
 
 \begin{figure}[H]
 	\centering
@@ -123,7 +123,7 @@ O bloco \textit{ledswi\_hal} foi alterado para lidar melhor com a inicializaçã
 
 O bloco \textit{serial\_hal} é responsável pela configuração da UART para comunicação serial e pelo envio de recebimento de dados através desse protocolo.
 
-O bloco \textit{lcd\_hal} é responsável pelo controle do display LCD, ele segue a implementação passada pelo professor, porém as chamadas as bibliotecas padrão foram substituídas por chamadas ao bloco \textit{GPIO\_hal} e manipulações de registradores. Uma função que imprime um texto ao display, antes limpados seus dados e controlando a posição do cursor foi acrescentada.
+O bloco \textit{lcd\_hal} é responsável pelo controle do display LCD, ele segue a implementação passada pelo professor, porém as chamadas as bibliotecas padrão foram substituídas por chamadas ao bloco \textit{GPIO\_hal} e manipulações de registradores. Uma função que imprime um texto ao display, após limpar a exibição e resetar a posição do cursor, foi acrescentada.
 
 O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e geração da string de resposta. Em nossa implementação, escolhemos tratar uma string já bufferada de commandos ao invés de trabalhar caractere a caractere. A máquina de estados do tratamento dos comandos pode ser vista na figura \ref{fig:estados}.
 
@@ -134,12 +134,12 @@ O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e gera�
 	\label{fig:estados}
 \end{figure}
 
-A máquina de estados recebe um buffer de caracteres por vez, e avalia caracter a caracter percorrendo o buffer. Após cada ação a máquina retorna para o estado "state\_idle" para a avaliação da próxima ação do buffer de dados. Sempre que a máquina de estados encontra um caractere inesperado ou sem significado, ela entra no estado "state\_err", retornando um erro e descartando todos caracteres até encontrar o próximo espaço em branco. Os outros estados são acionados através dos seguintes caracteres: 'B' para buzzer, 'S' para switch, 'L' para led, 'D' para o display sete segmentos, 'P' para imprimir no LCD.
-No caso do buzzer,  após interpretar o caracter 'B', a máquina espera ler até três caracteres numéricos que correspondem ao tempo em que o buzzer permanecerá ativo, retornando para o estado 'statez\_idle' após, para avaliar a próxima ação do buffer de entrada.
-Para o switch, após a leitura de 'S', a máquina de estados espera a leitura de um caractere numérico, de 1 a 4, que corresponde de qual switch faremos a leitura. Recebemos como retorno 'O' caso o switch esteje acionado, e 'C' caso contrário.
-No caso do led, após a leitura de 'L' a máquina de estado espera mais um caractere indicando a ação desejada. Este caractere pode ser 'S' no caso de set, 'R' para read e 'C' para clear. Para todos estes casos, a máquina de estados esperará um caractere numérico indicando em qual dos leds a ação deverá ser executada.
+A máquina de estados recebe um buffer de caracteres por vez, e avalia caracter a caracter percorrendo o buffer. Após cada ação a máquina retorna para o estado "state\_idle" para a avaliação da próxima ação do buffer de dados. Sempre que a máquina de estados encontra um caractere inesperado ou sem significado, ela entra no estado "state\_err", retornando um erro e descartando todos caracteres até encontrar o próximo espaço em branco. Os outros estados são acionados através dos seguintes caracteres: 'B' para buzzer, 'S' para switch, 'L' para led, 'D' para o display sete segmentos, 'P' para imprimir no LCD.\\
+No caso do buzzer,  após interpretar o caracter 'B', a máquina espera ler até três caracteres numéricos que correspondem ao tempo em que o buzzer permanecerá ativo, retornando para o estado 'statez\_idle' após, para avaliar a próxima ação do buffer de entrada.\\
+Para o switch, após a leitura de 'S', a máquina de estados espera a leitura de um caractere numérico, de 1 a 4, que corresponde de qual switch faremos a leitura. Recebemos como retorno 'O' caso o switch esteje acionado, e 'C' caso contrário.\\
+No caso do led, após a leitura de 'L' a máquina de estado espera mais um caractere indicando a ação desejada. Este caractere pode ser 'S' no caso de set, 'R' para read e 'C' para clear. Para todos estes casos, a máquina de estados esperará um caractere numérico indicando em qual dos leds a ação deverá ser executada.\\
 Para o display sete segmentos, após leitura de um 'D' a máquina de estados espera ler até quatro caracteres hexadecimais que serão mostrados no display, retornando para o estado 'state\_idle'.
-No caso do display LCD, após a leitura de um caractere 'P' a máquina de estados lê uma string de até 30 caracteres (sem espaços em branco) e a imprime no display LCD, retornando para o estado 'state\_idle'.
+No caso do display LCD, após a leitura de um caractere 'P' a máquina de estados lê uma string de até 30 caracteres (sem espaços em branco) e a imprime no display LCD, retornando para o estado 'state\_idle'.\\
 Após cada ação executada com sucesso, o sistema responderá com 'ACK'.
 
 \section{Diagramas Esquemáticos}
@@ -185,7 +185,7 @@ O controle do LCD é feito escrevendo o dado desejado nos pinos de dados (DB*), 
 		\hline CMD\_CLEAR & 00000001 & Limpa exibição\\
 		\hline CMD\_NO\_CURSOR & 00001100 & Esconde a posição do cursor\\
 		\hline CMD\_CURSOR2R & 00000110 & Cursor a direita do texto\\
-		\hline CMD\_NO\_CUR\_NO\_BLINK & 00111000 & Esconde o cursor e não pisca o texto\\
+		\hline CMD\_NO\_CUR\_NO\_BLINK & 00111000 & Esconde o cursor e não pisca\\
 		\hline CMD\_MOV\_CUR & 1L00CCCC & Move cursor para posição [L, X].\\
 			& & L = linha (0, 1)\\
 			& & CCCC = coluna(0 a 15)\\
@@ -252,7 +252,7 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 \section{Notas}
 % Dificuldades, observações relevantes, correções, ...
 \subsection{LCD e interrupções}
-Para escrever no LCD precisamos gerar um pulso no seu pino de enable. Para garantir que esse pulso terá a duração certa, foi precisamos mascarar as interrupções durante esse pulso. Como as interrupções do display tem um período de aproximadamente 3ms e o pulso do LCD tem a mesma duração encontramos várias dificuldades ao controlar os dois sem mascarar as interrupções pela duração do pulso.
+Para escrever no LCD precisamos gerar um pulso no seu pino de enable. Para garantir que esse pulso terá a duração certa, foi preciso mascarar as interrupções durante esse pulso. Como as interrupções do display tem um período de aproximadamente 3ms e o pulso do LCD tem a mesma duração encontramos várias dificuldades ao controlar os dois sem mascarar as interrupções pela duração do pulso, logo adaptamos nosso código.
 
 \subsection{Leitura do Estado dos LEDs}
 Como uma extensão ao protocolo proposto no roteiro \cite{bb:roteiro}, acrescentamos o comando \textit{LRd} onde $d$ é um digito de 1 a 4, que nos retorna o estado atual do LED referenciado. Para recuperar esse estado devemos saber qual valor está sendo controlado para um pino de saída digital, o que é feito lendo o registrador GPIOx\_PDOR.
