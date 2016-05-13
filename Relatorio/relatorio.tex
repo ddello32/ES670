@@ -228,11 +228,22 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 						& \texttt{- void cmdmachine\_interpretCmdBuffer(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
 						& \texttt{- int handleError(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
 						& \texttt{- int handleBuzzer(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)};\\
-						& \texttt{-int getBuzzMs(char *cpCmdBuffer)}\\
-						& \texttt{-unsigned int handleSwitch(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
-						& \texttt{-unsigned int handleLed(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
-						& \texttt{-ledswi\_pin\_type\_e parseLedNum(char cLedInput)}\\
-						& \texttt{-unsigned int handleIdle(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{- int getBuzzMs(char *cpCmdBuffer)}\\
+						& \texttt{- unsigned int handleSwitch(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{- unsigned int handleLed(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{- ledswi\_pin\_type\_e parseLedNum(char cLedInput)}\\
+						& \texttt{- unsigned int handleIdle(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{- unsigned int handleLCD(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{- unsigned int handleSevenSeg(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes)}\\
+						& \texttt{- int getSevenSegHex(char *cpCmdBuffer)}\\
+		\hline REQ3 	& \texttt{lcd\_hal.c}\\ 
+						& \texttt{- void lcd\_initLcd(void)}\\
+						& \texttt{- void lcd\_writeData(unsigned char ucData)}\\
+						& \texttt{- void lcd\_sendCommand(unsigned char ucCmd)}\\
+						& \texttt{- void lcd\_writeString(const char *cBuffer)}\\
+						& \texttt{- void lcd\_printString(const char *cBuffer)}\\
+						& \texttt{- void lcd\_setCursor(unsigned char cLine, unsigned char cColumn)}\\
+						& \texttt{- void lcd\_dummyText(void)}\\
 		\hline 
 	\end{tabular}
 	} 
