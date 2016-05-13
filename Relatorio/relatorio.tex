@@ -113,7 +113,7 @@ Continuamos a complementar nosso diagrama adicionando um bloco responsável pela
 
 O bloco de \textit{GPIO\_hal} tem operações para desbloquear o \textit{clock} para uma porta, inicializar um pino em uma dada direção, escrever em um pino, escrever em um conjunto de pinos da mesma porta, ler a entrada em um pino e ler o valor de saída que está sendo controlado em um pino.
 
-O bloco \textit{pit\_hal} tem tem operações para inicializar o \textit{PIT}, criar interrupções periódicas em um dos dois \textit{timers} disponíveis, desativar as interrupções em um \textit{timer} e marcar uma interrupção como tratada (deve ser feito pelos tratamentos de interrupção). Além disso esse bloco tem mais uma operação chamada \textit{PIT\_IRQHandler }que trata as interrupções do \textit{PIT}, essa operação precisa ser visível para o \textit{linker}, mas não deve ser chamada pelo usuário. É importante ressaltar que o \textit{clock} do \textit{PIT} é o \textit{bus\_clock} que no nosso caso é de $20MHz$
+O bloco \textit{pit\_hal} tem operações para inicializar o \textit{PIT}, criar interrupções periódicas em um dos dois \textit{timers} disponíveis, desativar as interrupções em um \textit{timer}, marcar uma interrupção como tratada (deve ser feito pelos tratamentos de interrupção), mascarar as interrupções de PIT e desmascarar essas interrupções. Além disso esse bloco tem mais uma operação chamada \textit{PIT\_IRQHandler }que trata as interrupções do \textit{PIT}, essa operação precisa ser visível para o \textit{linker}, mas não deve ser chamada pelo usuário. É importante ressaltar que o \textit{clock} do \textit{PIT} é o \textit{bus\_clock} que no nosso caso é de $20MHz$
 
 As operações do bloco \textit{sevenseg\_hal} cobrem a inicialização dos \textit{displays}, seleção manual de quais segmentos estarão ativos (feita através da passagem de um vetor com os segmentos desejados), ativação manual de um dos \textit{displays} (desativando todos os outros), conversão de dígito hexadecimal ou decimal em vetor de segmentos (para ser passado para a função de seleção de segmentos) e impressão automática de um valor hexadecimal ou decimal através das interrupções de \textit{timer}.
 
@@ -122,6 +122,8 @@ O bloco do \textit{buzzer\_hal} também ganhou duas novas operações, uma para 
 O bloco \textit{ledswi\_hal} foi alterado para lidar melhor com a inicialização separada dos pinos como Led e Switch e também foi adicionada uma função para ler o estado atual de um pino configurado como LED.
 
 O bloco \textit{serial\_hal} é responsável pela configuração da UART para comunicação serial e pelo envio de recebimento de dados através desse protocolo.
+
+O bloco \textit{lcd\_hal} é responsável pelo controle do display LCD, ele segue a implementação passada pelo professor, porém as chamadas as bibliotecas padrão foram substituídas por chamadas ao bloco \textit{GPIO\_hal} e manipulações de registradores. Uma função que imprime um texto ao display, antes limpados seus dados e controlando a posição do cursor foi acrescentada.
 
 O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e geração da string de resposta. Em nossa implementação, escolhemos tratar uma string já bufferada de commandos ao invés de trabalhar caractere a caractere. A máquina de estados do tratamento dos comandos pode ser vista na figura \ref{fig:estados}.
 
@@ -132,10 +134,12 @@ O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e gera�
 	\label{fig:estados}
 \end{figure}
 
-A máquina de estados recebe um buffer de caracteres por vez, e avalia caracter a caracter percorrendo o buffer. Após cada ação a máquina retorna para o estado "state\_idle" para a avaliação da próxima ação do buffer de dados. Sempre que a máquina de estados encontra um caractere inesperado ou sem significado, ela entra no estado "state\_err", retornando um erro e descartando todos caracteres até encontrar o próximo espaço em branco. Os outros estados são acionados através dos seguintes caracteres: 'B' para buzzer, 'S' para switch e 'L' para led.
-No caso do buzzer,  após interpretar o caracter 'B', a máquina espera ler três caracteres numéricos que correspondem ao tempo em que o buzzer permanecerá ativo, retornando para o estado 'statez\_idle' após, para avaliar a próxima ação do buffer de entrada.
+A máquina de estados recebe um buffer de caracteres por vez, e avalia caracter a caracter percorrendo o buffer. Após cada ação a máquina retorna para o estado "state\_idle" para a avaliação da próxima ação do buffer de dados. Sempre que a máquina de estados encontra um caractere inesperado ou sem significado, ela entra no estado "state\_err", retornando um erro e descartando todos caracteres até encontrar o próximo espaço em branco. Os outros estados são acionados através dos seguintes caracteres: 'B' para buzzer, 'S' para switch, 'L' para led, 'D' para o display sete segmentos, 'P' para imprimir no LCD.
+No caso do buzzer,  após interpretar o caracter 'B', a máquina espera ler até três caracteres numéricos que correspondem ao tempo em que o buzzer permanecerá ativo, retornando para o estado 'statez\_idle' após, para avaliar a próxima ação do buffer de entrada.
 Para o switch, após a leitura de 'S', a máquina de estados espera a leitura de um caractere numérico, de 1 a 4, que corresponde de qual switch faremos a leitura. Recebemos como retorno 'O' caso o switch esteje acionado, e 'C' caso contrário.
 No caso do led, após a leitura de 'L' a máquina de estado espera mais um caractere indicando a ação desejada. Este caractere pode ser 'S' no caso de set, 'R' para read e 'C' para clear. Para todos estes casos, a máquina de estados esperará um caractere numérico indicando em qual dos leds a ação deverá ser executada.
+Para o display sete segmentos, após leitura de um 'D' a máquina de estados espera ler até quatro caracteres hexadecimais que serão mostrados no display, retornando para o estado 'state\_idle'.
+No caso do display LCD, após a leitura de um caractere 'P' a máquina de estados lê uma string de até 30 caracteres (sem espaços em branco) e a imprime no display LCD, retornando para o estado 'state\_idle'.
 Após cada ação executada com sucesso, o sistema responderá com 'ACK'.
 
 \section{Diagramas Esquemáticos}
@@ -170,6 +174,24 @@ Os pinos apresentados acima, devem ser mapeados para os da placa \textit{FRDM-KL
 
 Como pode ser visto na figura \ref{fig:esq_7seg}, é necessário fazer um gerenciamento dos pinos PTC0 a PTC7 para selecionar os segmentos que serão ativados e PTC10 a PTC13 para selecionar quais \textit{displays} estarão ativos. Para isso, é preciso alternar qual \textit{display} está ativo e fazer a mudança nos segmentos para que cada \textit{display} esteja mostrando um valor diferente. É importante lembrar que a frequência dessa alternância seja escolhida de modo que o olho humano não perceba que os \textit{displays} estão ligando e desligando. Afim de garantir que essa alternância funcionará apropriadamente nós utilizamos o módulo \textit{PIT} para gerar uma interrupção a cada $3.125 ms$, conforme sugerido na aula 6 \cite{bb:aula6}. 
 
+O controle do LCD é feito escrevendo o dado desejado nos pinos de dados (DB*), sinalizando se o dado enviado é um comando (Low) ou um caractere a ser escrito (HIGH) através do pino RS e enviando um pulso de duração bem definida no pino ENABLE. Algum dos comandos que podem ser enviados são mostrados na tabela \ref{tab:lcd_commands}.
+\begin{table}[H]
+	\centering
+	\caption{Protocolo de comandos para o display LCD}
+	\label{tab:lcd_commands}
+	\begin{tabular}{|c|c|c|}
+		\hline \bfseries{Nome} & \bfseries{Código} & \bfseries{Descrição} \\
+		\hline CMD\_INIT\_LCD & 00001111 & Inicializa o display LCD \\
+		\hline CMD\_CLEAR & 00000001 & Limpa exibição\\
+		\hline CMD\_NO\_CURSOR & 00001100 & Esconde a posição do cursor\\
+		\hline CMD\_CURSOR2R & 00000110 & Cursor a direita do texto\\
+		\hline CMD\_NO\_CUR\_NO\_BLINK & 00111000 & Esconde o cursor e não pisca o texto\\
+		\hline CMD\_MOV\_CUR & 1L00CCCC & Move cursor para posição [L, X].\\
+			& & L = linha (0, 1)\\
+			& & CCCC = coluna(0 a 15)\\
+		\hline
+	\end{tabular}
+\end{table}
 
 \section{Matriz de Rastreabilidade}
 % Matriz de rastreabilidade de requisitos vs implementações
