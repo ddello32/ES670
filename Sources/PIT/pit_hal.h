@@ -5,7 +5,7 @@
 /*                  timer module                                	 */
 /* Author name:      ddello	                                         */
 /* Creation date:    10abr2016                                       */
-/* Revision date:    10abr2016                                       */
+/* Revision date:    10mai2016                                       */
 /* ***************************************************************** */
 
 #ifndef SOURCES_PIT_PIT_HAL_H_

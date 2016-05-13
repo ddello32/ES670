@@ -5,7 +5,7 @@
 /*                   the hardware kit                                */
 /* Author name:      dloubach                                        */
 /* Creation date:    16out2015                                       */
-/* Revision date:    25fev2016                                       */
+/* Revision date:    13mai2016                                       */
 /* ***************************************************************** */
 
 #ifndef SOURCES_LCD_HAL_H_

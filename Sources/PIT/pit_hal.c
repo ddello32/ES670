@@ -5,7 +5,7 @@
 /*                   Timer module                                	 */
 /* Author name:      ddello	                                         */
 /* Creation date:    10abr2016                                       */
-/* Revision date:    13abr2016                                       */
+/* Revision date:    10mai2016                                       */
 /* ***************************************************************** */
 //Careful when handling PIT DOC! Bit endianness is inverted in relation to GPIO doc
 

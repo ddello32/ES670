@@ -5,7 +5,7 @@
 /*                   controller                                      */
 /* Author name:      dloubach                                        */
 /* Creation date:    16out2015                                       */
-/* Revision date:    25fev2016                                       */
+/* Revision date:    13mai2016                                       */
 /* ***************************************************************** */
 
 #include "lcd_hal.h"

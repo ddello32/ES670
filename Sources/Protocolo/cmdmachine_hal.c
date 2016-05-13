@@ -4,7 +4,7 @@
 /*                   interfaces for protocol command machine		 */
 /* Author name:      ddello		                                     */
 /* Creation date:    27abr2016                                       */
-/* Revision date:    27abr2016                                       */
+/* Revision date:    13mai2016                                       */
 /* ***************************************************************** */
 #include <string.h>
 #include <stdio.h>
