@@ -212,6 +212,9 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 \end{table}
 \section{Notas}
 % Dificuldades, observações relevantes, correções, ...
+\subsection{LCD e interrupções}
+Para escrever no LCD precisamos gerar um pulso no seu pino de enable. Para garantir que esse pulso terá a duração certa, foi precisamos mascarar as interrupções durante esse pulso. Como as interrupções do display tem um período de aproximadamente 3ms e o pulso do LCD tem a mesma duração encontramos várias dificuldades ao controlar os dois sem mascarar as interrupções pela duração do pulso.
+
 \subsection{Leitura do Estado dos LEDs}
 Como uma extensão ao protocolo proposto no roteiro \cite{bb:roteiro}, acrescentamos o comando \textit{LRd} onde $d$ é um digito de 1 a 4, que nos retorna o estado atual do LED referenciado. Para recuperar esse estado devemos saber qual valor está sendo controlado para um pino de saída digital, o que é feito lendo o registrador GPIOx\_PDOR.
 
@@ -259,6 +262,8 @@ Listagem dos códigos fonte:
 \code{../Sources/fsl_debug_console.c}
 \code{../Sources/GPIO/gpio_hal.h}
 \code{../Sources/KL25Z/es670_peripheral_board.h}
+\code{../Sources/LCD/lcd_hal.c}
+\code{../Sources/LCD/lcd_hal.h}
 \code{../Sources/LedSwi/ledswi_hal.c}
 \code{../Sources/LedSwi/ledswi_hal.h}
 \code{../Sources/Main/es670.c}

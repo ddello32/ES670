@@ -319,12 +319,7 @@ int handleLCD(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 		sscanf(cpCmdBuffer, "%30s", iPrintBuff);
 		uiCounter += strlen(iPrintBuff);
 		strcat(cpCmdRes, ACK_STR);
-	    // clear LCD
-	    lcd_sendCommand(CMD_CLEAR);
-	    // set the cursor line 0, column 1
-	    lcd_setCursor(0,1);
-	    // send string
-		lcd_writeString(iPrintBuff);
+		lcd_printString(iPrintBuff);
 		iState = STATE_IDLE;
 	}else{
 		iState = STATE_ERR;

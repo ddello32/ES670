@@ -19,59 +19,50 @@
 #define CMD_NO_CUR_NO_BLINK 0x38 /* no cursor, no blink */
 
 
-/* ************************************************ */
-/* Method name:        lcd_initLcd                  */
-/* Method description: Initialize the LCD function  */
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Initialize the LCD function
+ */
 void lcd_initLcd(void);
 
 
-/* ************************************************ */
-/* Method name:        lcd_writeData                */
-/* Method description: Write data to be displayed   */
-/* Input params:       ucData => char to be written */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Send command or data to LCD
+ * @param ucBuffer Char to be send
+ * @param cDataType Command LCD_RS_CMD or data LCD_RS_DATA
+ */
 void lcd_writeData(unsigned char ucData);
 
 
-/* ************************************************ */
-/* Method name:        lcd_sendCommand              */
-/* Method description: Write command to LCD         */
-/* Input params:       ucCmd=>command to be executed*/
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Write command to LCD
+ * @param ucCmd Command to be executed
+ */
 void lcd_sendCommand(unsigned char ucCmd);
 
 
-/* ************************************************ */
-/* Method name:        lcd_WriteString              */
-/* Method description: Write string to be displayed */
-/* Input params:       cBuffer => string to be      */
-/*                     written in LCD               */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Write string to be displayed
+ * @param cBuffer String to be written in LCD
+ */
 void lcd_writeString(const char *cBuffer);
 
+/**
+/* Print string to the display, clears display and handles cursor
+/* @param cBuffer String to be written in LCD
+ */
+void lcd_printString(const char *cBuffer);
 
-/* ************************************************ */
-/* Method name:        lcd_setCursor                */
-/* Method description: Set cursor line and column   */
-/* Input params:       cLine = LINE0..LINE1         */
-/*                     cColumn = COLUMN0..MAX_COLUMN*/
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Set cursor line and column
+ * @param cLine = LINE0..LINE1
+ * @param cColumn = COLUMN0..MAX_COLUMN
+ */
 void lcd_setCursor(unsigned char cLine, unsigned char cColumn);
 
 
-/* ************************************************ */
-/* Method name:        lcd_dummyText                */
-/* Method description: Write a dummy hard coded text*/
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Write a dummy hard coded text
+ */
 void lcd_dummyText(void);
 
 

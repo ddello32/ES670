@@ -21,12 +21,9 @@
 #define L1C0_BASE    0xC0 /* line 1, column 0 */
 #define MAX_COLUMN  15U
 
-/* ************************************************ */
-/* Method name:        lcd_initLcd                  */
-/* Method description: Initialize the LCD function  */
-/* Input params:       n/a                          */
-/* Output params:       n/a                         */
-/* ************************************************ */
+/**
+ * Initialize the LCD function
+ */
 void lcd_initLcd(void)
 {
     /* pins configured as outputs */
@@ -65,14 +62,11 @@ void lcd_initLcd(void)
 
 
 
-/* ************************************************ */
-/* Method name:        lcd_write2Lcd                */
-/* Method description: Send command or data to LCD  */
-/* Input params:       ucBuffer => char to be send  */
-/*                     cDataType=>command LCD_RS_CMD*/
-/*                     or data LCD_RS_DATA          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Send command or data to LCD
+ * @param ucBuffer Char to be send
+ * @param cDataType Command LCD_RS_CMD or data LCD_RS_DATA
+ */
 void lcd_write2Lcd(unsigned char ucBuffer,  unsigned char cDataType)
 {
     /* writing data or command */
@@ -107,12 +101,10 @@ void lcd_write2Lcd(unsigned char ucBuffer,  unsigned char cDataType)
 
 
 
-/* ************************************************ */
-/* Method name:        lcd_writeData                */
-/* Method description: Write data to be displayed   */
-/* Input params:       ucData => char to be written */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Write data to be displayed
+ * @param ucData Char to be written
+ */
 void lcd_writeData(unsigned char ucData)
 {
     /* just a relay to send data */
@@ -121,12 +113,10 @@ void lcd_writeData(unsigned char ucData)
 
 
 
-/* ************************************************ */
-/* Method name:        lcd_sendCommand              */
-/* Method description: Write command to LCD         */
-/* Input params:       ucCmd=>command to be executed*/
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Write command to LCD
+ * @param ucCmd Command to be executed
+ */
 void lcd_sendCommand(unsigned char ucCmd)
 {
     /* just a relay to send command */
@@ -135,13 +125,11 @@ void lcd_sendCommand(unsigned char ucCmd)
 
 
 
-/* ************************************************ */
-/* Method name:        lcd_setCursor                */
-/* Method description: Set cursor line and column   */
-/* Input params:       cLine = LINE0..LINE1         */
-/*                     cColumn = COLUMN0..MAX_COLUMN*/
-/* Output params:       n/a                         */
-/* ************************************************ */
+/**
+ * Set cursor line and column
+ * @param cLine = LINE0..LINE1
+ * @param cColumn = COLUMN0..MAX_COLUMN
+ */
 void lcd_setCursor(unsigned char cLine, unsigned char cColumn)
 {
     char cCommand;
@@ -162,13 +150,10 @@ void lcd_setCursor(unsigned char cLine, unsigned char cColumn)
 
 
 
-/* ************************************************ */
-/* Method name:        lcd_writeString              */
-/* Method description: Write string to be displayed */
-/* Input params:       cBuffer => string to be      */
-/*                     written in LCD               */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Write string to be displayed
+ * @param cBuffer String to be written in LCD
+ */
 void lcd_writeString(const char *cBuffer)
 {
     while(*cBuffer)
@@ -177,14 +162,32 @@ void lcd_writeString(const char *cBuffer)
     };
 }
 
+/**
+/* Print string to the display, clears display and handles cursor
+/* @param cBuffer String to be written in LCD
+ */
+void lcd_printString(const char *cBuffer)
+{
+    // clear LCD
+    lcd_sendCommand(CMD_CLEAR);
+
+    // set the cursor line 0, column 1
+    lcd_setCursor(0,1);
+    unsigned int uiCursorCollum = 0;
+    while(*cBuffer)
+    {
+        lcd_writeData(*cBuffer++);
+        if(++uiCursorCollum == MAX_COLUMN){
+            lcd_setCursor(1,0);
+            uiCursorCollum = 0;
+        }
+    };
+}
 
 
-/* ************************************************ */
-/* Method name:        lcd_dummyText                */
-/* Method description: Write a dummy hard coded text*/
-/* Input params:       n/a                          */
-/* Output params:      n/a                          */
-/* ************************************************ */
+/**
+ * Write a dummy hard coded text
+ */
 void lcd_dummyText(void)
 {
     // clear LCD
