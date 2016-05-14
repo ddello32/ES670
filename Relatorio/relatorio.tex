@@ -279,9 +279,10 @@ Nesse laboratório tivemos dificuldades relacionadas à leitura do estado dos bo
 \subsection{Estilo de Documentação}
 Não conseguimos nos adaptar ao estilo de comentários sugerido pelo professor, que nos parece introduzir uma quantidade desnecessária de burocracia. Formatar todos os comentários para caber dentro daquele quadrado tomava mais tempo que o planejamento e a implementação do código e muita informação redundante estava sendo inserida (bastava ler a interface da função para saber seu nome e o tipo de seus argumentos). Escolhemos substituir todos os comentários do código pelo padrão \textit{javadoc}, com o qual estamos mais familiarizados, que é capaz de documentar de maneira eficiente o código.
 
-\subsection{Outros}
-Também tivemos dificuldades com a instalação do \textit{Rhapsody Rational Modeler} no \textit{Linux} (através do \textit{Wine}), pois ele necessita da instalação das seguintes dlls nativas do \textit{Windows}: \textit{comctl32}, \textit{msvcirt} e \textit{riched20}.\\
+\subsection{Rhapsody Modeler e Wine}
+Também tivemos dificuldades com a instalação do \textit{Rhapsody Rational Modeler} no \textit{Linux} (através do \textit{Wine}), pois ele necessita da instalação das seguintes dlls nativas do \textit{Windows}: \textit{mfc42}, \textit{comctl32}, \textit{msvcirt} e \textit{riched20}.\\
 
+\subsection{Outros}
  É relevante lembrar de utilizar o modificador \textit{volatile} para variáveis que serão modificadas durante o tratamento de interrupções, dessa maneira o otimizador sabe que não deve alterar comandos que envolvem essa variável.
  
 

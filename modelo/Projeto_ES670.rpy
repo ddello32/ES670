@@ -72,9 +72,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- _name = "Projeto_ES670";
-	- _objectCreation = "367307124420162323589536";
-	- _umlDependencyID = "2742";
-	- _lastID = 23;
+	- _objectCreation = "387771132320162228121538";
+	- _umlDependencyID = "2735";
+	- _lastID = 25;
 	- _UserColors = { IRPYRawContainer 
 		- size = 16;
 		- value = 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 16777215; 
@@ -116,7 +116,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- Subsystems = { IRPYRawContainer 
-		- size = 13;
+		- size = 15;
 		- value = 
 		{ ISubsystem 
 			- fileName = "_Projeto_Pratico";
@@ -169,6 +169,14 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		{ ISubsystem 
 			- fileName = "LCD";
 			- _id = GUID 8b7c6acf-75b2-42fa-a1d1-b394c6f3556f;
+		}
+		{ ISubsystem 
+			- fileName = "Cooler";
+			- _id = GUID 3ef236c3-45bd-48c8-887f-5fd4b4eada10;
+		}
+		{ ISubsystem 
+			- fileName = "Tacometro";
+			- _id = GUID 1ab6553b-0084-405b-a240-df1fa429b755;
 		}
 	}
 	- Diagrams = { IRPYRawContainer 
@@ -348,8 +356,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_requisitos";
-			- _objectCreation = "367309124420162323587536";
-			- _umlDependencyID = "3211";
+			- _objectCreation = "387773132320162228119538";
+			- _umlDependencyID = "3213";
 			- _description = { IDescription 
 				- _textRTF = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1046{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
 \\viewkind4\\uc1\\pard\\fs20 Diagrama de requisitos de sistema do projeto pr\\'e1tico da ES670 \\par
@@ -1536,9 +1544,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_pacotes";
-			- _objectCreation = "367311124420162323585536";
-			- _umlDependencyID = "2841";
-			- _lastModifiedTime = "5.13.2016::2:28:5";
+			- _objectCreation = "387775132320162228117538";
+			- _umlDependencyID = "2852";
+			- _lastModifiedTime = "5.14.2016::1:1:35";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 84c7ed09-6a53-4e4a-925b-6e70d2f9ea4a;
 				- m_type = 0;
@@ -1562,7 +1570,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 				- m_drawBehavior = 0;
 				- m_bIsPreferencesInitialized = 0;
-				- elementList = 14;
+				- elementList = 16;
 				{ CGIClass 
 					- _id = GUID 8b281bd3-f1f5-4938-b9c6-5a6107121e5f;
 					- m_type = 78;
@@ -2250,6 +2258,146 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- m_nNameFormat = 0;
 					- m_nIsNameFormat = 0;
 				}
+				{ CGIPackage 
+					- _id = GUID 1b3a2288-f5a0-4d1a-bc21-a885bd3e5414;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "FitBoxToItsTextuals";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 127;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "ISubsystem";
+						- _filename = "Tacometro.sbs";
+						- _subsystem = "";
+						- _class = "";
+						- _name = "Tacometro";
+						- _id = GUID 1ab6553b-0084-405b-a240-df1fa429b755;
+					}
+					- m_pParent = GUID 8b281bd3-f1f5-4938-b9c6-5a6107121e5f;
+					- m_name = { CGIText 
+						- m_str = "Tacometro";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 5;
+					}
+					- m_drawBehavior = 4104;
+					- m_transform = 0.177632 0 0 0.0834057 552 156.078 ;
+					- m_bIsPreferencesInitialized = 1;
+					- m_AdditionalLabel = { CGIText 
+						- m_str = "";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 1;
+					}
+					- m_polygon = 4 0 0  0 1151  1216 1151  1216 0  ;
+					- m_nNameFormat = 0;
+					- m_nIsNameFormat = 0;
+				}
+				{ CGIPackage 
+					- _id = GUID 26af28ec-8636-407b-b8ff-31eee056e0e6;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "FitBoxToItsTextuals";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 127;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "ISubsystem";
+						- _filename = "Cooler.sbs";
+						- _subsystem = "";
+						- _class = "";
+						- _name = "Cooler";
+						- _id = GUID 3ef236c3-45bd-48c8-887f-5fd4b4eada10;
+					}
+					- m_pParent = GUID 8b281bd3-f1f5-4938-b9c6-5a6107121e5f;
+					- m_name = { CGIText 
+						- m_str = "Cooler";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 5;
+					}
+					- m_drawBehavior = 4104;
+					- m_transform = 0.177632 0 0 0.0938314 552 261.462 ;
+					- m_bIsPreferencesInitialized = 1;
+					- m_AdditionalLabel = { CGIText 
+						- m_str = "";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 1;
+					}
+					- m_polygon = 4 0 0  0 1151  1216 1151  1216 0  ;
+					- m_nNameFormat = 0;
+					- m_nIsNameFormat = 0;
+				}
 				
 				- m_access = 'Z';
 				- m_modified = 'N';
@@ -2466,9 +2614,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_definicao_semana_04_05";
-			- _objectCreation = "367313124420162323583536";
-			- _umlDependencyID = "4135";
-			- _lastModifiedTime = "5.13.2016::2:41:0";
+			- _objectCreation = "387777132320162228115538";
+			- _umlDependencyID = "4146";
+			- _lastModifiedTime = "5.14.2016::1:23:36";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 338e6526-0699-499c-b6b4-93ea64c72097;
 				- m_type = 0;
@@ -2492,7 +2640,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 				- m_drawBehavior = 0;
 				- m_bIsPreferencesInitialized = 0;
-				- elementList = 39;
+				- elementList = 43;
 				{ CGIClass 
 					- _id = GUID cbe743a9-93d8-4b8d-93fe-5a38658f4c13;
 					- m_type = 78;
@@ -6766,6 +6914,364 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- m_line_style = 0;
 					- m_SourcePort = 14 1101 ;
 					- m_TargetPort = 944 1367 ;
+					- m_ShowName = 0;
+					- m_ShowStereotype = 1;
+				}
+				{ CGIClass 
+					- _id = GUID acb0d849-808f-4705-9b47-6e76e293b2ac;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "FitBoxToItsTextuals";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 87;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IClass";
+						- _filename = "Cooler.sbs";
+						- _subsystem = "Cooler";
+						- _class = "";
+						- _name = "cooler_hal";
+						- _id = GUID af83b0f6-24bf-4380-8e53-e72128ef89ec;
+					}
+					- m_pParent = GUID cbe743a9-93d8-4b8d-93fe-5a38658f4c13;
+					- m_name = { CGIText 
+						- m_str = "Cooler::cooler_hal";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 5;
+					}
+					- m_drawBehavior = 2088;
+					- m_transform = 0.23796 0 0 0.106952 1223.52 337.813 ;
+					- m_bIsPreferencesInitialized = 1;
+					- m_AdditionalLabel = { CGIText 
+						- m_str = "";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 1;
+					}
+					- m_bFramesetModified = 1;
+					- m_polygon = 4 2 329  2 1451  1061 1451  1061 329  ;
+					- m_nNameFormat = 0;
+					- m_nIsNameFormat = 0;
+					- frameset = "<frameset rows=25%,75%>
+<frame name=AttributeListCompartment>
+<frame name=PrimitiveOperationListCompartment>";
+					- Attrs = { IRPYRawContainer 
+						- size = 0;
+					}
+					- Operations = { IRPYRawContainer 
+						- size = 2;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IPrimitiveOperation";
+							- _filename = "Cooler.sbs";
+							- _subsystem = "Cooler";
+							- _class = "cooler_hal";
+							- _name = "initCooler()";
+							- _id = GUID 6482d44e-ffbe-4c7e-bcae-4b63e55459ac;
+						}
+						{ IHandle 
+							- _m2Class = "IPrimitiveOperation";
+							- _filename = "Cooler.sbs";
+							- _subsystem = "Cooler";
+							- _class = "cooler_hal";
+							- _name = "setVelocity(unsigned char)";
+							- _id = GUID 6df4b0a5-9567-4d7c-a081-5bb1808ee0dd;
+						}
+					}
+				}
+				{ CGIClass 
+					- _id = GUID b80a4b26-e21c-4512-8a52-b5977f9b1382;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "FitBoxToItsTextuals";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 87;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IClass";
+						- _filename = "Tacometro.sbs";
+						- _subsystem = "Tacometro";
+						- _class = "";
+						- _name = "tacometro_hal";
+						- _id = GUID cd5ebfc1-fae1-4c36-ac96-416d217b4818;
+					}
+					- m_pParent = GUID cbe743a9-93d8-4b8d-93fe-5a38658f4c13;
+					- m_name = { CGIText 
+						- m_str = "Tacometro::tacometro_hal";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 5;
+					}
+					- m_drawBehavior = 2088;
+					- m_transform = 0.203966 0 0 0.117647 1487.59 333.294 ;
+					- m_bIsPreferencesInitialized = 1;
+					- m_AdditionalLabel = { CGIText 
+						- m_str = "";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 1;
+					}
+					- m_bFramesetModified = 1;
+					- m_polygon = 4 2 329  2 1451  1061 1451  1061 329  ;
+					- m_nNameFormat = 0;
+					- m_nIsNameFormat = 0;
+					- frameset = "<frameset rows=33%,67%>
+<frame name=AttributeListCompartment>
+<frame name=PrimitiveOperationListCompartment>";
+					- Attrs = { IRPYRawContainer 
+						- size = 0;
+					}
+					- Operations = { IRPYRawContainer 
+						- size = 2;
+						- value = 
+						{ IHandle 
+							- _m2Class = "IPrimitiveOperation";
+							- _filename = "Tacometro.sbs";
+							- _subsystem = "Tacometro";
+							- _class = "tacometro_hal";
+							- _name = "init()";
+							- _id = GUID e2ccd1a9-86c3-4759-910f-d4ee8ad097fc;
+						}
+						{ IHandle 
+							- _m2Class = "IPrimitiveOperation";
+							- _filename = "Tacometro.sbs";
+							- _subsystem = "Tacometro";
+							- _class = "tacometro_hal";
+							- _name = "getCurrentSpeed()";
+							- _id = GUID 9e1d18bc-b3a0-44ed-9b32-df1472e70866;
+						}
+					}
+				}
+				{ CGIInheritance 
+					- _id = GUID ea205e4f-86a6-4bc8-8866-89977858e2e5;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ShowLabels";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 128;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IDependency";
+						- _filename = "Cooler.sbs";
+						- _subsystem = "Cooler";
+						- _class = "cooler_hal";
+						- _name = "es670_peripheral_board";
+						- _id = GUID 151830d2-d7b8-4c39-807a-29cecdce15d0;
+					}
+					- m_pParent = ;
+					- m_name = { CGIText 
+						- m_str = "es670_peripheral_board";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_drawBehavior = 8;
+					- m_bIsPreferencesInitialized = 1;
+					- m_pSource = GUID acb0d849-808f-4705-9b47-6e76e293b2ac;
+					- m_sourceType = 'F';
+					- m_pTarget = GUID d8d4093c-0bb5-41ee-97df-c899c9489144;
+					- m_targetType = 'T';
+					- m_direction = ' ';
+					- m_rpn = { CGIText 
+						- m_str = "Usage";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_transform = 1 0 0 1 1278 357 ;
+						- m_nHorizontalSpacing = 80;
+						- m_nVerticalSpacing = 8;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_arrow = 1 1344 332  ;
+					- m_anglePoint1 = 0 0 ;
+					- m_anglePoint2 = 0 0 ;
+					- m_line_style = 0;
+					- m_SourcePort = 511 357 ;
+					- m_TargetPort = 901 646 ;
+					- m_ShowName = 0;
+					- m_ShowStereotype = 1;
+				}
+				{ CGIInheritance 
+					- _id = GUID d4a24fb1-3176-45d4-bdd4-e2f4a355afbf;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ShowLabels";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 128;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IDependency";
+						- _filename = "Tacometro.sbs";
+						- _subsystem = "Tacometro";
+						- _class = "tacometro_hal";
+						- _name = "es670_peripheral_board";
+						- _id = GUID 7d80e4a0-95e1-4d05-b765-413345278ea5;
+					}
+					- m_pParent = ;
+					- m_name = { CGIText 
+						- m_str = "es670_peripheral_board";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_drawBehavior = 8;
+					- m_bIsPreferencesInitialized = 1;
+					- m_pSource = GUID b80a4b26-e21c-4512-8a52-b5977f9b1382;
+					- m_sourceType = 'F';
+					- m_pTarget = GUID d8d4093c-0bb5-41ee-97df-c899c9489144;
+					- m_targetType = 'T';
+					- m_direction = ' ';
+					- m_rpn = { CGIText 
+						- m_str = "Usage";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_transform = 1 0 0 1 1482 357 ;
+						- m_nHorizontalSpacing = 164;
+						- m_nVerticalSpacing = 66;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_arrow = 2 1548 275  1008 275  ;
+					- m_anglePoint1 = 0 0 ;
+					- m_anglePoint2 = 0 0 ;
+					- m_line_style = 0;
+					- m_SourcePort = 296 320 ;
+					- m_TargetPort = 964 646 ;
 					- m_ShowName = 0;
 					- m_ShowStereotype = 1;
 				}

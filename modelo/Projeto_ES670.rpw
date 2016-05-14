@@ -38,7 +38,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 			- _placement = { CCommon_WINDOWPLACEMENT 
 				- m_nLength = 44;
 				- m_nFlags = 0;
-				- m_showCmd = 1;
+				- m_showCmd = 3;
 				- m_ptMinPositionX = -1;
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
@@ -57,8 +57,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 				- _name = "diag_definicao_semana_04_05";
 				- _id = GUID f53d507c-79b1-4f7f-850a-0c96a124e9bd;
 			}
-			- _UpLeft = 81 122 ;
-			- _DownRight = 2243 1200 ;
+			- _UpLeft = 341 0 ;
+			- _DownRight = 1993 1105 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 3;
 		}
@@ -66,7 +66,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 			- _placement = { CCommon_WINDOWPLACEMENT 
 				- m_nLength = 44;
 				- m_nFlags = 0;
-				- m_showCmd = 3;
+				- m_showCmd = 1;
 				- m_ptMinPositionX = -1;
 				- m_ptMinPositionY = -1;
 				- m_ptMaxPositionX = -4;
@@ -85,8 +85,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 				- _name = "diag_pacotes";
 				- _id = GUID 604328de-2202-48b3-9d1a-353bbeb75331;
 			}
-			- _UpLeft = 0 474 ;
-			- _DownRight = 843 1035 ;
+			- _UpLeft = 0 0 ;
+			- _DownRight = 1103 550 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 2;
 		}

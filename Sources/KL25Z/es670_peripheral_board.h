@@ -180,5 +180,13 @@ typedef int E;
 #define LCD_DATA_DB7_PIN            7
 /*                 END OF LCD definitions                 */
 
+/*					COOLER DEFINITIONS 					  */
+#define COOLER_PORT_ID				A
+#define COOLER_PIN					13
+#define COOLER_PIN_MUX_ALT			0x1	/*TODO Change for PWM*/
+#define COOLER_PIN_DIR				GPIO_OUTPUT
+/*					END OF COOLER DEFINITIONS 					  */
+
+
 
 #endif /* SOURCES_ES670_PERIPHERAL_BOARD_H_ */

@@ -34,6 +34,7 @@ Sources/Mcg \
 Sources/Main \
 Sources/LedSwi \
 Sources/LCD \
+Sources/Cooler \
 Sources/Buzzer \
 Project_Settings/Startup_Code \
 
