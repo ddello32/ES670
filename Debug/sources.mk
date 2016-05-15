@@ -26,6 +26,7 @@ S_UPPER_DEPS :=
 SUBDIRS := \
 Sources \
 Sources/Util \
+Sources/Tacometro \
 Sources/SevenSeg \
 Sources/Serial \
 Sources/Protocolo \

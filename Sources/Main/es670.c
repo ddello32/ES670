@@ -10,7 +10,9 @@
 #include "LCD/lcd_hal.h"
 #include "Util/tc_hal.h"
 #include "Cooler/cooler_hal.h"
+#include "Tacometro/tacometro_hal.h"
 #include <string.h>
+#include <stdio.h>
 
 /* defines */
 #define RCV_BUF_SIZE 100
@@ -42,6 +44,7 @@ void main_boardInit(){
 	sevenseg_init();
 	buzzer_init();
 	cooler_initCooler();
+	tacometro_init();
 }
 
 /**
@@ -58,6 +61,14 @@ void main_protocolCheck(){
 	}
 }
 
+/**
+ * Checks current cooler speed and prints it to lcd panel
+ */
+void main_checkCoolerSpeed(){
+	static char coolerSpeedBuffer[15];
+	sprintf(coolerSpeedBuffer, "%d deg/ms", tacometro_getSpeed(CYCLIC_EXECUTIVE_PERIOD/1000));
+	lcd_printString(coolerSpeedBuffer);
+}
 
 int main(void)
 {
@@ -70,7 +81,7 @@ int main(void)
     /* cooperative cyclic executive main loop */
 	while(1){
 		main_protocolCheck();
-
+		main_checkCoolerSpeed();
 		 /* WAIT FOR CYCLIC EXECUTIVE PERIOD */
 		while(!uiFlagNextPeriod);
 		uiFlagNextPeriod = 0;

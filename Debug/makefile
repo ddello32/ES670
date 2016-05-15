@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Sources/Util/subdir.mk
+-include Sources/Tacometro/subdir.mk
 -include Sources/SevenSeg/subdir.mk
 -include Sources/Serial/subdir.mk
 -include Sources/Protocolo/subdir.mk
