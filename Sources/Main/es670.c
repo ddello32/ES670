@@ -53,11 +53,13 @@ void main_boardInit(){
 void main_protocolCheck(){
 	static char rcvBuffer[RCV_BUF_SIZE];
 	static char sndBuffer[SND_BUF_SIZE];
-	int iCmdSize = 0;
-	iCmdSize = serial_recieveBuffer(rcvBuffer, RCV_BUF_SIZE);
-	if(iCmdSize > 0){
-		cmdmachine_interpretCmdBuffer(rcvBuffer, iCmdSize, sndBuffer);
-		serial_sendBuffer(sndBuffer, strlen(sndBuffer));
+	if(UART0_BRD_S1_RDRF(UART0)){
+		int iCmdSize = 0;
+		iCmdSize = serial_recieveBuffer(rcvBuffer, RCV_BUF_SIZE);
+		if(iCmdSize > 0){
+			cmdmachine_interpretCmdBuffer(rcvBuffer, iCmdSize, sndBuffer);
+			serial_sendBuffer(sndBuffer, strlen(sndBuffer));
+		}
 	}
 }
 
@@ -66,7 +68,7 @@ void main_protocolCheck(){
  */
 void main_checkCoolerSpeed(){
 	static char coolerSpeedBuffer[15];
-	sprintf(coolerSpeedBuffer, "%d deg/ms", tacometro_getSpeed(CYCLIC_EXECUTIVE_PERIOD/1000));
+	sprintf(coolerSpeedBuffer, "%d rpm", tacometro_getSpeed(CYCLIC_EXECUTIVE_PERIOD/1000));
 	lcd_printString(coolerSpeedBuffer);
 }
 
@@ -80,10 +82,11 @@ int main(void)
 
     /* cooperative cyclic executive main loop */
 	while(1){
-		main_protocolCheck();
 		main_checkCoolerSpeed();
 		 /* WAIT FOR CYCLIC EXECUTIVE PERIOD */
-		while(!uiFlagNextPeriod);
+		while(!uiFlagNextPeriod){
+			main_protocolCheck();
+		}
 		uiFlagNextPeriod = 0;
 
 	}
