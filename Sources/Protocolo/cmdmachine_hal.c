@@ -24,6 +24,7 @@
 #define STATE_SWITCH_CMD 3
 #define STATE_SEVENSEG_CMD 4
 #define STATE_LCD_CMD 5
+#define STATE_COOLER_CMD 6
 #define STATE_ERR 99
 
 static int iState = STATE_IDLE;
@@ -58,6 +59,9 @@ unsigned int handleIdle(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 				break;
 			case 'P':
 				iState = STATE_LCD_CMD;
+				break;
+			case 'C':
+				iState = STATE_COOLER_CMD;
 				break;
 			case ' ':
 			case '\t':
@@ -301,6 +305,54 @@ int handleSevenSeg(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 }
 
 //==========================================================================
+// Cooler CMD STATE MACHINE
+//==========================================================================
+/**
+ * Parses Cooler command hexadecimal input into integer
+ *
+ * @param cpCmdBuffer The start of the Buzzer command hexadecimal input string
+ *
+ * @return The parsed number contained in the start of the command
+ * 				string or -1 in case of parsing failure
+ */
+int getCoolerHex(char *cpCmdBuffer){
+	int iCommand = -1;
+	if(!sscanf(cpCmdBuffer, "%4x", &iCommand)){
+		iCommand = -1;
+	}
+	return iCommand;
+}
+
+/**
+ * Handles parsing while in COOLER_CMD state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the command response
+ *
+ * @return The number of characters parsed while in the COOLER_COMMAND state
+ */
+int handleCooler(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
+	unsigned int uiCounter = 0;
+	int iHex = -1;
+	if(uiCounter < uiSize){
+		iHex = getCoolerHex(cpCmdBuffer);
+	}
+	if(iHex >= 0){
+		strcat(cpCmdRes, ACK_STR);
+		cooler_setVelocity(iHex);
+		iState = STATE_IDLE;
+		//Exactly how many characters where read.
+		while(uiCounter < 4 && uiCounter < uiSize && ((cpCmdBuffer[uiCounter] >= '0' && cpCmdBuffer[uiCounter] <= '9') || (cpCmdBuffer[uiCounter] >= 'A' && cpCmdBuffer[uiCounter] <= 'F')) ){
+			uiCounter++;
+		}
+	}else{
+		iState = STATE_ERR;
+	}
+	return uiCounter;
+}
+
+//==========================================================================
 // LCD CMD STATE MACHINE
 //==========================================================================
 /**
@@ -404,6 +456,9 @@ void cmdmachine_interpretCmdBuffer(char *cpCmdBuffer, unsigned int uiSize, char*
 				break;
 			case STATE_LCD_CMD:
 				uiCounter += handleLCD(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
+				break;
+			case STATE_COOLER_CMD:
+				uiCounter += handleCooler(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
 				break;
 			case STATE_ERR:
 				uiCounter += handleError(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);

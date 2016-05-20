@@ -38,10 +38,10 @@ void tacometro_init(void){
 /**
  * @param uiPeriod Time ellapsed since last getSpeedCall in ms
  *
- * @return current tacometer speed in rpm
+ * @return current tacometer speed in rps
  */
 unsigned int tacometro_getSpeed(unsigned int uiPeriod){
-	unsigned int ret = TPM_RD_CNT(TACOMETRO_TPM_BASE)/TACOMETRO_SCALER*60000/uiPeriod;
+	unsigned int ret = TPM_RD_CNT(TACOMETRO_TPM_BASE)/TACOMETRO_SCALER*1000/uiPeriod;
 	TPM_WR_CNT(TACOMETRO_TPM_BASE, 0x0);	/*Reset counter */
 	return ret;
 }

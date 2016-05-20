@@ -182,9 +182,14 @@ typedef int E;
 
 /*					COOLER DEFINITIONS 					  */
 #define COOLER_PORT_ID				A
+#define COOLER_PORT_BASE_PNT		PORTA
 #define COOLER_PIN					13
-#define COOLER_PIN_MUX_ALT			0x1	/*TODO Change for PWM*/
-#define COOLER_PIN_DIR				GPIO_OUTPUT
+#define COOLER_PIN_MUX_ALT			0x3
+
+#define COOLER_TPM_BASE_PNT			TPM1
+#define COOLER_TPM_CHANNEL_INDEX	1
+
+
 /*					END OF COOLER DEFINITIONS 					  */
 
 /*					TACOMETER DEFINITIONS				*/

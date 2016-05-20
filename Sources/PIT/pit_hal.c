@@ -115,7 +115,7 @@ void pit_mark_interrupt_handled(unsigned short usTimer_numb){
  */
 void pit_mask_interrupts(){
 	if(pit_enabled){
-		NVIC_ClearPendingIRQ(PIT_IRQ_NUMBER);
+//		NVIC_ClearPendingIRQ(PIT_IRQ_NUMBER);
 		NVIC_DisableIRQ(PIT_IRQ_NUMBER);
 		PIT_TCTRL0 &= ~PIT_TCTRL_TIE(0x1u);
 		PIT_TCTRL1 &= ~PIT_TCTRL_TIE(0x1u);
@@ -127,7 +127,7 @@ void pit_mask_interrupts(){
  */
 void pit_unmask_interrupts(){
 	if(pit_enabled){
-		NVIC_ClearPendingIRQ(PIT_IRQ_NUMBER);
+//		NVIC_ClearPendingIRQ(PIT_IRQ_NUMBER);
 		NVIC_EnableIRQ(PIT_IRQ_NUMBER);
 		PIT_TCTRL0 |= PIT_TCTRL_TIE(0x1u);		/*Enable interrupts for timer 0*/
 		PIT_TCTRL1 |= PIT_TCTRL_TIE(0x1u);		/*Enable interrupts for timer 1*/

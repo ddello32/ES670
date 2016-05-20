@@ -19,7 +19,7 @@ void tacometro_init(void);
 /**
  * @param uiPeriod Time ellapsed since last getSpeedCall in ms
  *
- * @return current tacometer speed in deg/ms
+ * @return current tacometer speed in rps
  */
 unsigned int tacometro_getSpeed(unsigned int uiPeriod);
 

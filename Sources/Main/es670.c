@@ -43,8 +43,8 @@ void main_boardInit(){
 	lcd_dummyText();
 	sevenseg_init();
 	buzzer_init();
-	cooler_initCooler();
 	tacometro_init();
+	cooler_initCooler();
 }
 
 /**
@@ -68,14 +68,13 @@ void main_protocolCheck(){
  */
 void main_checkCoolerSpeed(){
 	static char coolerSpeedBuffer[15];
-	sprintf(coolerSpeedBuffer, "%d rpm", tacometro_getSpeed(CYCLIC_EXECUTIVE_PERIOD/1000));
+	sprintf(coolerSpeedBuffer, "%d rps", tacometro_getSpeed(CYCLIC_EXECUTIVE_PERIOD/1000));
 	lcd_printString(coolerSpeedBuffer);
 }
 
 int main(void)
 {
 	main_boardInit();
-	cooler_setVelocity(1);
 
     /* configure cyclic executive interruption */
     tc_installLptmr0(CYCLIC_EXECUTIVE_PERIOD, main_cyclicExecuteIsr);
