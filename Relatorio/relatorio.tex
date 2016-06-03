@@ -90,7 +90,9 @@ O objetivo do projeto é, de maneira incremental, implementar no \textit{target}
 % Diagramas requisitos implementados, digrama de blocos, etc
 Utilizando o Rational Rhapsody Modeler e tomando como base os requisitos propostos mostrados na figura \ref{fig:requisitos}, complementamos o modelo inicial\cite{bb:modelo} (requisitos de teclado e LEDs) adicionando um bloco ao modelo referente aos \textit{displays} de sete segmentos (REQ1C), conforme mostrado na figura \ref{fig:blocos}. Adicionamos também alguns blocos auxiliares relacionados ao gerenciamento de pinos \textit{GPIO} e a interrupções periódicas, que foram utilizados para nossa implementação do \textit{display} de sete segmentos e do \textit{buzzer}. Ao tratar o gerenciamento do \textit{display} e do \textit{buzzer} através de interrupções, livramos a \textit{thread} principal para que essa lide com outros problemas sem precisar se preocupar com a atualização periódica dos \textit{displays}.
 
-Continuamos a complementar nosso diagrama adicionando um bloco responsável pela comunicação serial e um pela interpretação dos comandos referentes ao protocolo do requisito REQ2. Adicionamos também um bloco responsável pelo controle do display LCD referente ao REQ3.
+Continuamos a complementar nosso diagrama adicionando um bloco responsável pela comunicação serial e um pela interpretação dos comandos referentes ao protocolo do requisito REQ2, adicionamos também um bloco responsável pelo controle do display LCD referente ao REQ3. Blocos responsáveis pelo controle do ventilador e pela medição da velocidade do mesmo, referentes aos requisitos REQ4 e REQ5 foram acrescentados ao diagrama.
+
+Integramos também o padrão executivo ciclíco cooperativo ao nosso projeto, tornando nosso código mais determinístico.
 
 \begin{figure}[H]
 	\centering
@@ -127,6 +129,10 @@ O bloco \textit{lcd\_hal} é responsável pelo controle do display LCD, ele segu
 
 O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e geração da string de resposta. Em nossa implementação, escolhemos tratar uma string já bufferada de commandos ao invés de trabalhar caractere a caractere. A máquina de estados do tratamento dos comandos pode ser vista na figura \ref{fig:estados}.
 
+O bloco \textit{tacometro\_hal} é responsável pela medição da velocidade do ventilador ligado à placa e sua função getCurrentSpeed deve ser chamada de maneira periódica a fim de resetar o contador usado para medir a velocidade. 
+
+O bloco \textit{cooler\_hal} é responsável pelo controle do ventilador ligado à placa. Ele conta com uma função de inicialização e uma função controla a velocidade do mesmo, através do módulo PWM.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.5\linewidth, center]{estados}
@@ -140,6 +146,7 @@ Para o switch, após a leitura de 'S', a máquina de estados espera a leitura de
 No caso do led, após a leitura de 'L' a máquina de estado espera mais um caractere indicando a ação desejada. Este caractere pode ser 'S' no caso de set, 'R' para read e 'C' para clear. Para todos estes casos, a máquina de estados esperará um caractere numérico indicando em qual dos leds a ação deverá ser executada.\\
 Para o display sete segmentos, após leitura de um 'D' a máquina de estados espera ler até quatro caracteres hexadecimais que serão mostrados no display, retornando para o estado 'state\_idle'.
 No caso do display LCD, após a leitura de um caractere 'P' a máquina de estados lê uma string de até 30 caracteres (sem espaços em branco) e a imprime no display LCD, retornando para o estado 'state\_idle'.\\
+O controle do ventilador também foi acrescentado à máquina de estados, ao receber um comando 'C' ela espera ler até quatro caracteres hexadecimais que determinarão o duty-cicle do PWM, retornando para o estado 'state\_idle'.\\
 Após cada ação executada com sucesso, o sistema responderá com 'ACK'.
 
 \section{Diagramas Esquemáticos}
@@ -162,6 +169,18 @@ Após cada ação executada com sucesso, o sistema responderá com 'ACK'.
 	\includegraphics[width=0.9\linewidth]{esq_lcd}
 	\caption{Esquema display LCD}
 	\label{fig:esq_lcd}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{esq_cooler}
+	\caption{Esquema do ventilador}
+	\label{fig:esq_cooler}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{esq_sensor}
+	\caption{Esquema do tacômetro}
+	\label{fig:esq_sensor}
 \end{figure}
 
 Os pinos apresentados acima, devem ser mapeados para os da placa \textit{FRDM-KL25Z} através do mapeamento apresentado na figura \ref{fig:pinout}
@@ -192,6 +211,8 @@ O controle do LCD é feito escrevendo o dado desejado nos pinos de dados (DB*), 
 		\hline
 	\end{tabular}
 \end{table}
+
+Para medir a velocidade do ventilador, ligamos o tacômetro a um contador e contamos o número de pulsos dentro de um período pré determinado de tempo.
 
 \section{Matriz de Rastreabilidade}
 % Matriz de rastreabilidade de requisitos vs implementações
@@ -244,6 +265,14 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 						& \texttt{- void lcd\_printString(const char *cBuffer)}\\
 						& \texttt{- void lcd\_setCursor(unsigned char cLine, unsigned char cColumn)}\\
 						& \texttt{- void lcd\_dummyText(void)}\\
+		\hline REQ4
+						& \texttt{tacometro\_hal.c}\\
+						& \texttt{- void tacometro\_init(void)}\\ 
+						& \texttt{- void tacometro\_init(void)}\\
+		\hline REQ5
+						& \texttt{cooler\_hal.c}\\
+						& \texttt{- void cooler\_initCooler(void)}\\
+						& \texttt{- void cooler\_setVelocity(uint16\_t uiVelocity)}\\
 		\hline 
 	\end{tabular}
 	} 
@@ -251,8 +280,14 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 \end{table}
 \section{Notas}
 % Dificuldades, observações relevantes, correções, ...
-\subsection{LCD e interrupções}
-Para escrever no LCD precisamos gerar um pulso no seu pino de enable. Para garantir que esse pulso terá a duração certa, foi preciso mascarar as interrupções durante esse pulso. Como as interrupções do display tem um período de aproximadamente 3ms e o pulso do LCD tem a mesma duração encontramos várias dificuldades ao controlar os dois sem mascarar as interrupções pela duração do pulso, logo adaptamos nosso código.
+\subsection{Comunicação Serial e Executivo Cíclico}
+Até então quase todo o processamento do nosso sistema estava atrelado à execução de um comando vindo por comunicação serial, logo utilizávamos chamadas que bloqueavam nossa thread principal no aguardo do próximo comando. Agora não podemos fazer mais isso e devemos incluir um pooling da porta serial durante todo o período ocioso do nosso loop principal para garantir que não vamos perder informações vindas por comunicação serial. Uma outra alternativa (que julgamos desnecessária dada a periodicidade do nosso sistema) seria a implementação de interrupções da UART.
+
+\subsection{PWM}
+Como o intervalo disponível para o projeto prático 4 foi maior e como o módulo TPM pode ser utilizado para contadores externos e para o PWM, resolvemos adiantar o requisito 5 uma vez que já tínhamos estudado a documentação. Uma coisa que deve ser levada em consideração quando configuramos o PWM é que sempre que executamos uma instrução de escrita para alterar a configuração do módulo de PWM o timer deve estar desabilitado e essa instrução leva um tempo para que a escrita seja efetuada, logo é recomendado escrever no registrador em uma única instrução e bit a bit. 
+
+\subsection{LCD e Interrupções}
+Para escrever no LCD precisamos gerar um pulso no seu pino de enable. Para garantir que esse pulso terá a duração certa, foi preciso mascarar as interrupções durante esse pulso. Como as interrupções do display tem um período de aproximadamente 3ms e o pulso do LCD tem a mesma duração encontramos várias dificuldades ao controlar os dois sem mascarar as interrupções pela duração do pulso, logo adaptamos nosso código. Quando atualizamos as informações do painel LCD de maneira regular, notamos um leve efeito de "flicker" nos displays 7 segmentos.
 
 \subsection{Leitura do Estado dos LEDs}
 Como uma extensão ao protocolo proposto no roteiro \cite{bb:roteiro}, acrescentamos o comando \textit{LRd} onde $d$ é um digito de 1 a 4, que nos retorna o estado atual do LED referenciado. Para recuperar esse estado devemos saber qual valor está sendo controlado para um pino de saída digital, o que é feito lendo o registrador GPIOx\_PDOR.
@@ -299,6 +334,8 @@ Também tivemos dificuldades com a instalação do \textit{Rhapsody Rational Mod
 Listagem dos códigos fonte:
 \code{../Sources/Buzzer/buzzer_hal.c}
 \code{../Sources/Buzzer/buzzer_hal.h}
+\code{../Sources/Cooler/cooler_hal.c}
+\code{../Sources/Cooler/cooler_hal.h}
 \code{../Sources/fsl_debug_console.c}
 \code{../Sources/GPIO/gpio_hal.h}
 \code{../Sources/KL25Z/es670_peripheral_board.h}
@@ -319,6 +356,10 @@ Listagem dos códigos fonte:
 \code{../Sources/Serial/serial_hal.h}
 \code{../Sources/SevenSeg/sevenseg_hal.c}
 \code{../Sources/SevenSeg/sevenseg_hal.h}
+\code{../Sources/Tacometro/tacometro_hal.c}
+\code{../Sources/Tacometro/tacometro_hal.h}
+\code{../Sources/Util/tc_hal.c}
+\code{../Sources/Util/tc_hal.h}
 \code{../Sources/Util/util.c}
 \code{../Sources/Util/util.h}
 \end{document}

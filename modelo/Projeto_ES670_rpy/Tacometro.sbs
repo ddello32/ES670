@@ -3,8 +3,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 	- _id = GUID 1ab6553b-0084-405b-a240-df1fa429b755;
 	- _myState = 8192;
 	- _name = "Tacometro";
-	- _objectCreation = "145430205820162020116514";
-	- _umlDependencyID = "2512";
+	- _objectCreation = "2528926202920162126214525";
+	- _umlDependencyID = "2583";
 	- _theMainDiagram = { IHandle 
 		- _m2Class = "IDiagram";
 		- _filename = "";
@@ -14,7 +14,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		- _id = GUID 604328de-2202-48b3-9d1a-353bbeb75331;
 	}
 	- _lastID = 1;
-	- weakCGTime = 5.20.2016::23:53:33;
+	- weakCGTime = 5.21.2016::0:28:40;
 	- strongCGTime = 5.14.2016::0:52:42;
 	- _defaultComposite = GUID 96419187-c241-45b2-a852-e5de9cc773cb;
 	- _eventsBaseID = -1;
@@ -25,9 +25,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 			- _id = GUID 96419187-c241-45b2-a852-e5de9cc773cb;
 			- _myState = 40960;
 			- _name = "TopLevel";
-			- _objectCreation = "145432205820162020114514";
-			- _umlDependencyID = "2381";
-			- weakCGTime = 5.14.2016::1:2:7;
+			- _objectCreation = "2528928202920162126212525";
+			- _umlDependencyID = "2452";
+			- weakCGTime = 5.20.2016::23:53:33;
 			- strongCGTime = 5.14.2016::0:52:42;
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
@@ -39,8 +39,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 			- _id = GUID cd5ebfc1-fae1-4c36-ac96-416d217b4818;
 			- _myState = 8192;
 			- _name = "tacometro_hal";
-			- _objectCreation = "145434205820162020112514";
-			- _umlDependencyID = "2948";
+			- _objectCreation = "2528930202920162126210525";
+			- _umlDependencyID = "3010";
 			- Dependencies = { IRPYRawContainer 
 				- size = 1;
 				- value = 
@@ -48,8 +48,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- _id = GUID 7d80e4a0-95e1-4d05-b765-413345278ea5;
 					- _myState = 2048;
 					- _name = "es670_peripheral_board";
-					- _objectCreation = "145436205820162020110514";
-					- _umlDependencyID = "3721";
+					- _objectCreation = "2528932202920162126208525";
+					- _umlDependencyID = "3792";
 					- Stereotypes = { IRPYRawContainer 
 						- size = 1;
 						- value = 
@@ -81,7 +81,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				- _id = GUID f53d507c-79b1-4f7f-850a-0c96a124e9bd;
 			}
 			- _lastID = 3;
-			- weakCGTime = 5.20.2016::23:54:6;
+			- weakCGTime = 5.21.2016::0:28:40;
 			- strongCGTime = 5.14.2016::0:52:52;
 			- Operations = { IRPYRawContainer 
 				- size = 2;
@@ -90,8 +90,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- _id = GUID e2ccd1a9-86c3-4759-910f-d4ee8ad097fc;
 					- _myState = 8192;
 					- _name = "init";
-					- _objectCreation = "145438205820162020108514";
-					- _umlDependencyID = "2015";
+					- _objectCreation = "2528934202920162126206525";
+					- _umlDependencyID = "2077";
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
 						- size = 0;
@@ -115,8 +115,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- _id = GUID 9e1d18bc-b3a0-44ed-9b32-df1472e70866;
 					- _myState = 8192;
 					- _name = "getCurrentSpeed";
-					- _objectCreation = "145440205820162020106514";
-					- _umlDependencyID = "3126";
+					- _objectCreation = "2528936202920162126204525";
+					- _umlDependencyID = "3197";
 					- _lastID = 1;
 					- _virtual = 0;
 					- Args = { IRPYRawContainer 
@@ -125,8 +125,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						{ IArgument 
 							- _id = GUID e98f174f-15d8-48b6-80f0-8dd8047b409d;
 							- _name = "uiPeriod";
-							- _objectCreation = "145442205820162020104514";
-							- _umlDependencyID = "2403";
+							- _objectCreation = "2528938202920162126202525";
+							- _umlDependencyID = "2474";
 							- _typeOf = { IHandle 
 								- _m2Class = "IType";
 								- _filename = "PredefinedTypesC++.sbs";
@@ -158,6 +158,37 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 			- _multiplicity = "";
 			- _itsStateChart = { IHandle 
 				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 5b67b5d8-6a55-456e-9db3-3dfa45d51ec7;
+					- _myState = 10240;
+					- _name = "itsEs670";
+					- _objectCreation = "2528940202920162126200525";
+					- _umlDependencyID = "2309";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IClass";
+						- _filename = "Main.sbs";
+						- _subsystem = "Main";
+						- _class = "";
+						- _name = "es670";
+						- _id = GUID 24edaf1f-6db0-4e29-bf9d-2cfd75f2e63c;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _filename = "Main.sbs";
+						- _subsystem = "Main";
+						- _class = "es670";
+						- _name = "itsTacometro_hal";
+						- _id = GUID 9df3d3f5-5173-48e8-8664-03033c76c763;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
 			}
 			- _classModifier = Unspecified;
 		}

@@ -29,8 +29,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 				- _name = "StatechartDiagram";
 				- _id = GUID aa776211-9c65-42a9-91fb-77ff5204f176;
 			}
-			- _UpLeft = 0 0 ;
-			- _DownRight = 2634 1763 ;
+			- _UpLeft = 459 0 ;
+			- _DownRight = 1450 696 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 0;
 		}
@@ -57,8 +57,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler * 1159120
 				- _name = "diag_definicao_semana_04_05";
 				- _id = GUID f53d507c-79b1-4f7f-850a-0c96a124e9bd;
 			}
-			- _UpLeft = 0 0 ;
-			- _DownRight = 2162 1078 ;
+			- _UpLeft = 147 29 ;
+			- _DownRight = 2309 1107 ;
 			- _instanceName = "";
 			- m_nDiagramIndex = 3;
 		}
