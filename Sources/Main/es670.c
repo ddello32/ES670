@@ -68,10 +68,13 @@ void main_protocolCheck(){
  */
 void main_checkCoolerSpeed(){
 	static char coolerSpeedBuffer[15];
-	sprintf(coolerSpeedBuffer, "%d rps", tacometro_getSpeed(CYCLIC_EXECUTIVE_PERIOD/1000));
+	sprintf(coolerSpeedBuffer, "%d rps - %d", tacometro_getSpeed(CYCLIC_EXECUTIVE_PERIOD/1000), cooler_getDutyCicle());
 	lcd_printString(coolerSpeedBuffer);
 }
 
+/**
+ * Main function
+ */
 int main(void)
 {
 	main_boardInit();

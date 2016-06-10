@@ -54,3 +54,12 @@ void cooler_initCooler(void){
 void cooler_setVelocity(uint16_t uiVelocity){
 	TPM_WR_CnV_VAL(COOLER_TPM_BASE_PNT, COOLER_TPM_CHANNEL_INDEX, uiVelocity);
 }
+
+/**
+ * Get the cooler PWM duty cicle in %.
+ *
+ * @return Duty Cicle (0 to 100)
+ */
+unsigned short cooler_getDutyCicle(){
+	return 	(TPM_RD_CnV_VAL(COOLER_TPM_BASE_PNT, COOLER_TPM_CHANNEL_INDEX)*100)/0xFFFF;
+}

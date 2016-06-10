@@ -72,8 +72,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 		}
 	}
 	- _name = "Projeto_ES670";
-	- _objectCreation = "5781482220161816433657";
-	- _umlDependencyID = "2644";
+	- _objectCreation = "2265521033201691121662";
+	- _umlDependencyID = "2620";
 	- _lastID = 25;
 	- _UserColors = { IRPYRawContainer 
 		- size = 16;
@@ -356,8 +356,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_requisitos";
-			- _objectCreation = "5781502220161816431657";
-			- _umlDependencyID = "3104";
+			- _objectCreation = "2265541033201691121462";
+			- _umlDependencyID = "3089";
 			- _description = { IDescription 
 				- _textRTF = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang1046{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}
 \\viewkind4\\uc1\\pard\\fs20 Diagrama de requisitos de sistema do projeto pr\\'e1tico da ES670 \\par
@@ -1544,8 +1544,8 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_pacotes";
-			- _objectCreation = "5781522220161816429657";
-			- _umlDependencyID = "2752";
+			- _objectCreation = "2265561033201691121262";
+			- _umlDependencyID = "2728";
 			- _lastModifiedTime = "5.14.2016::1:1:35";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 84c7ed09-6a53-4e4a-925b-6e70d2f9ea4a;
@@ -2614,9 +2614,9 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 			}
 			- _name = "diag_definicao_semana_04_05";
-			- _objectCreation = "5781542220161816427657";
-			- _umlDependencyID = "4046";
-			- _lastModifiedTime = "6.2.2016::21:2:35";
+			- _objectCreation = "2265581033201691121062";
+			- _umlDependencyID = "4022";
+			- _lastModifiedTime = "6.10.2016::12:32:44";
 			- _graphicChart = { CGIClassChart 
 				- _id = GUID 338e6526-0699-499c-b6b4-93ea64c72097;
 				- m_type = 0;
@@ -2640,7 +2640,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 				}
 				- m_drawBehavior = 0;
 				- m_bIsPreferencesInitialized = 0;
-				- elementList = 46;
+				- elementList = 49;
 				{ CGIClass 
 					- _id = GUID cbe743a9-93d8-4b8d-93fe-5a38658f4c13;
 					- m_type = 78;
@@ -6978,7 +6978,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 						- size = 0;
 					}
 					- Operations = { IRPYRawContainer 
-						- size = 2;
+						- size = 3;
 						- value = 
 						{ IHandle 
 							- _m2Class = "IPrimitiveOperation";
@@ -6995,6 +6995,14 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _class = "cooler_hal";
 							- _name = "setVelocity(unsigned int)";
 							- _id = GUID 6df4b0a5-9567-4d7c-a081-5bb1808ee0dd;
+						}
+						{ IHandle 
+							- _m2Class = "IPrimitiveOperation";
+							- _filename = "Cooler.sbs";
+							- _subsystem = "Cooler";
+							- _class = "cooler_hal";
+							- _name = "getDutyCicle()";
+							- _id = GUID 585b623e-3eff-450d-8a51-cddbf7369531;
 						}
 					}
 				}
@@ -7090,7 +7098,7 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 							- _filename = "Tacometro.sbs";
 							- _subsystem = "Tacometro";
 							- _class = "tacometro_hal";
-							- _name = "getCurrentSpeed(unsigned int)";
+							- _name = "getSpeed(unsigned int)";
 							- _id = GUID 9e1d18bc-b3a0-44ed-9b32-df1472e70866;
 						}
 					}
@@ -7692,6 +7700,252 @@ I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
 					- m_line_style = 0;
 					- m_SourcePort = 129 430 ;
 					- m_TargetPort = 153 768 ;
+					- m_ShowName = 0;
+					- m_ShowStereotype = 1;
+				}
+				{ CGIInheritance 
+					- _id = GUID 2b821384-8fe6-4ead-80dc-8a3b90f57260;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ShowLabels";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 128;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IDependency";
+						- _filename = "LCD.sbs";
+						- _subsystem = "LCD";
+						- _class = "lcd_hal";
+						- _name = "es670_peripheral_board";
+						- _id = GUID 5d094e44-9cbc-4dea-979f-e1b504afb69c;
+					}
+					- m_pParent = ;
+					- m_name = { CGIText 
+						- m_str = "es670_peripheral_board";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_drawBehavior = 8;
+					- m_bIsPreferencesInitialized = 1;
+					- m_pSource = GUID 188423e2-f8f2-489f-9cac-722b83bf7af3;
+					- m_sourceType = 'F';
+					- m_pTarget = GUID d8d4093c-0bb5-41ee-97df-c899c9489144;
+					- m_targetType = 'T';
+					- m_direction = ' ';
+					- m_rpn = { CGIText 
+						- m_str = "Usage";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_transform = 1 0 0 1 1818 1089 ;
+						- m_nHorizontalSpacing = 16;
+						- m_nVerticalSpacing = 737;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_arrow = 2 1812 265  990 265  ;
+					- m_anglePoint1 = 0 0 ;
+					- m_anglePoint2 = 0 0 ;
+					- m_line_style = 0;
+					- m_SourcePort = 131 329 ;
+					- m_TargetPort = 901 646 ;
+					- m_ShowName = 0;
+					- m_ShowStereotype = 1;
+				}
+				{ CGIInheritance 
+					- _id = GUID 4f61452c-d5b1-46f7-b3e6-e1c0d5fb85fb;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ShowLabels";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 128;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IDependency";
+						- _filename = "LCD.sbs";
+						- _subsystem = "LCD";
+						- _class = "lcd_hal";
+						- _name = "util";
+						- _id = GUID a4f1cd4c-a823-43be-a129-839a5462a93e;
+					}
+					- m_pParent = ;
+					- m_name = { CGIText 
+						- m_str = "util";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_drawBehavior = 8;
+					- m_bIsPreferencesInitialized = 1;
+					- m_pSource = GUID 188423e2-f8f2-489f-9cac-722b83bf7af3;
+					- m_sourceType = 'F';
+					- m_pTarget = GUID 927a6cf9-d299-4188-b182-f1e287f87cad;
+					- m_targetType = 'T';
+					- m_direction = ' ';
+					- m_rpn = { CGIText 
+						- m_str = "Usage";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_transform = 1 0 0 1 1638 1389 ;
+						- m_nHorizontalSpacing = 1056;
+						- m_nVerticalSpacing = 5;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_arrow = 2 175 1368  175 540  ;
+					- m_anglePoint1 = 0 0 ;
+					- m_anglePoint2 = 0 0 ;
+					- m_line_style = 0;
+					- m_SourcePort = 90 1196 ;
+					- m_TargetPort = 25 723 ;
+					- m_ShowName = 0;
+					- m_ShowStereotype = 1;
+				}
+				{ CGIInheritance 
+					- _id = GUID 05de278b-b402-42ac-ab59-b8235b0381d6;
+					- _properties = { IPropertyContainer 
+						- Subjects = { IRPYRawContainer 
+							- size = 1;
+							- value = 
+							{ IPropertySubject 
+								- _Name = "General";
+								- Metaclasses = { IRPYRawContainer 
+									- size = 1;
+									- value = 
+									{ IPropertyMetaclass 
+										- _Name = "Graphics";
+										- Properties = { IRPYRawContainer 
+											- size = 1;
+											- value = 
+											{ IProperty 
+												- _Name = "ShowLabels";
+												- _Value = "False";
+												- _Type = Bool;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					- m_type = 128;
+					- m_pModelObject = { IHandle 
+						- _m2Class = "IDependency";
+						- _filename = "LCD.sbs";
+						- _subsystem = "LCD";
+						- _class = "lcd_hal";
+						- _name = "gpio_hal";
+						- _id = GUID af5a3ca3-d12f-4916-ab2a-d14fe5888192;
+					}
+					- m_pParent = ;
+					- m_name = { CGIText 
+						- m_str = "gpio_hal";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 1 0 0  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_drawBehavior = 8;
+					- m_bIsPreferencesInitialized = 1;
+					- m_pSource = GUID 188423e2-f8f2-489f-9cac-722b83bf7af3;
+					- m_sourceType = 'F';
+					- m_pTarget = GUID fc7bf8a3-8e00-411a-b413-44b02c835d16;
+					- m_targetType = 'T';
+					- m_direction = ' ';
+					- m_rpn = { CGIText 
+						- m_str = "Usage";
+						- m_style = "Arial" 10 0 0 0 1 ;
+						- m_color = { IColor 
+							- m_fgColor = 0;
+							- m_bgColor = 0;
+							- m_bgFlag = 0;
+						}
+						- m_position = 4 -6 -9  57 -9  57 7  -6 7  ;
+						- m_nIdent = 0;
+						- m_bImplicitSetRectPoints = 0;
+						- m_transform = 1 0 0 1 1926 1077 ;
+						- m_nHorizontalSpacing = 28;
+						- m_nVerticalSpacing = 286;
+						- m_nOrientationCtrlPt = 8;
+					}
+					- m_arrow = 1 1908 671  ;
+					- m_anglePoint1 = 0 0 ;
+					- m_anglePoint2 = 0 0 ;
+					- m_line_style = 0;
+					- m_SourcePort = 484 372 ;
+					- m_TargetPort = 936 900 ;
 					- m_ShowName = 0;
 					- m_ShowStereotype = 1;
 				}

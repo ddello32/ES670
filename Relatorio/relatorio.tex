@@ -131,7 +131,7 @@ O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e gera�
 
 O bloco \textit{tacometro\_hal} é responsável pela medição da velocidade do ventilador ligado à placa e sua função getCurrentSpeed deve ser chamada de maneira periódica a fim de resetar o contador usado para medir a velocidade. 
 
-O bloco \textit{cooler\_hal} é responsável pelo controle do ventilador ligado à placa. Ele conta com uma função de inicialização e uma função controla a velocidade do mesmo, através do módulo PWM.
+O bloco \textit{cooler\_hal} é responsável pelo controle do ventilador ligado à placa. Ele conta com uma função de inicialização, uma que controla a velocidade do mesmo, através do módulo PWM, e uma que nos retorna o duty cicle atual do PWM.
 
 \begin{figure}[H]
 	\centering
@@ -268,11 +268,12 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 		\hline REQ4
 						& \texttt{tacometro\_hal.c}\\
 						& \texttt{- void tacometro\_init(void)}\\ 
-						& \texttt{- void tacometro\_init(void)}\\
+						& \texttt{- unsigned int tacometro\_getSpeed(unsigned int uiPeriod)}\\
 		\hline REQ5
 						& \texttt{cooler\_hal.c}\\
 						& \texttt{- void cooler\_initCooler(void)}\\
 						& \texttt{- void cooler\_setVelocity(uint16\_t uiVelocity)}\\
+						& \texttt{- unsigned short cooler\_getDutyCicle()}\\
 		\hline 
 	\end{tabular}
 	} 
@@ -284,7 +285,7 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 Até então quase todo o processamento do nosso sistema estava atrelado à execução de um comando vindo por comunicação serial, logo utilizávamos chamadas que bloqueavam nossa thread principal no aguardo do próximo comando. Agora não podemos fazer mais isso e devemos incluir um pooling da porta serial durante todo o período ocioso do nosso loop principal para garantir que não vamos perder informações vindas por comunicação serial. Uma outra alternativa (que julgamos desnecessária dada a periodicidade do nosso sistema) seria a implementação de interrupções da UART.
 
 \subsection{PWM}
-Como o intervalo disponível para o projeto prático 4 foi maior e como o módulo TPM pode ser utilizado para contadores externos e para o PWM, resolvemos adiantar o requisito 5 uma vez que já tínhamos estudado a documentação. Uma coisa que deve ser levada em consideração quando configuramos o PWM é que sempre que executamos uma instrução de escrita para alterar a configuração do módulo de PWM o timer deve estar desabilitado e essa instrução leva um tempo para que a escrita seja efetuada, logo é recomendado escrever no registrador em uma única instrução e bit a bit. 
+Uma coisa que deve ser levada em consideração quando configuramos o PWM é que sempre que executamos uma instrução de escrita para alterar a configuração do módulo de PWM o timer deve estar desabilitado e essa instrução leva um tempo para que a escrita seja efetuada, logo é recomendado escrever no registrador em uma única instrução e bit a bit. 
 
 \subsection{LCD e Interrupções}
 Para escrever no LCD precisamos gerar um pulso no seu pino de enable. Para garantir que esse pulso terá a duração certa, foi preciso mascarar as interrupções durante esse pulso. Como as interrupções do display tem um período de aproximadamente 3ms e o pulso do LCD tem a mesma duração encontramos várias dificuldades ao controlar os dois sem mascarar as interrupções pela duração do pulso, logo adaptamos nosso código. Quando atualizamos as informações do painel LCD de maneira regular, notamos um leve efeito de "flicker" nos displays 7 segmentos.
@@ -307,6 +308,7 @@ Outra dificuldade relacionada a esse módulo é que a expansão dos argumentos d
 
 \subsection{Interrupções por timer}
 Outro problema que enfrentamos foi com a implementação das interrupções por timer através do PIT, notavelmente pela dificuldade de encontrar uma documentação clara sobre o NVIC e pois a documentação fornecida para o PIT inverte a endianness dos registradores em relação aos registradores de GPIO.
+Nota: Documentação disponível no site arm.com, na referência do registrador Arm-M0+ sobre o NVIC \cite{bb:armnvic} encontramos a seguinte frase: "See the ARMv6-M Architecture Reference Manual for more information about the NVIC registers and their addresses, access types, and reset values.". Já na página ARMv6-M Architecture Reference Manual \cite{bb:armarm} somos informados que esse manual só está disponível em formato PDF e para clientes registrados.
 
 \subsection{Leitura de entradas digitais}
 Nesse laboratório tivemos dificuldades relacionadas à leitura do estado dos botões. O problema encontrado ocorreu pois quando o desbloqueamos o \textit{clock} para uma porta do controlador no código fornecido estávamos desabilitando o \textit{clock} para todas as outras portas. Como o \textit{clock} só afeta significativamente os pinos configurados como \textit{input}, se o módulo \textit{ledswi\_hal} fosse inicializado por último (como é feito no código do professor) o problema não seria notado.
@@ -316,6 +318,7 @@ Não conseguimos nos adaptar ao estilo de comentários sugerido pelo professor, 
 
 \subsection{Rhapsody Modeler e Wine}
 Também tivemos dificuldades com a instalação do \textit{Rhapsody Rational Modeler} no \textit{Linux} (através do \textit{Wine}), pois ele necessita da instalação das seguintes dlls nativas do \textit{Windows}: \textit{mfc42}, \textit{comctl32}, \textit{msvcirt} e \textit{riched20}.\\
+Ainda temos um problema com o Rhapsody quando tentamos editar textos dentro de um estado, por isso nossa máquina de estados só executa sua lógica nas transições.
 
 \subsection{Outros}
  É relevante lembrar de utilizar o modificador \textit{volatile} para variáveis que serão modificadas durante o tratamento de interrupções, dessa maneira o otimizador sabe que não deve alterar comandos que envolvem essa variável.
@@ -327,6 +330,8 @@ Também tivemos dificuldades com a instalação do \textit{Rhapsody Rational Mod
 	\bibitem{bb:codigo}{Código Fonte Inicial em Linguagem C (disponibilizado para os alunos)}
 	\bibitem{bb:aula6}{Notas de Aula - Semanas 06 (disponibilizado para os alunos)}
 	\bibitem{bb:preprocessor}{The C Preprocessor (Concatenation) \url{https://gcc.gnu.org/onlinedocs/cpp/Concatenation.html#Concatenation}}
+	\bibitem{bb:armnvic}{Cortex-M0+ Technical Reference Manual \url{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0413c/Cihfihfe.html}}
+	\bibitem{bb:armarm}{ARMv6-M Architecture Reference Manual \url{http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0413c/Cihfihfe.html}}
 \end{thebibliography}
 \pagebreak
 \section{Apêndice}

@@ -25,4 +25,11 @@ void cooler_initCooler(void);
  */
 void cooler_setVelocity(uint16_t uiVelocity);
 
+/**
+ * Get the cooler PWM duty cicle in %.
+ *
+ * @return Duty Cicle (0 to 100)
+ */
+unsigned short cooler_getDutyCicle();
+
 #endif /* SOURCES_COOLER_HAL_H_ */
