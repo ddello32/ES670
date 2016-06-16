@@ -25,6 +25,7 @@
 #define STATE_SEVENSEG_CMD 4
 #define STATE_LCD_CMD 5
 #define STATE_COOLER_CMD 6
+#define STATE_TEMP_CMD 7
 #define STATE_ERR 99
 
 static int iState = STATE_IDLE;
@@ -62,6 +63,9 @@ unsigned int handleIdle(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 				break;
 			case 'C':
 				iState = STATE_COOLER_CMD;
+				break;
+			case 'T':
+				iState = STATE_TEMP_CMD;
 				break;
 			case ' ':
 			case '\t':
@@ -353,6 +357,25 @@ int handleCooler(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 }
 
 //==========================================================================
+// TEMP CMD STATE MACHINE
+//==========================================================================
+/**
+ * Handles parsing while in TEMP_COMMAND state and checks for transitions
+ *
+ * @param cpCmdBuffer The start of the command string to parse
+ * @param uiSize The size of the command string
+ * @param cpCmdRes Buffer for concatenating the command response
+ *
+ * @return The number of characters parsed while in the TEMP_COMMAND state
+ */
+int handleTemp(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
+	char iPrintBuff[30];
+	lcd_printString(sprintf("Temp: %d", tempSensor_getLastConversionRawResult()));
+	iState = STATE_IDLE;
+	return 0;
+}
+
+//==========================================================================
 // LCD CMD STATE MACHINE
 //==========================================================================
 /**
@@ -362,7 +385,7 @@ int handleCooler(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
  * @param uiSize The size of the command string
  * @param cpCmdRes Buffer for concatenating the command response
  *
- * @return The number of characters parsed while in the SEVSEG_COMMAND state
+ * @return The number of characters parsed while in the LCD_COMMAND state
  */
 int handleLCD(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	unsigned int uiCounter = 0;
@@ -459,6 +482,9 @@ void cmdmachine_interpretCmdBuffer(char *cpCmdBuffer, unsigned int uiSize, char*
 				break;
 			case STATE_COOLER_CMD:
 				uiCounter += handleCooler(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
+				break;
+			case STATE_TEMP_CMD:
+				uiCounter += handle(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
 				break;
 			case STATE_ERR:
 				uiCounter += handleError(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);

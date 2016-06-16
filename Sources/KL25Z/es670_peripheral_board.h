@@ -192,6 +192,18 @@ typedef int E;
 
 /*					END OF COOLER DEFINITIONS 					  */
 
+/*					HEATER DEFINITIONS 					  */
+#define HEATER_PORT_ID				A
+#define HEATER_PORT_BASE_PNT		PORTA
+#define HEATER_PIN					12
+#define HEATER_PIN_MUX_ALT			0x3
+
+#define HEATER_TPM_BASE_PNT			TPM1
+#define HEATER_TPM_CHANNEL_INDEX	0
+
+
+/*					END OF HEATER DEFINITIONS 					  */
+
 /*					TACOMETER DEFINITIONS				*/
 #define TACOMETRO_PORT_ID			E
 #define TACOMETRO_PORT_BASE_PNT		PORTE
@@ -201,6 +213,23 @@ typedef int E;
 #define TACOMETRO_TPM_BASE			TPM0
 
 /*					END OF TACOMETER DEFINITIONS		*/
+
+/*					ADC DEFINITIONS 					  */
+#define ADC_PORT_ID					E
+#define ADC_PORT_BASE_PNT			PORTE
+#define ADC_NUM_BASE_PNT			ADC0_BASE_PTR
+#define ADC_MUX_IDX					0		//MUX A
+#define ADC_CHANNEL_SEL				0x4
+#define ADC_TEMP_PIN				21
+#define ADC_VOLT_PIN				20
+#define ADC_TEMP_PIN_MUX_ALT		0x0
+#define ADC_VOLT_PIN_MUX_ALT		0x0
+
+#define HEATER_TPM_BASE_PNT			TPM1
+#define HEATER_TPM_CHANNEL_INDEX	0
+
+
+/*					END OF ADC DEFINITIONS 					  */
 
 
 #endif /* SOURCES_ES670_PERIPHERAL_BOARD_H_ */

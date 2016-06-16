@@ -11,16 +11,20 @@
 #include "Util/tc_hal.h"
 #include "Cooler/cooler_hal.h"
 #include "Tacometro/tacometro_hal.h"
+#include "Heater/heater_hal.h"
+#include "TempSensor/tempSensor_hal.h"
 #include <string.h>
 #include <stdio.h>
 
 /* defines */
 #define RCV_BUF_SIZE 100
 #define SND_BUF_SIZE 100
-#define CYCLIC_EXECUTIVE_PERIOD         100 * 10000 /* 1000000 micro seconds */
+#define CYCLIC_EXECUTIVE_PERIOD         500 * 10000 /* 1000000 micro seconds */
 
 /* globals */
 volatile unsigned int uiFlagNextPeriod = 0;         /* cyclic executive flag */
+uint16_t temp = 0;
+
 
 /**
  * cyclic executive interrupt service routine
@@ -45,6 +49,8 @@ void main_boardInit(){
 	buzzer_init();
 	tacometro_init();
 	cooler_initCooler();
+	heater_initHeater();
+	tempSensor_init();
 }
 
 /**
@@ -78,13 +84,16 @@ void main_checkCoolerSpeed(){
 int main(void)
 {
 	main_boardInit();
+	heater_setIntensity(0x8000);
 
     /* configure cyclic executive interruption */
     tc_installLptmr0(CYCLIC_EXECUTIVE_PERIOD, main_cyclicExecuteIsr);
 
     /* cooperative cyclic executive main loop */
 	while(1){
-		main_checkCoolerSpeed();
+//		main_checkCoolerSpeed();
+		tempSensor_executeTask();
+
 		 /* WAIT FOR CYCLIC EXECUTIVE PERIOD */
 		while(!uiFlagNextPeriod){
 			main_protocolCheck();
