@@ -77,9 +77,9 @@ short adc_isAdcDone(void)
 
 /**
  * Retrieve converted value
- * @return The convertion result
+ * @return The conversion result
  */
-uint16_t adc_getConvertionValue(void)
+uint16_t adc_getConversionValue(void)
 {
 	return ADC_RD_R(ADC_NUM_BASE_PNT, ADC_MUX_IDX); // return the register value that keeps the result of convertion
 }

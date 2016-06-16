@@ -19,10 +19,12 @@ void adc_initConvertion(void);
 
 /**
  * Check if conversion is done
+ * @return 1 if done, 0 otherwise
  */
 short adc_isAdcDone(void);
 
 /**
  * Retrieve converted value
+ * @return The conversion result
  */
-uint16_t adc_getConvertionValue(void);
+uint16_t adc_getConversionValue(void);

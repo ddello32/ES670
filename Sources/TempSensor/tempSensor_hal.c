@@ -27,7 +27,7 @@ void tempSensor_init(){
  */
 void tempSensor_executeTask(){
 	if(tempSensor_isConversionFinished()){
-		rawReading = adc_getConvertionValue();
+		rawReading = adc_getConversionValue();
 	}
 	adc_initConvertion();
 }

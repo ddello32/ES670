@@ -15,9 +15,9 @@
 void tempSensor_init();
 
 /**
- * Starts a conversion for reading from temperature sensor
+ * Updates temperature sensor readings and starts a new conversion
  */
-void tempSensor_triggerConv();
+void tempSensor_executeTask()
 
 /**
  * Checks if last triggered conversion is finished
@@ -32,6 +32,6 @@ short tempSensor_isConversionFinished();
 uint16_t tempSensor_getLastConversionRawResult();
 
 /**
- * @return Last read temperature
+ * @return Last read temperature (in Celcius Degrees)
  */
 int tempSensor_getLastConversionTemperature();
