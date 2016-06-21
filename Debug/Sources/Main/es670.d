@@ -21,7 +21,8 @@ Sources/Main/es670.o: ../Sources/Main/es670.c \
  ../SDK/platform/devices/MKL25Z4/include/MKL25Z4_features.h \
  /mnt/9A68FEAD68FE8773/ksdk/platform/hal/inc/fsl_sim_hal.h \
  /mnt/9A68FEAD68FE8773/ksdk/platform/hal/inc/../src/sim/MKL25Z4/fsl_sim_hal_MKL25Z4.h \
- ../Sources/Cooler/cooler_hal.h ../Sources/Tacometro/tacometro_hal.h
+ ../Sources/Cooler/cooler_hal.h ../Sources/Tacometro/tacometro_hal.h \
+ ../Sources/Heater/heater_hal.h ../Sources/TempSensor/tempSensor_hal.h
 
 ../Sources/KL25Z/es670_peripheral_board.h:
 
@@ -80,3 +81,7 @@ Sources/Main/es670.o: ../Sources/Main/es670.c \
 ../Sources/Cooler/cooler_hal.h:
 
 ../Sources/Tacometro/tacometro_hal.h:
+
+../Sources/Heater/heater_hal.h:
+
+../Sources/TempSensor/tempSensor_hal.h:

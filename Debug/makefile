@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Sources/Util/subdir.mk
+-include Sources/TempSensor/subdir.mk
 -include Sources/Tacometro/subdir.mk
 -include Sources/SevenSeg/subdir.mk
 -include Sources/Serial/subdir.mk
@@ -18,8 +19,10 @@ RM := rm -rf
 -include Sources/Main/subdir.mk
 -include Sources/LedSwi/subdir.mk
 -include Sources/LCD/subdir.mk
+-include Sources/Heater/subdir.mk
 -include Sources/Cooler/subdir.mk
 -include Sources/Buzzer/subdir.mk
+-include Sources/ADC/subdir.mk
 -include Sources/subdir.mk
 -include Project_Settings/Startup_Code/subdir.mk
 -include subdir.mk

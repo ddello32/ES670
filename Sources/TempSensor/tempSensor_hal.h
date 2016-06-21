@@ -17,7 +17,7 @@ void tempSensor_init();
 /**
  * Updates temperature sensor readings and starts a new conversion
  */
-void tempSensor_executeTask()
+void tempSensor_executeTask();
 
 /**
  * Checks if last triggered conversion is finished

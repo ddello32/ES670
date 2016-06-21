@@ -26,6 +26,7 @@ S_UPPER_DEPS :=
 SUBDIRS := \
 Sources \
 Sources/Util \
+Sources/TempSensor \
 Sources/Tacometro \
 Sources/SevenSeg \
 Sources/Serial \
@@ -35,7 +36,9 @@ Sources/Mcg \
 Sources/Main \
 Sources/LedSwi \
 Sources/LCD \
+Sources/Heater \
 Sources/Cooler \
 Sources/Buzzer \
+Sources/ADC \
 Project_Settings/Startup_Code \
 

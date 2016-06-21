@@ -14,6 +14,8 @@
 #include "SevenSeg/sevenseg_hal.h"
 #include "LCD/lcd_hal.h"
 #include "Util/util.h"
+#include "Cooler/cooler_hal.h"
+#include "TempSensor/tempSensor_hal.h"
 
 #define ERR_STR "ERR\n"
 #define ACK_STR "ACK\n"
@@ -370,7 +372,8 @@ int handleCooler(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
  */
 int handleTemp(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	char iPrintBuff[30];
-	lcd_printString(sprintf("Temp: %d", tempSensor_getLastConversionRawResult()));
+	sprintf(iPrintBuff, "Temp: %d", tempSensor_getLastConversionRawResult());
+	lcd_printString(iPrintBuff);
 	iState = STATE_IDLE;
 	return 0;
 }
@@ -484,7 +487,7 @@ void cmdmachine_interpretCmdBuffer(char *cpCmdBuffer, unsigned int uiSize, char*
 				uiCounter += handleCooler(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
 				break;
 			case STATE_TEMP_CMD:
-				uiCounter += handle(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
+				uiCounter += handleTemp(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);
 				break;
 			case STATE_ERR:
 				uiCounter += handleError(&cpCmdBuffer[uiCounter], uiSize - uiCounter, cpCmdRes);

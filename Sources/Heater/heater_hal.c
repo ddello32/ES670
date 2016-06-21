@@ -2,7 +2,7 @@
 /* File name:        heater_hal.c                                    */
 /* File description: File containing the functions/methods           */
 /*                   for heater control                              */
-/* Author name:      ddello		                             */
+/* Author name:      ddello		                             		 */
 /* Creation date:    14jun2016                                       */
 /* Revision date:    14jun2016                                       */
 /* ***************************************************************** */
@@ -52,5 +52,5 @@ void heater_initHeater(void){
  * @param uiIntensity heater intensity from 0 (stopped) to 0xFFFF (max)
  */
 void heater_setIntensity(uint16_t uiIntensity){
-	TPM_WR_CnV_VAL(HEATER_TPM_BASE_PNT, HEATER_TPM_CHANNEL_INDEX, uiVelocity);
+	TPM_WR_CnV_VAL(HEATER_TPM_BASE_PNT, HEATER_TPM_CHANNEL_INDEX, uiIntensity);
 }
