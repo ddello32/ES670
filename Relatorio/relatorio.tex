@@ -306,6 +306,9 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 \end{table}
 \section{Notas}
 % Dificuldades, observações relevantes, correções, ...
+\subsection{Greve e Piquetes}
+Devido à greve quase não conseguimos acesso ao laboratório e não conseguimos mostrar que nosso projeto está funcional (ou testá-lo). Acreditamos que a postura adotada pelo professor de continuar cobrando laboratórios e projetos que estão acoplados ao acesso ao hardware, sem levar em consideração que esse acesso está na maior parte do tempo interditado, poderia ser revista. Concordando ou não com a greve, entendendo ou não que os grevistas faltaram com respeito com os professores, atrelar a aprovação dos alunos a sua capacidade de driblar o piquete e ao fato deles não aderirem à greve nos parece uma atitude questionável, que prende muitos dos estudantes (vários dos quais trabalham e não tem tempo para ficar esperando a boa vontade dos piqueteiros para entrar no laboratório) no meio de uma briga de poderes entre dois partidos que estão tentando provar seu ponto. Não apoiamos os meios adotados por alguns grevistas, mas acreditamos em compromissos e, enquanto nenhum dos partidos estiver disposto a fazer nenhum, pedimos mais compreensão por parte do professor, que se mostrou bastante inflexível quanto as datas de entrega.
+
 \subsection{Comunicação Serial e Executivo Cíclico}
 Até então quase todo o processamento do nosso sistema estava atrelado à execução de um comando vindo por comunicação serial, logo utilizávamos chamadas que bloqueavam nossa thread principal no aguardo do próximo comando. Agora não podemos fazer mais isso e devemos incluir um pooling da porta serial durante todo o período ocioso do nosso loop principal para garantir que não vamos perder informações vindas por comunicação serial. Uma outra alternativa (que julgamos desnecessária dada a periodicidade do nosso sistema) seria a implementação de interrupções da UART.
 
