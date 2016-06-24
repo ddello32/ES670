@@ -372,8 +372,9 @@ int handleCooler(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
  */
 int handleTemp(char *cpCmdBuffer, unsigned int uiSize, char* cpCmdRes){
 	char iPrintBuff[30];
-	sprintf(iPrintBuff, "Temp: %d", tempSensor_getLastConversionRawResult());
-	lcd_printString(iPrintBuff);
+	strcat(cpCmdRes, ACK_STR);
+	sprintf(iPrintBuff, "%d", tempSensor_getLastConversionRawResult());
+	strcat(cpCmdRes, iPrintBuff);
 	iState = STATE_IDLE;
 	return 0;
 }

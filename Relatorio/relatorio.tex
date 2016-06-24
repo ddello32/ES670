@@ -91,8 +91,9 @@ O objetivo do projeto é, de maneira incremental, implementar no \textit{target}
 Utilizando o Rational Rhapsody Modeler e tomando como base os requisitos propostos mostrados na figura \ref{fig:requisitos}, complementamos o modelo inicial\cite{bb:modelo} (requisitos de teclado e LEDs) adicionando um bloco ao modelo referente aos \textit{displays} de sete segmentos (REQ1C), conforme mostrado na figura \ref{fig:blocos}. Adicionamos também alguns blocos auxiliares relacionados ao gerenciamento de pinos \textit{GPIO} e a interrupções periódicas, que foram utilizados para nossa implementação do \textit{display} de sete segmentos e do \textit{buzzer}. Ao tratar o gerenciamento do \textit{display} e do \textit{buzzer} através de interrupções, livramos a \textit{thread} principal para que essa lide com outros problemas sem precisar se preocupar com a atualização periódica dos \textit{displays}.
 
 Continuamos a complementar nosso diagrama adicionando um bloco responsável pela comunicação serial e um pela interpretação dos comandos referentes ao protocolo do requisito REQ2, adicionamos também um bloco responsável pelo controle do display LCD referente ao REQ3. Blocos responsáveis pelo controle do ventilador e pela medição da velocidade do mesmo, referentes aos requisitos REQ4 e REQ5 foram acrescentados ao diagrama.
+Novos blocos responsáveis pelo aquecedor e pelo sensor de temperatura do REQ6 foram adicionados.
 
-Integramos também o padrão executivo ciclíco cooperativo ao nosso projeto, tornando nosso código mais determinístico.
+Integramos também o padrão executivo cíclico cooperativo ao nosso projeto, tornando nosso código mais determinístico.
 
 \begin{figure}[H]
 	\centering
@@ -113,25 +114,29 @@ Integramos também o padrão executivo ciclíco cooperativo ao nosso projeto, to
 	\label{fig:blocos}
 \end{figure}
 
-O bloco de \textit{GPIO\_hal} tem operações para desbloquear o \textit{clock} para uma porta, inicializar um pino em uma dada direção, escrever em um pino, escrever em um conjunto de pinos da mesma porta, ler a entrada em um pino e ler o valor de saída que está sendo controlado em um pino.
+O bloco de \textit{GPIO\_hal} tem operações para desbloquear o \textit{clock} para uma porta, inicializar um pino em uma dada direção, escrever em um pino, escrever em um conjunto de pinos da mesma porta, ler a entrada em um pino e ler o valor de saída que está sendo controlado em um pino.\\
 
-O bloco \textit{pit\_hal} tem operações para inicializar o \textit{PIT}, criar interrupções periódicas em um dos dois \textit{timers} disponíveis, desativar as interrupções em um \textit{timer}, marcar uma interrupção como tratada (deve ser feito pelos tratamentos de interrupção), mascarar as interrupções de PIT e desmascarar essas interrupções. Além disso esse bloco tem mais uma operação chamada \textit{PIT\_IRQHandler }que trata as interrupções do \textit{PIT}, essa operação precisa ser visível para o \textit{linker}, mas não deve ser chamada pelo usuário. É importante ressaltar que o \textit{clock} do \textit{PIT} é o \textit{bus\_clock} que no nosso caso é de $20MHz$
+O bloco \textit{pit\_hal} tem operações para inicializar o \textit{PIT}, criar interrupções periódicas em um dos dois \textit{timers} disponíveis, desativar as interrupções em um \textit{timer}, marcar uma interrupção como tratada (deve ser feito pelos tratamentos de interrupção), mascarar as interrupções de PIT e desmascarar essas interrupções. Além disso esse bloco tem mais uma operação chamada \textit{PIT\_IRQHandler }que trata as interrupções do \textit{PIT}, essa operação precisa ser visível para o \textit{linker}, mas não deve ser chamada pelo usuário. É importante ressaltar que o \textit{clock} do \textit{PIT} é o \textit{bus\_clock} que no nosso caso é de $20MHz$\\
 
-As operações do bloco \textit{sevenseg\_hal} cobrem a inicialização dos \textit{displays}, seleção manual de quais segmentos estarão ativos (feita através da passagem de um vetor com os segmentos desejados), ativação manual de um dos \textit{displays} (desativando todos os outros), conversão de dígito hexadecimal ou decimal em vetor de segmentos (para ser passado para a função de seleção de segmentos) e impressão automática de um valor hexadecimal ou decimal através das interrupções de \textit{timer}.
+As operações do bloco \textit{sevenseg\_hal} cobrem a inicialização dos \textit{displays}, seleção manual de quais segmentos estarão ativos (feita através da passagem de um vetor com os segmentos desejados), ativação manual de um dos \textit{displays} (desativando todos os outros), conversão de dígito hexadecimal ou decimal em vetor de segmentos (para ser passado para a função de seleção de segmentos) e impressão automática de um valor hexadecimal ou decimal através das interrupções de \textit{timer}.\\
 
-O bloco do \textit{buzzer\_hal} também ganhou duas novas operações, uma para criar uma onda quadrada no \textit{buzzer} com um certo período (e \textit{duty cycle} de $50\%$), através de interrupções de \textit{timer}, e outra para remover essa onda.
+O bloco do \textit{buzzer\_hal} também ganhou duas novas operações, uma para criar uma onda quadrada no \textit{buzzer} com um certo período (e \textit{duty cycle} de $50\%$), através de interrupções de \textit{timer}, e outra para remover essa onda.\\
 
 O bloco \textit{ledswi\_hal} foi alterado para lidar melhor com a inicialização separada dos pinos como Led e Switch e também foi adicionada uma função para ler o estado atual de um pino configurado como LED.
 
-O bloco \textit{serial\_hal} é responsável pela configuração da UART para comunicação serial e pelo envio de recebimento de dados através desse protocolo.
+O bloco \textit{serial\_hal} é responsável pela configuração da UART para comunicação serial e pelo envio de recebimento de dados através desse protocolo.\\
 
-O bloco \textit{lcd\_hal} é responsável pelo controle do display LCD, ele segue a implementação passada pelo professor, porém as chamadas as bibliotecas padrão foram substituídas por chamadas ao bloco \textit{GPIO\_hal} e manipulações de registradores. Uma função que imprime um texto ao display, após limpar a exibição e resetar a posição do cursor, foi acrescentada.
+O bloco \textit{lcd\_hal} é responsável pelo controle do display LCD, ele segue a implementação passada pelo professor, porém as chamadas as bibliotecas padrão foram substituídas por chamadas ao bloco \textit{GPIO\_hal} e manipulações de registradores. Uma função que imprime um texto ao display, após limpar a exibição e resetar a posição do cursor, foi acrescentada.\\
 
-O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e geração da string de resposta. Em nossa implementação, escolhemos tratar uma string já bufferada de commandos ao invés de trabalhar caractere a caractere. A máquina de estados do tratamento dos comandos pode ser vista na figura \ref{fig:estados}.
+O bloco \textit{cmdMachine\_hal} lida com a interpretação dos comandos e geração da string de resposta. Em nossa implementação, escolhemos tratar uma string já bufferada de commandos ao invés de trabalhar caractere a caractere. A máquina de estados do tratamento dos comandos pode ser vista na figura \ref{fig:estados}.\\
 
-O bloco \textit{tacometro\_hal} é responsável pela medição da velocidade do ventilador ligado à placa e sua função getCurrentSpeed deve ser chamada de maneira periódica a fim de resetar o contador usado para medir a velocidade. 
+O bloco \textit{tacometro\_hal} é responsável pela medição da velocidade do ventilador ligado à placa e sua função getCurrentSpeed deve ser chamada de maneira periódica a fim de resetar o contador usado para medir a velocidade. \\
 
-O bloco \textit{cooler\_hal} é responsável pelo controle do ventilador ligado à placa. Ele conta com uma função de inicialização, uma que controla a velocidade do mesmo, através do módulo PWM, e uma que nos retorna o duty cicle atual do PWM.
+O bloco \textit{cooler\_hal} é responsável pelo controle do ventilador ligado à placa. Ele conta com uma função de inicialização, uma que controla a velocidade do mesmo, através do módulo PWM, e uma que nos retorna o duty cicle atual do PWM.\\
+
+O bloco \textit{heater\_hal} é responsável pelo controle do aquecedor, possuindo uma função de inicialização e uma para controlar a intensidade do aquecedor.\\
+
+O bloco \textit{tempSensor\_hal} é responsável pelo sensor de temperatura, contando com funções para sua inicialização, para inicializar uma tarefa de leitura, para verificar se uma tarefa de leitura está sendo executada no momento, para ler o resultado  "raw" da última tarefa, e para ler a temperatura medida na última tarefa.
 
 \begin{figure}[H]
 	\centering
@@ -147,6 +152,7 @@ No caso do led, após a leitura de 'L' a máquina de estado espera mais um carac
 Para o display sete segmentos, após leitura de um 'D' a máquina de estados espera ler até quatro caracteres hexadecimais que serão mostrados no display, retornando para o estado 'state\_idle'.
 No caso do display LCD, após a leitura de um caractere 'P' a máquina de estados lê uma string de até 30 caracteres (sem espaços em branco) e a imprime no display LCD, retornando para o estado 'state\_idle'.\\
 O controle do ventilador também foi acrescentado à máquina de estados, ao receber um comando 'C' ela espera ler até quatro caracteres hexadecimais que determinarão o duty-cicle do PWM, retornando para o estado 'state\_idle'.\\
+Quando o comando 'T' é lido, o resultado "raw" da última tarefa de leitura é retornado via porta serial e máquina de estados retorna ao estado 'state\_idle'.\\
 Após cada ação executada com sucesso, o sistema responderá com 'ACK'.
 
 \section{Diagramas Esquemáticos}
@@ -181,6 +187,18 @@ Após cada ação executada com sucesso, o sistema responderá com 'ACK'.
 	\includegraphics[width=0.9\linewidth]{esq_sensor}
 	\caption{Esquema do tacômetro}
 	\label{fig:esq_sensor}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{esq_sensorTemp}
+	\caption{Esquema do sensor de temperatura}
+	\label{fig:esq_sensorTemp}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{esq_aquecedor}
+	\caption{Esquema do aquecedor}
+	\label{fig:esq_aquecedor}
 \end{figure}
 
 Os pinos apresentados acima, devem ser mapeados para os da placa \textit{FRDM-KL25Z} através do mapeamento apresentado na figura \ref{fig:pinout}
@@ -273,7 +291,14 @@ A matriz de rastreabilidade apresentada na tabela \ref*{tab:rastreabilidade} rel
 						& \texttt{cooler\_hal.c}\\
 						& \texttt{- void cooler\_initCooler(void)}\\
 						& \texttt{- void cooler\_setVelocity(uint16\_t uiVelocity)}\\
-						& \texttt{- unsigned short cooler\_getDutyCicle()}\\
+						& \texttt{- unsigned short cooler\_getDutyCicle()}\\				
+		\hline REQ6
+						& \texttt{tempSensor\_hal.c}\\
+						& \texttt{- void tempSensor\_init()}\\
+						& \texttt{- void tempSensor\_executeTask()}\\
+						& \texttt{- short tempSensor\_isConversionFinished()}\\
+						& \texttt{- uint16\_t tempSensor\_getLastConversionRawResult()}\\
+						& \texttt{- int tempSensor\_getLastConversionTemperature()}\\
 		\hline 
 	\end{tabular}
 	} 
@@ -337,12 +362,16 @@ Ainda temos um problema com o Rhapsody quando tentamos editar textos dentro de u
 \section{Apêndice}
 % Colocar como apêndice toda a listagem do código fonte
 Listagem dos códigos fonte:
+\code{../Sources/ADC/adc.c}
+\code{../Sources/ADC/adc.h}
 \code{../Sources/Buzzer/buzzer_hal.c}
 \code{../Sources/Buzzer/buzzer_hal.h}
 \code{../Sources/Cooler/cooler_hal.c}
 \code{../Sources/Cooler/cooler_hal.h}
 \code{../Sources/fsl_debug_console.c}
 \code{../Sources/GPIO/gpio_hal.h}
+\code{../Sources/Heater/heater_hal.c}
+\code{../Sources/Heater/heater_hal.h}
 \code{../Sources/KL25Z/es670_peripheral_board.h}
 \code{../Sources/LCD/lcd_hal.c}
 \code{../Sources/LCD/lcd_hal.h}
@@ -363,6 +392,8 @@ Listagem dos códigos fonte:
 \code{../Sources/SevenSeg/sevenseg_hal.h}
 \code{../Sources/Tacometro/tacometro_hal.c}
 \code{../Sources/Tacometro/tacometro_hal.h}
+\code{../Sources/TempSensor/tempSensor_hal.c}
+\code{../Sources/TempSensor/tempSensor_hal.h}
 \code{../Sources/Util/tc_hal.c}
 \code{../Sources/Util/tc_hal.h}
 \code{../Sources/Util/util.c}
